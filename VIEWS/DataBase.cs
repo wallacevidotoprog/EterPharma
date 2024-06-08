@@ -48,7 +48,11 @@ namespace EterPharma.VIEWS
 			}
 			if (MainWindow.database?.Users != null)
 			{
-				dataGridView_user.Invoke(new Action(() => { dataGridView_user.DataSource = MainWindow.database.Users; }));
+				dataGridView_user.Invoke(new Action(() => { 
+					
+					dataGridView_user.DataSource = MainWindow.database.Users; 
+				
+				}));
 			}
 		}
 
@@ -147,6 +151,8 @@ namespace EterPharma.VIEWS
 				dataGridView_user.Rows[editIDINDEX].Cells[0].Value = textBox_id.Text;
 				dataGridView_user.Rows[editIDINDEX].Cells[1].Value = textBox_nome.Text;
 				dataGridView_user.Rows[editIDINDEX].Cells[2].Value = (Funcao)comboBox_funcao.SelectedIndex;
+				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
+				dataGridView_user.CurrentCell = dataGridView_user.Rows[editIDINDEX].Cells[0];
 				pictureBox4_Click(null, null);
 			}
 			else
@@ -154,7 +160,7 @@ namespace EterPharma.VIEWS
 
 				if (textBox_nome.Text != string.Empty && textBox_id.Text != string.Empty)
 				{
-					if (!UserExite(textBox_id.Text))
+					if (!MainWindow.database.UserExite(textBox_id.Text))
 					{
 						MainWindow.database.Users.Add(new User
 						{
@@ -168,9 +174,10 @@ namespace EterPharma.VIEWS
 						{
 							 textBox_id.Text,textBox_nome.Text,(Funcao)comboBox_funcao.SelectedIndex,true
 						});
-						pictureBox4_Click(null, null);
 						MainWindow.database.WriteUser();
-
+						dataGridView_user.DataSource = MainWindow.database.Users.ToList();
+						dataGridView_user.CurrentCell = dataGridView_user.Rows[editIDINDEX].Cells[0];
+						pictureBox4_Click(null, null);
 					}
 					else
 					{
@@ -182,27 +189,10 @@ namespace EterPharma.VIEWS
 					MessageBox.Show("Preencha todos os campos.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
-			dataGridView_user.Update();
-			dataGridView_user.Refresh();
+			
 		}
 
-		private void AtualizarGridUser()
-		{
-			dataGridView_user.DataSource = new List<Users>();
-			dataGridView_user.DataSource = MainWindow.database.Users;
-		}
-		private bool UserExite(string id)
-		{
-			for (int i = 0; i < MainWindow.database?.Users.Count; i++)
-			{
-				if (MainWindow.database.Users[i].ID == id)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-
+		
 		private void pictureBox4_Click(object sender, EventArgs e)
 		{
 			textBox_id.Clear();
@@ -235,9 +225,9 @@ namespace EterPharma.VIEWS
 			{
 				dataGridView_user.Rows[editIDINDEX].Cells[3].Value = MainWindow.database.Users[editIDINDEX].Status = !MainWindow.database.Users[editIDINDEX].Status;
 				MainWindow.database.WriteUser();
+				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
+				dataGridView_user.CurrentCell = dataGridView_user.Rows[editIDINDEX].Cells[0];
 				pictureBox4_Click(null, null);
-				dataGridView_user.Update();
-				dataGridView_user.Refresh();
 			}
 		}
 
@@ -247,10 +237,8 @@ namespace EterPharma.VIEWS
 			{
 				MainWindow.database.Users.RemoveAt(editIDINDEX);
 				MainWindow.database.WriteUser();
-				//dataGridView_user.DataBindings.Add()
 				pictureBox4_Click(null, null);
-				dataGridView_user.Update();
-				dataGridView_user.Refresh();
+				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
 
 			}
 		}

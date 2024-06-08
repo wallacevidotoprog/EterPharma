@@ -15,6 +15,6 @@ namespace EterPharma.Models
     }
     public enum Funcao
     {
-        DEV,ADMIN,GERENTE,OPCAIXA,OPLOJA,BALCONISTA,FARMACEUTICO
+        DEV,ADMIN,GERENTE,FARMACEUTICO, BALCONISTA, OPLOJA, OPCAIXA,ENTREGADOR
     }
 }

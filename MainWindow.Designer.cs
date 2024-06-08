@@ -124,6 +124,7 @@
 			this.gERARVALIDADEDOMÊSToolStripMenuItem.Name = "gERARVALIDADEDOMÊSToolStripMenuItem";
 			this.gERARVALIDADEDOMÊSToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.gERARVALIDADEDOMÊSToolStripMenuItem.Text = "GERAR VALIDADE DO MÊS";
+			this.gERARVALIDADEDOMÊSToolStripMenuItem.Click += new System.EventHandler(this.gERARVALIDADEDOMÊSToolStripMenuItem_Click);
 			// 
 			// rELATÓRIOToolStripMenuItem
 			// 

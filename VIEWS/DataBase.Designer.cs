@@ -43,31 +43,31 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboBox_tipo = new System.Windows.Forms.ComboBox();
 			this.textBox_codigo = new System.Windows.Forms.TextBox();
+			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
+			this.pictureBox_limpar = new System.Windows.Forms.PictureBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.pictureBox_atualiza = new System.Windows.Forms.PictureBox();
 			this.textBox_contador = new System.Windows.Forms.TextBox();
+			this.pictureBox_import = new System.Windows.Forms.PictureBox();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.groupBox7 = new System.Windows.Forms.GroupBox();
 			this.groupBox8 = new System.Windows.Forms.GroupBox();
 			this.groupBox_modeedit = new System.Windows.Forms.GroupBox();
+			this.pictureBox6 = new System.Windows.Forms.PictureBox();
+			this.pictureBox5 = new System.Windows.Forms.PictureBox();
+			this.pictureBox4 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.comboBox_funcao = new System.Windows.Forms.ComboBox();
 			this.textBox_id = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.textBox_nome = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
-			this.pictureBox_limpar = new System.Windows.Forms.PictureBox();
-			this.pictureBox_atualiza = new System.Windows.Forms.PictureBox();
-			this.pictureBox_import = new System.Windows.Forms.PictureBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox6 = new System.Windows.Forms.PictureBox();
-			this.pictureBox5 = new System.Windows.Forms.PictureBox();
-			this.pictureBox4 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
 			this.dataGridView_user = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,23 +79,23 @@
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_dados)).BeginInit();
 			this.groupBox3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_limpar)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.groupBox5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_atualiza)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			this.tabPage2.SuspendLayout();
 			this.groupBox7.SuspendLayout();
 			this.groupBox8.SuspendLayout();
 			this.groupBox_modeedit.SuspendLayout();
-			this.groupBox6.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_limpar)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_atualiza)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.groupBox6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -169,6 +169,7 @@
 			this.dataGridView_dados.ReadOnly = true;
 			this.dataGridView_dados.RowHeadersVisible = false;
 			this.dataGridView_dados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView_dados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView_dados.Size = new System.Drawing.Size(961, 188);
 			this.dataGridView_dados.TabIndex = 0;
 			// 
@@ -281,6 +282,32 @@
 			this.textBox_codigo.TabIndex = 14;
 			this.textBox_codigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_codigo_KeyDown);
 			// 
+			// pictureBox_busca
+			// 
+			this.pictureBox_busca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_busca.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_busca.Image = global::EterPharma.Properties.Resources.arquivo_de_documento;
+			this.pictureBox_busca.Location = new System.Drawing.Point(883, 44);
+			this.pictureBox_busca.Name = "pictureBox_busca";
+			this.pictureBox_busca.Size = new System.Drawing.Size(36, 33);
+			this.pictureBox_busca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_busca.TabIndex = 12;
+			this.pictureBox_busca.TabStop = false;
+			this.pictureBox_busca.Click += new System.EventHandler(this.pictureBox_busca_Click);
+			// 
+			// pictureBox_limpar
+			// 
+			this.pictureBox_limpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_limpar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_limpar.Image = global::EterPharma.Properties.Resources.limpar_limpo;
+			this.pictureBox_limpar.Location = new System.Drawing.Point(925, 44);
+			this.pictureBox_limpar.Name = "pictureBox_limpar";
+			this.pictureBox_limpar.Size = new System.Drawing.Size(36, 33);
+			this.pictureBox_limpar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_limpar.TabIndex = 12;
+			this.pictureBox_limpar.TabStop = false;
+			this.pictureBox_limpar.Click += new System.EventHandler(this.pictureBox_limpar_Click);
+			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
@@ -316,6 +343,18 @@
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "IMPORTAÇÃO";
 			// 
+			// pictureBox_atualiza
+			// 
+			this.pictureBox_atualiza.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_atualiza.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pictureBox_atualiza.Image = global::EterPharma.Properties.Resources.atualizar;
+			this.pictureBox_atualiza.Location = new System.Drawing.Point(215, 16);
+			this.pictureBox_atualiza.Name = "pictureBox_atualiza";
+			this.pictureBox_atualiza.Size = new System.Drawing.Size(65, 66);
+			this.pictureBox_atualiza.TabIndex = 14;
+			this.pictureBox_atualiza.TabStop = false;
+			this.pictureBox_atualiza.Click += new System.EventHandler(this.pictureBox_atualiza_Click);
+			// 
 			// textBox_contador
 			// 
 			this.textBox_contador.Dock = System.Windows.Forms.DockStyle.Left;
@@ -327,6 +366,30 @@
 			this.textBox_contador.TabIndex = 13;
 			this.textBox_contador.Text = "TOTAL DE LINHAS LIDAS {0}";
 			this.textBox_contador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// pictureBox_import
+			// 
+			this.pictureBox_import.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_import.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pictureBox_import.Image = global::EterPharma.Properties.Resources.mandar;
+			this.pictureBox_import.Location = new System.Drawing.Point(3, 16);
+			this.pictureBox_import.Name = "pictureBox_import";
+			this.pictureBox_import.Size = new System.Drawing.Size(65, 66);
+			this.pictureBox_import.TabIndex = 12;
+			this.pictureBox_import.TabStop = false;
+			this.pictureBox_import.Click += new System.EventHandler(this.pictureBox_import_Click);
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox3.Image = global::EterPharma.Properties.Resources.sair;
+			this.pictureBox3.Location = new System.Drawing.Point(902, 32);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox3.TabIndex = 11;
+			this.pictureBox3.TabStop = false;
+			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
 			// 
 			// tabPage2
 			// 
@@ -383,6 +446,54 @@
 			this.groupBox_modeedit.TabStop = false;
 			this.groupBox_modeedit.Text = "MODO EDIÇÂO";
 			this.groupBox_modeedit.Visible = false;
+			// 
+			// pictureBox6
+			// 
+			this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pictureBox6.Image = global::EterPharma.Properties.Resources.botao_de_deletar;
+			this.pictureBox6.Location = new System.Drawing.Point(68, 16);
+			this.pictureBox6.Name = "pictureBox6";
+			this.pictureBox6.Size = new System.Drawing.Size(65, 63);
+			this.pictureBox6.TabIndex = 26;
+			this.pictureBox6.TabStop = false;
+			this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+			// 
+			// pictureBox5
+			// 
+			this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pictureBox5.Image = global::EterPharma.Properties.Resources.interruptor;
+			this.pictureBox5.Location = new System.Drawing.Point(3, 16);
+			this.pictureBox5.Name = "pictureBox5";
+			this.pictureBox5.Size = new System.Drawing.Size(65, 63);
+			this.pictureBox5.TabIndex = 25;
+			this.pictureBox5.TabStop = false;
+			this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+			// 
+			// pictureBox4
+			// 
+			this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox4.Image = global::EterPharma.Properties.Resources.limpar_limpo;
+			this.pictureBox4.Location = new System.Drawing.Point(6, 328);
+			this.pictureBox4.Name = "pictureBox4";
+			this.pictureBox4.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox4.TabIndex = 24;
+			this.pictureBox4.TabStop = false;
+			this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox2.Image = global::EterPharma.Properties.Resources.salve_;
+			this.pictureBox2.Location = new System.Drawing.Point(440, 328);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox2.TabIndex = 24;
+			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
 			// label3
 			// 
@@ -452,126 +563,6 @@
 			this.label4.TabIndex = 19;
 			this.label4.Text = "NOME:";
 			// 
-			// groupBox6
-			// 
-			this.groupBox6.Controls.Add(this.dataGridView_user);
-			this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
-			this.groupBox6.Location = new System.Drawing.Point(3, 3);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(382, 418);
-			this.groupBox6.TabIndex = 0;
-			this.groupBox6.TabStop = false;
-			// 
-			// pictureBox_busca
-			// 
-			this.pictureBox_busca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_busca.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_busca.Image = global::EterPharma.Properties.Resources.arquivo_de_documento;
-			this.pictureBox_busca.Location = new System.Drawing.Point(883, 44);
-			this.pictureBox_busca.Name = "pictureBox_busca";
-			this.pictureBox_busca.Size = new System.Drawing.Size(36, 33);
-			this.pictureBox_busca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox_busca.TabIndex = 12;
-			this.pictureBox_busca.TabStop = false;
-			this.pictureBox_busca.Click += new System.EventHandler(this.pictureBox_busca_Click);
-			// 
-			// pictureBox_limpar
-			// 
-			this.pictureBox_limpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_limpar.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_limpar.Image = global::EterPharma.Properties.Resources.limpar_limpo;
-			this.pictureBox_limpar.Location = new System.Drawing.Point(925, 44);
-			this.pictureBox_limpar.Name = "pictureBox_limpar";
-			this.pictureBox_limpar.Size = new System.Drawing.Size(36, 33);
-			this.pictureBox_limpar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox_limpar.TabIndex = 12;
-			this.pictureBox_limpar.TabStop = false;
-			this.pictureBox_limpar.Click += new System.EventHandler(this.pictureBox_limpar_Click);
-			// 
-			// pictureBox_atualiza
-			// 
-			this.pictureBox_atualiza.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_atualiza.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pictureBox_atualiza.Image = global::EterPharma.Properties.Resources.atualizar;
-			this.pictureBox_atualiza.Location = new System.Drawing.Point(215, 16);
-			this.pictureBox_atualiza.Name = "pictureBox_atualiza";
-			this.pictureBox_atualiza.Size = new System.Drawing.Size(65, 66);
-			this.pictureBox_atualiza.TabIndex = 14;
-			this.pictureBox_atualiza.TabStop = false;
-			this.pictureBox_atualiza.Click += new System.EventHandler(this.pictureBox_atualiza_Click);
-			// 
-			// pictureBox_import
-			// 
-			this.pictureBox_import.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_import.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pictureBox_import.Image = global::EterPharma.Properties.Resources.mandar;
-			this.pictureBox_import.Location = new System.Drawing.Point(3, 16);
-			this.pictureBox_import.Name = "pictureBox_import";
-			this.pictureBox_import.Size = new System.Drawing.Size(65, 66);
-			this.pictureBox_import.TabIndex = 12;
-			this.pictureBox_import.TabStop = false;
-			this.pictureBox_import.Click += new System.EventHandler(this.pictureBox_import_Click);
-			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox3.Image = global::EterPharma.Properties.Resources.sair;
-			this.pictureBox3.Location = new System.Drawing.Point(902, 32);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox3.TabIndex = 11;
-			this.pictureBox3.TabStop = false;
-			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-			// 
-			// pictureBox6
-			// 
-			this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pictureBox6.Image = global::EterPharma.Properties.Resources.botao_de_deletar;
-			this.pictureBox6.Location = new System.Drawing.Point(68, 16);
-			this.pictureBox6.Name = "pictureBox6";
-			this.pictureBox6.Size = new System.Drawing.Size(65, 63);
-			this.pictureBox6.TabIndex = 26;
-			this.pictureBox6.TabStop = false;
-			this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-			// 
-			// pictureBox5
-			// 
-			this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pictureBox5.Image = global::EterPharma.Properties.Resources.interruptor;
-			this.pictureBox5.Location = new System.Drawing.Point(3, 16);
-			this.pictureBox5.Name = "pictureBox5";
-			this.pictureBox5.Size = new System.Drawing.Size(65, 63);
-			this.pictureBox5.TabIndex = 25;
-			this.pictureBox5.TabStop = false;
-			this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-			// 
-			// pictureBox4
-			// 
-			this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox4.Image = global::EterPharma.Properties.Resources.limpar_limpo;
-			this.pictureBox4.Location = new System.Drawing.Point(6, 328);
-			this.pictureBox4.Name = "pictureBox4";
-			this.pictureBox4.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox4.TabIndex = 24;
-			this.pictureBox4.TabStop = false;
-			this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox2.Image = global::EterPharma.Properties.Resources.salve_;
-			this.pictureBox2.Location = new System.Drawing.Point(440, 328);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox2.TabIndex = 24;
-			this.pictureBox2.TabStop = false;
-			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -583,6 +574,16 @@
 			this.pictureBox1.TabIndex = 12;
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.Click += new System.EventHandler(this.pictureBox3_Click);
+			// 
+			// groupBox6
+			// 
+			this.groupBox6.Controls.Add(this.dataGridView_user);
+			this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
+			this.groupBox6.Location = new System.Drawing.Point(3, 3);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(382, 418);
+			this.groupBox6.TabIndex = 0;
+			this.groupBox6.TabStop = false;
 			// 
 			// dataGridView_user
 			// 
@@ -607,6 +608,7 @@
 			this.dataGridView_user.ReadOnly = true;
 			this.dataGridView_user.RowHeadersVisible = false;
 			this.dataGridView_user.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView_user.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView_user.Size = new System.Drawing.Size(376, 399);
 			this.dataGridView_user.TabIndex = 1;
 			this.dataGridView_user.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_user_CellMouseDoubleClick);
@@ -663,25 +665,25 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_dados)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_limpar)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
 			this.groupBox5.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_atualiza)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			this.tabPage2.ResumeLayout(false);
 			this.groupBox7.ResumeLayout(false);
 			this.groupBox8.ResumeLayout(false);
 			this.groupBox8.PerformLayout();
 			this.groupBox_modeedit.ResumeLayout(false);
-			this.groupBox6.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_limpar)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_atualiza)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.groupBox6.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).EndInit();
 			this.ResumeLayout(false);
 

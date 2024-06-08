@@ -63,5 +63,20 @@ namespace EterPharma
 			form.Show();
 			this.toolStrip1.Visible = false;
 		}
+
+		private void gERARVALIDADEDOMÊSToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			GerarValidade form = new GerarValidade
+			{
+				TopLevel = false,
+				FormBorderStyle = FormBorderStyle.None,
+				Dock = DockStyle.Fill
+			};
+			form.FormClosed += new FormClosedEventHandler(this.ChildForm_FormClosed);
+			this.panel_center.Controls.Clear();
+			this.panel_center.Controls.Add(form);
+			form.Show();
+			this.toolStrip1.Visible = false;
+		}
 	}
 }

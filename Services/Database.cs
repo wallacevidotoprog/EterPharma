@@ -33,6 +33,17 @@ namespace EterPharma.Services
 			toolStrip.Invoke(new Action(() => { toolStrip.Enabled = true; }));
 		}
 
+		public bool UserExite(string id)
+		{
+			for (int i = 0; i < Users.Count; i++)
+			{
+				if (Users[i].ID == id)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 		public bool WriteProdutos()
 		{
 			bool stats = false;

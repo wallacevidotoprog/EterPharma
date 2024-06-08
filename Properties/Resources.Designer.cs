@@ -63,6 +63,16 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap adicionar_ficheiro {
+            get {
+                object obj = ResourceManager.GetObject("adicionar-ficheiro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arquivo_de_documento {
             get {
                 object obj = ResourceManager.GetObject("arquivo-de-documento", resourceCulture);
@@ -153,6 +163,16 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mais {
+            get {
+                object obj = ResourceManager.GetObject("mais", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mandar {
             get {
                 object obj = ResourceManager.GetObject("mandar", resourceCulture);
@@ -163,9 +183,29 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap marketing_de_busca {
+            get {
+                object obj = ResourceManager.GetObject("marketing-de-busca", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap medicamento {
             get {
                 object obj = ResourceManager.GetObject("medicamento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap novo_arquivo {
+            get {
+                object obj = ResourceManager.GetObject("novo-arquivo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
