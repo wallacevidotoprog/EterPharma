@@ -73,6 +73,16 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arquivo {
+            get {
+                object obj = ResourceManager.GetObject("arquivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arquivo_de_documento {
             get {
                 object obj = ResourceManager.GetObject("arquivo-de-documento", resourceCulture);
@@ -96,6 +106,16 @@ namespace EterPharma.Properties {
         internal static System.Drawing.Bitmap atualizar {
             get {
                 object obj = ResourceManager.GetObject("atualizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap atualizar_ficheiro {
+            get {
+                object obj = ResourceManager.GetObject("atualizar_ficheiro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +153,16 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap editar {
+            get {
+                object obj = ResourceManager.GetObject("editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap expirado {
             get {
                 object obj = ResourceManager.GetObject("expirado", resourceCulture);
@@ -156,6 +186,16 @@ namespace EterPharma.Properties {
         internal static System.Drawing.Bitmap limpar_limpo {
             get {
                 object obj = ResourceManager.GetObject("limpar_limpo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lixo {
+            get {
+                object obj = ResourceManager.GetObject("lixo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

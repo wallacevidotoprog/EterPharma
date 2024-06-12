@@ -28,54 +28,58 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.dataGridView_user = new System.Windows.Forms.DataGridView();
-			this.groupBox_ne = new System.Windows.Forms.GroupBox();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.EAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.COD_PRODUTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DESCRICAO_PRODUTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QTD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.label1 = new System.Windows.Forms.Label();
-			this.comboBox_user = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.label2 = new System.Windows.Forms.Label();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.label6 = new System.Windows.Forms.Label();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.listView1 = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.groupBox_ne = new System.Windows.Forms.GroupBox();
 			this.groupBox_insert = new System.Windows.Forms.GroupBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.textBox_codigo = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.comboBox_categoria = new System.Windows.Forms.ComboBox();
+			this.numericUpDown_qtd = new System.Windows.Forms.NumericUpDown();
 			this.dateTimePicker_data = new System.Windows.Forms.DateTimePicker();
 			this.label5 = new System.Windows.Forms.Label();
-			this.numericUpDown_qtd = new System.Windows.Forms.NumericUpDown();
-			this.comboBox_categoria = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.textBox_nproduto = new System.Windows.Forms.TextBox();
+			this.textBox_codigo = new System.Windows.Forms.TextBox();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.comboBox_user = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.contextMenuStrip_produtos = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.eXCLUIRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pictureBox_addCategoria = new System.Windows.Forms.PictureBox();
 			this.pictureBox_addItem = new System.Windows.Forms.PictureBox();
 			this.pictureBox_novaV = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox_novo = new System.Windows.Forms.PictureBox();
 			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
-			this.textBox_nproduto = new System.Windows.Forms.TextBox();
+			this.eDITARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).BeginInit();
-			this.groupBox_ne.SuspendLayout();
 			this.groupBox5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.groupBox_ne.SuspendLayout();
 			this.groupBox_insert.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).BeginInit();
+			this.contextMenuStrip_produtos.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).BeginInit();
@@ -104,42 +108,6 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "AÇÕES";
 			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.pictureBox_novo);
-			this.groupBox2.Controls.Add(this.pictureBox_busca);
-			this.groupBox2.Controls.Add(this.dateTimePicker1);
-			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox2.Location = new System.Drawing.Point(3, 16);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(295, 158);
-			this.groupBox2.TabIndex = 2;
-			this.groupBox2.TabStop = false;
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(6, 16);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(102, 25);
-			this.label6.TabIndex = 12;
-			this.label6.Text = "MÊS/ANO";
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox3.Controls.Add(this.groupBox5);
-			this.groupBox3.Controls.Add(this.groupBox_ne);
-			this.groupBox3.Location = new System.Drawing.Point(301, 0);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(572, 444);
-			this.groupBox3.TabIndex = 11;
-			this.groupBox3.TabStop = false;
-			// 
 			// dataGridView_user
 			// 
 			this.dataGridView_user.AllowUserToAddRows = false;
@@ -165,72 +133,6 @@
 			this.dataGridView_user.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView_user.Size = new System.Drawing.Size(295, 267);
 			this.dataGridView_user.TabIndex = 3;
-			// 
-			// groupBox_ne
-			// 
-			this.groupBox_ne.Controls.Add(this.groupBox_insert);
-			this.groupBox_ne.Controls.Add(this.pictureBox_novaV);
-			this.groupBox_ne.Controls.Add(this.dateTimePicker2);
-			this.groupBox_ne.Controls.Add(this.comboBox_user);
-			this.groupBox_ne.Controls.Add(this.label2);
-			this.groupBox_ne.Controls.Add(this.label1);
-			this.groupBox_ne.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox_ne.Location = new System.Drawing.Point(3, 16);
-			this.groupBox_ne.Name = "groupBox_ne";
-			this.groupBox_ne.Size = new System.Drawing.Size(566, 315);
-			this.groupBox_ne.TabIndex = 0;
-			this.groupBox_ne.TabStop = false;
-			this.groupBox_ne.Visible = false;
-			// 
-			// groupBox5
-			// 
-			this.groupBox5.Controls.Add(this.dataGridView1);
-			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox5.Location = new System.Drawing.Point(3, 331);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(566, 110);
-			this.groupBox5.TabIndex = 1;
-			this.groupBox5.TabStop = false;
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AllowUserToResizeColumns = false;
-			this.dataGridView1.AllowUserToResizeRows = false;
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-			this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.EAN,
-            this.COD_PRODUTO,
-            this.DESCRICAO_PRODUTO,
-            this.QTD,
-            this.DATA});
-			this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-			this.dataGridView1.MultiSelect = false;
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowHeadersVisible = false;
-			this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView1.Size = new System.Drawing.Size(560, 91);
-			this.dataGridView1.TabIndex = 4;
-			// 
-			// dateTimePicker1
-			// 
-			this.dateTimePicker1.CustomFormat = "MM/yyyy";
-			this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker1.Location = new System.Drawing.Point(11, 44);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.ShowUpDown = true;
-			this.dateTimePicker1.Size = new System.Drawing.Size(278, 33);
-			this.dateTimePicker1.TabIndex = 0;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
@@ -258,83 +160,131 @@
 			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
 			this.dataGridViewTextBoxColumn3.ReadOnly = true;
 			// 
-			// ID
+			// groupBox2
 			// 
-			this.ID.HeaderText = "ID";
-			this.ID.Name = "ID";
-			this.ID.ReadOnly = true;
+			this.groupBox2.Controls.Add(this.pictureBox_novo);
+			this.groupBox2.Controls.Add(this.pictureBox_busca);
+			this.groupBox2.Controls.Add(this.dateTimePicker1);
+			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBox2.Location = new System.Drawing.Point(3, 16);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(295, 158);
+			this.groupBox2.TabIndex = 2;
+			this.groupBox2.TabStop = false;
 			// 
-			// EAN
+			// dateTimePicker1
 			// 
-			this.EAN.HeaderText = "EAN";
-			this.EAN.Name = "EAN";
-			this.EAN.ReadOnly = true;
+			this.dateTimePicker1.CustomFormat = "MM/yyyy";
+			this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker1.Location = new System.Drawing.Point(11, 44);
+			this.dateTimePicker1.Name = "dateTimePicker1";
+			this.dateTimePicker1.ShowUpDown = true;
+			this.dateTimePicker1.Size = new System.Drawing.Size(278, 33);
+			this.dateTimePicker1.TabIndex = 0;
 			// 
-			// COD_PRODUTO
+			// label6
 			// 
-			this.COD_PRODUTO.HeaderText = "COD PRODUTO";
-			this.COD_PRODUTO.Name = "COD_PRODUTO";
-			this.COD_PRODUTO.ReadOnly = true;
+			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.Location = new System.Drawing.Point(6, 16);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(102, 25);
+			this.label6.TabIndex = 12;
+			this.label6.Text = "MÊS/ANO";
 			// 
-			// DESCRICAO_PRODUTO
+			// groupBox3
 			// 
-			this.DESCRICAO_PRODUTO.HeaderText = "DESCRIÇÃO PRODUTO";
-			this.DESCRICAO_PRODUTO.Name = "DESCRICAO_PRODUTO";
-			this.DESCRICAO_PRODUTO.ReadOnly = true;
-			// 
-			// QTD
-			// 
-			this.QTD.HeaderText = "QTD";
-			this.QTD.Name = "QTD";
-			this.QTD.ReadOnly = true;
-			// 
-			// DATA
-			// 
-			this.DATA.HeaderText = "DATA";
-			this.DATA.Name = "DATA";
-			this.DATA.ReadOnly = true;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(6, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(147, 25);
-			this.label1.TabIndex = 13;
-			this.label1.Text = "FUNCIONÁRIO:";
-			// 
-			// comboBox_user
-			// 
-			this.comboBox_user.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-			this.comboBox_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.comboBox_user.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_user.FormattingEnabled = true;
-			this.comboBox_user.Location = new System.Drawing.Point(11, 47);
-			this.comboBox_user.Name = "comboBox_user";
-			this.comboBox_user.Size = new System.Drawing.Size(257, 33);
-			this.comboBox_user.TabIndex = 14;
-			this.comboBox_user.Validated += new System.EventHandler(this.comboBox_user_Validated);
-			// 
-			// dateTimePicker2
-			// 
-			this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker2.Location = new System.Drawing.Point(274, 47);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(207, 33);
-			this.dateTimePicker2.TabIndex = 15;
+			this.groupBox3.Controls.Add(this.groupBox5);
+			this.groupBox3.Controls.Add(this.groupBox_ne);
+			this.groupBox3.Location = new System.Drawing.Point(301, 0);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(572, 444);
+			this.groupBox3.TabIndex = 11;
+			this.groupBox3.TabStop = false;
 			// 
-			// label2
+			// groupBox5
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(269, 16);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(222, 25);
-			this.label2.TabIndex = 13;
-			this.label2.Text = "DATA DA VERIFICAÇÃO:";
+			this.groupBox5.Controls.Add(this.listView1);
+			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox5.Location = new System.Drawing.Point(3, 331);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(566, 110);
+			this.groupBox5.TabIndex = 1;
+			this.groupBox5.TabStop = false;
+			// 
+			// listView1
+			// 
+			this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
+			this.listView1.ContextMenuStrip = this.contextMenuStrip_produtos;
+			this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listView1.FullRowSelect = true;
+			this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.listView1.HideSelection = false;
+			this.listView1.HoverSelection = true;
+			this.listView1.Location = new System.Drawing.Point(3, 16);
+			this.listView1.Name = "listView1";
+			this.listView1.Size = new System.Drawing.Size(560, 91);
+			this.listView1.TabIndex = 12;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listView1.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "ID";
+			// 
+			// columnHeader7
+			// 
+			this.columnHeader7.Text = "EAN";
+			this.columnHeader7.Width = 150;
+			// 
+			// columnHeader8
+			// 
+			this.columnHeader8.Text = "CÓDIGO";
+			this.columnHeader8.Width = 100;
+			// 
+			// columnHeader9
+			// 
+			this.columnHeader9.Text = "DESCRIÇÃO";
+			this.columnHeader9.Width = 300;
+			// 
+			// columnHeader10
+			// 
+			this.columnHeader10.Text = "QTD";
+			this.columnHeader10.Width = 50;
+			// 
+			// columnHeader11
+			// 
+			this.columnHeader11.Text = "DATA VALIDADE";
+			this.columnHeader11.Width = 200;
+			// 
+			// groupBox_ne
+			// 
+			this.groupBox_ne.Controls.Add(this.groupBox_insert);
+			this.groupBox_ne.Controls.Add(this.pictureBox_novaV);
+			this.groupBox_ne.Controls.Add(this.dateTimePicker2);
+			this.groupBox_ne.Controls.Add(this.comboBox_user);
+			this.groupBox_ne.Controls.Add(this.label2);
+			this.groupBox_ne.Controls.Add(this.label1);
+			this.groupBox_ne.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBox_ne.Location = new System.Drawing.Point(3, 16);
+			this.groupBox_ne.Name = "groupBox_ne";
+			this.groupBox_ne.Size = new System.Drawing.Size(566, 315);
+			this.groupBox_ne.TabIndex = 0;
+			this.groupBox_ne.TabStop = false;
+			this.groupBox_ne.Visible = false;
 			// 
 			// groupBox_insert
 			// 
@@ -357,37 +307,26 @@
 			this.groupBox_insert.TabStop = false;
 			this.groupBox_insert.Visible = false;
 			// 
-			// label3
+			// comboBox_categoria
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(3, 91);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(91, 25);
-			this.label3.TabIndex = 17;
-			this.label3.Text = "CÓDIGO:";
-			// 
-			// textBox_codigo
-			// 
-			this.textBox_codigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.comboBox_categoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_codigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_codigo.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_codigo.Location = new System.Drawing.Point(6, 119);
-			this.textBox_codigo.Name = "textBox_codigo";
-			this.textBox_codigo.Size = new System.Drawing.Size(326, 33);
-			this.textBox_codigo.TabIndex = 16;
+			this.comboBox_categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox_categoria.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.comboBox_categoria.FormattingEnabled = true;
+			this.comboBox_categoria.Location = new System.Drawing.Point(11, 39);
+			this.comboBox_categoria.Name = "comboBox_categoria";
+			this.comboBox_categoria.Size = new System.Drawing.Size(498, 33);
+			this.comboBox_categoria.TabIndex = 22;
 			// 
-			// label4
+			// numericUpDown_qtd
 			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(333, 91);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(57, 25);
-			this.label4.TabIndex = 18;
-			this.label4.Text = "QRD:";
+			this.numericUpDown_qtd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.numericUpDown_qtd.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.numericUpDown_qtd.Location = new System.Drawing.Point(338, 120);
+			this.numericUpDown_qtd.Name = "numericUpDown_qtd";
+			this.numericUpDown_qtd.Size = new System.Drawing.Size(71, 33);
+			this.numericUpDown_qtd.TabIndex = 21;
 			// 
 			// dateTimePicker_data
 			// 
@@ -410,26 +349,16 @@
 			this.label5.TabIndex = 18;
 			this.label5.Text = "VALIDADE:";
 			// 
-			// numericUpDown_qtd
+			// label4
 			// 
-			this.numericUpDown_qtd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.numericUpDown_qtd.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.numericUpDown_qtd.Location = new System.Drawing.Point(338, 120);
-			this.numericUpDown_qtd.Name = "numericUpDown_qtd";
-			this.numericUpDown_qtd.Size = new System.Drawing.Size(71, 33);
-			this.numericUpDown_qtd.TabIndex = 21;
-			// 
-			// comboBox_categoria
-			// 
-			this.comboBox_categoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBox_categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox_categoria.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.comboBox_categoria.FormattingEnabled = true;
-			this.comboBox_categoria.Location = new System.Drawing.Point(11, 39);
-			this.comboBox_categoria.Name = "comboBox_categoria";
-			this.comboBox_categoria.Size = new System.Drawing.Size(498, 33);
-			this.comboBox_categoria.TabIndex = 22;
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(333, 91);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(55, 25);
+			this.label4.TabIndex = 18;
+			this.label4.Text = "QTD:";
 			// 
 			// label7
 			// 
@@ -440,6 +369,98 @@
 			this.label7.Size = new System.Drawing.Size(120, 25);
 			this.label7.TabIndex = 17;
 			this.label7.Text = "CATEGORIA:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Location = new System.Drawing.Point(3, 91);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(91, 25);
+			this.label3.TabIndex = 17;
+			this.label3.Text = "CÓDIGO:";
+			// 
+			// textBox_nproduto
+			// 
+			this.textBox_nproduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_nproduto.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox_nproduto.Location = new System.Drawing.Point(6, 158);
+			this.textBox_nproduto.Name = "textBox_nproduto";
+			this.textBox_nproduto.ReadOnly = true;
+			this.textBox_nproduto.Size = new System.Drawing.Size(477, 33);
+			this.textBox_nproduto.TabIndex = 16;
+			// 
+			// textBox_codigo
+			// 
+			this.textBox_codigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_codigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.textBox_codigo.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox_codigo.Location = new System.Drawing.Point(6, 119);
+			this.textBox_codigo.Name = "textBox_codigo";
+			this.textBox_codigo.Size = new System.Drawing.Size(326, 33);
+			this.textBox_codigo.TabIndex = 16;
+			this.textBox_codigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_codigo_KeyDown);
+			this.textBox_codigo.Validated += new System.EventHandler(this.textBox_codigo_Validated);
+			// 
+			// dateTimePicker2
+			// 
+			this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.dateTimePicker2.Location = new System.Drawing.Point(274, 47);
+			this.dateTimePicker2.Name = "dateTimePicker2";
+			this.dateTimePicker2.Size = new System.Drawing.Size(207, 33);
+			this.dateTimePicker2.TabIndex = 15;
+			// 
+			// comboBox_user
+			// 
+			this.comboBox_user.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+			this.comboBox_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.comboBox_user.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.comboBox_user.FormattingEnabled = true;
+			this.comboBox_user.Location = new System.Drawing.Point(11, 47);
+			this.comboBox_user.Name = "comboBox_user";
+			this.comboBox_user.Size = new System.Drawing.Size(257, 33);
+			this.comboBox_user.TabIndex = 14;
+			this.comboBox_user.Validated += new System.EventHandler(this.comboBox_user_Validated);
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(269, 16);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(222, 25);
+			this.label2.TabIndex = 13;
+			this.label2.Text = "DATA DA VERIFICAÇÃO:";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(6, 16);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(147, 25);
+			this.label1.TabIndex = 13;
+			this.label1.Text = "FUNCIONÁRIO:";
+			// 
+			// contextMenuStrip_produtos
+			// 
+			this.contextMenuStrip_produtos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eDITARToolStripMenuItem,
+            this.eXCLUIRToolStripMenuItem});
+			this.contextMenuStrip_produtos.Name = "contextMenuStrip1";
+			this.contextMenuStrip_produtos.Size = new System.Drawing.Size(181, 70);
+			// 
+			// eXCLUIRToolStripMenuItem
+			// 
+			this.eXCLUIRToolStripMenuItem.Image = global::EterPharma.Properties.Resources.lixo;
+			this.eXCLUIRToolStripMenuItem.Name = "eXCLUIRToolStripMenuItem";
+			this.eXCLUIRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.eXCLUIRToolStripMenuItem.Text = "EXCLUIR";
+			this.eXCLUIRToolStripMenuItem.Click += new System.EventHandler(this.eXCLUIRToolStripMenuItem_Click);
 			// 
 			// pictureBox_addCategoria
 			// 
@@ -512,17 +533,13 @@
 			this.pictureBox_busca.TabIndex = 13;
 			this.pictureBox_busca.TabStop = false;
 			// 
-			// textBox_nproduto
+			// eDITARToolStripMenuItem
 			// 
-			this.textBox_nproduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_nproduto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_nproduto.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_nproduto.Location = new System.Drawing.Point(6, 158);
-			this.textBox_nproduto.Name = "textBox_nproduto";
-			this.textBox_nproduto.ReadOnly = true;
-			this.textBox_nproduto.Size = new System.Drawing.Size(477, 33);
-			this.textBox_nproduto.TabIndex = 16;
+			this.eDITARToolStripMenuItem.Image = global::EterPharma.Properties.Resources.editar;
+			this.eDITARToolStripMenuItem.Name = "eDITARToolStripMenuItem";
+			this.eDITARToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.eDITARToolStripMenuItem.Text = "EDITAR";
+			this.eDITARToolStripMenuItem.Click += new System.EventHandler(this.eDITARToolStripMenuItem_Click);
 			// 
 			// GerarValidade
 			// 
@@ -537,17 +554,17 @@
 			this.Text = "GerarValidade";
 			this.Load += new System.EventHandler(this.GerarValidade_Load);
 			this.groupBox1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).EndInit();
+			this.groupBox5.ResumeLayout(false);
 			this.groupBox_ne.ResumeLayout(false);
 			this.groupBox_ne.PerformLayout();
-			this.groupBox5.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.groupBox_insert.ResumeLayout(false);
 			this.groupBox_insert.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).EndInit();
+			this.contextMenuStrip_produtos.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).EndInit();
@@ -569,17 +586,10 @@
 		private System.Windows.Forms.DataGridView dataGridView_user;
 		private System.Windows.Forms.GroupBox groupBox_ne;
 		private System.Windows.Forms.GroupBox groupBox5;
-		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.DateTimePicker dateTimePicker1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn EAN;
-		private System.Windows.Forms.DataGridViewTextBoxColumn COD_PRODUTO;
-		private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO_PRODUTO;
-		private System.Windows.Forms.DataGridViewTextBoxColumn QTD;
-		private System.Windows.Forms.DataGridViewTextBoxColumn DATA;
 		private System.Windows.Forms.PictureBox pictureBox_busca;
 		private System.Windows.Forms.PictureBox pictureBox_novo;
 		private System.Windows.Forms.Label label1;
@@ -599,5 +609,15 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.PictureBox pictureBox_addCategoria;
 		private System.Windows.Forms.TextBox textBox_nproduto;
+		private System.Windows.Forms.ListView listView1;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader7;
+		private System.Windows.Forms.ColumnHeader columnHeader8;
+		private System.Windows.Forms.ColumnHeader columnHeader9;
+		private System.Windows.Forms.ColumnHeader columnHeader10;
+		private System.Windows.Forms.ColumnHeader columnHeader11;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip_produtos;
+		private System.Windows.Forms.ToolStripMenuItem eDITARToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem eXCLUIRToolStripMenuItem;
 	}
 }

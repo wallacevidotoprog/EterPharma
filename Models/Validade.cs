@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace EterPharma.Models
 {
-	public class ValidadeF
+	public class Validade
 	{
 		public int ID { get; set; }
 		public string NOME { get; set; }
 		public DateTime DATA { get; set; }
+
+		public List<ValidadeProdutos> PRODUTOS { get; set; }
+		public List<ValidadeCategoria> CATEGORIA { get; set; }
 	}
 	public class ValidadeFiles
 	{
@@ -24,6 +27,7 @@ namespace EterPharma.Models
 		public string EAN { get; set; }
 		public string COD_PRODUTO { get; set; }
 		public string DESCRICAO_PRODUTO { get; set; }
+		public int QTD { get;set; }
 		public DateTime DATA { get; set; }
 		public int CATEGORIA { get; set; }
 	}
