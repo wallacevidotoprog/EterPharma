@@ -31,11 +31,20 @@
 			this.components = new System.ComponentModel.Container();
 			this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.dataGridView_user = new System.Windows.Forms.DataGridView();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.dataGridView_validadeFile = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.dataGridView_validadeFileTemp = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.pictureBox_novo = new System.Windows.Forms.PictureBox();
+			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -47,10 +56,15 @@
 			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.contextMenuStrip_produtos = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.eDITARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.eXCLUIRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox_ne = new System.Windows.Forms.GroupBox();
 			this.groupBox_insert = new System.Windows.Forms.GroupBox();
+			this.pictureBox_addCategoria = new System.Windows.Forms.PictureBox();
 			this.comboBox_categoria = new System.Windows.Forms.ComboBox();
 			this.numericUpDown_qtd = new System.Windows.Forms.NumericUpDown();
+			this.pictureBox_addItem = new System.Windows.Forms.PictureBox();
 			this.dateTimePicker_data = new System.Windows.Forms.DateTimePicker();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -58,34 +72,33 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.textBox_nproduto = new System.Windows.Forms.TextBox();
 			this.textBox_codigo = new System.Windows.Forms.TextBox();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.pictureBox_novaV = new System.Windows.Forms.PictureBox();
+			this.dateTimePicker_dataD = new System.Windows.Forms.DateTimePicker();
 			this.comboBox_user = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.contextMenuStrip_produtos = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.eXCLUIRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pictureBox_addCategoria = new System.Windows.Forms.PictureBox();
-			this.pictureBox_addItem = new System.Windows.Forms.PictureBox();
-			this.pictureBox_novaV = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox_novo = new System.Windows.Forms.PictureBox();
-			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
-			this.eDITARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).BeginInit();
+			this.tabControl1.SuspendLayout();
+			this.tabPage1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).BeginInit();
+			this.tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFileTemp)).BeginInit();
 			this.groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			this.groupBox5.SuspendLayout();
+			this.contextMenuStrip_produtos.SuspendLayout();
 			this.groupBox_ne.SuspendLayout();
 			this.groupBox_insert.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).BeginInit();
-			this.contextMenuStrip_produtos.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// vScrollBar1
@@ -98,7 +111,7 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.dataGridView_user);
+			this.groupBox1.Controls.Add(this.tabControl1);
 			this.groupBox1.Controls.Add(this.groupBox2);
 			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -108,31 +121,53 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "AÇÕES";
 			// 
-			// dataGridView_user
+			// tabControl1
 			// 
-			this.dataGridView_user.AllowUserToAddRows = false;
-			this.dataGridView_user.AllowUserToDeleteRows = false;
-			this.dataGridView_user.AllowUserToResizeColumns = false;
-			this.dataGridView_user.AllowUserToResizeRows = false;
-			this.dataGridView_user.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView_user.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-			this.dataGridView_user.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-			this.dataGridView_user.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.tabControl1.Controls.Add(this.tabPage1);
+			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Location = new System.Drawing.Point(3, 174);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(295, 267);
+			this.tabControl1.TabIndex = 3;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Controls.Add(this.dataGridView_validadeFile);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(287, 241);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "LISTA DE VALIDADES";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// dataGridView_validadeFile
+			// 
+			this.dataGridView_validadeFile.AllowUserToAddRows = false;
+			this.dataGridView_validadeFile.AllowUserToDeleteRows = false;
+			this.dataGridView_validadeFile.AllowUserToResizeColumns = false;
+			this.dataGridView_validadeFile.AllowUserToResizeRows = false;
+			this.dataGridView_validadeFile.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView_validadeFile.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+			this.dataGridView_validadeFile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+			this.dataGridView_validadeFile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-			this.dataGridView_user.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView_user.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView_user.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView_user.Location = new System.Drawing.Point(3, 174);
-			this.dataGridView_user.MultiSelect = false;
-			this.dataGridView_user.Name = "dataGridView_user";
-			this.dataGridView_user.ReadOnly = true;
-			this.dataGridView_user.RowHeadersVisible = false;
-			this.dataGridView_user.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.dataGridView_user.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView_user.Size = new System.Drawing.Size(295, 267);
-			this.dataGridView_user.TabIndex = 3;
+			this.dataGridView_validadeFile.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.dataGridView_validadeFile.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridView_validadeFile.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.dataGridView_validadeFile.Location = new System.Drawing.Point(3, 3);
+			this.dataGridView_validadeFile.MultiSelect = false;
+			this.dataGridView_validadeFile.Name = "dataGridView_validadeFile";
+			this.dataGridView_validadeFile.ReadOnly = true;
+			this.dataGridView_validadeFile.RowHeadersVisible = false;
+			this.dataGridView_validadeFile.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView_validadeFile.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView_validadeFile.Size = new System.Drawing.Size(281, 235);
+			this.dataGridView_validadeFile.TabIndex = 4;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
@@ -160,6 +195,69 @@
 			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
 			this.dataGridViewTextBoxColumn3.ReadOnly = true;
 			// 
+			// tabPage2
+			// 
+			this.tabPage2.Controls.Add(this.dataGridView_validadeFileTemp);
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(287, 241);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "TEMPS";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// dataGridView_validadeFileTemp
+			// 
+			this.dataGridView_validadeFileTemp.AllowUserToAddRows = false;
+			this.dataGridView_validadeFileTemp.AllowUserToDeleteRows = false;
+			this.dataGridView_validadeFileTemp.AllowUserToResizeColumns = false;
+			this.dataGridView_validadeFileTemp.AllowUserToResizeRows = false;
+			this.dataGridView_validadeFileTemp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView_validadeFileTemp.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+			this.dataGridView_validadeFileTemp.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+			this.dataGridView_validadeFileTemp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+			this.dataGridView_validadeFileTemp.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.dataGridView_validadeFileTemp.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridView_validadeFileTemp.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.dataGridView_validadeFileTemp.Location = new System.Drawing.Point(3, 3);
+			this.dataGridView_validadeFileTemp.MultiSelect = false;
+			this.dataGridView_validadeFileTemp.Name = "dataGridView_validadeFileTemp";
+			this.dataGridView_validadeFileTemp.ReadOnly = true;
+			this.dataGridView_validadeFileTemp.RowHeadersVisible = false;
+			this.dataGridView_validadeFileTemp.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView_validadeFileTemp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView_validadeFileTemp.Size = new System.Drawing.Size(281, 235);
+			this.dataGridView_validadeFileTemp.TabIndex = 4;
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.dataGridViewTextBoxColumn4.DataPropertyName = "ID";
+			this.dataGridViewTextBoxColumn4.FillWeight = 68.96552F;
+			this.dataGridViewTextBoxColumn4.HeaderText = "ID";
+			this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+			this.dataGridViewTextBoxColumn4.ReadOnly = true;
+			this.dataGridViewTextBoxColumn4.Width = 43;
+			// 
+			// dataGridViewTextBoxColumn5
+			// 
+			this.dataGridViewTextBoxColumn5.DataPropertyName = "Nome";
+			this.dataGridViewTextBoxColumn5.FillWeight = 200F;
+			this.dataGridViewTextBoxColumn5.HeaderText = "NOME";
+			this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+			this.dataGridViewTextBoxColumn5.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn6
+			// 
+			this.dataGridViewTextBoxColumn6.DataPropertyName = "Data";
+			this.dataGridViewTextBoxColumn6.FillWeight = 193.1035F;
+			this.dataGridViewTextBoxColumn6.HeaderText = "DATA";
+			this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+			this.dataGridViewTextBoxColumn6.ReadOnly = true;
+			// 
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.pictureBox_novo);
@@ -172,6 +270,28 @@
 			this.groupBox2.Size = new System.Drawing.Size(295, 158);
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
+			// 
+			// pictureBox_novo
+			// 
+			this.pictureBox_novo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_novo.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_novo.Image = global::EterPharma.Properties.Resources.novo_arquivo;
+			this.pictureBox_novo.Location = new System.Drawing.Point(224, 83);
+			this.pictureBox_novo.Name = "pictureBox_novo";
+			this.pictureBox_novo.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_novo.TabIndex = 14;
+			this.pictureBox_novo.TabStop = false;
+			this.pictureBox_novo.Click += new System.EventHandler(this.pictureBox_novo_Click);
+			// 
+			// pictureBox_busca
+			// 
+			this.pictureBox_busca.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_busca.Image = global::EterPharma.Properties.Resources.marketing_de_busca;
+			this.pictureBox_busca.Location = new System.Drawing.Point(11, 83);
+			this.pictureBox_busca.Name = "pictureBox_busca";
+			this.pictureBox_busca.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_busca.TabIndex = 13;
+			this.pictureBox_busca.TabStop = false;
 			// 
 			// dateTimePicker1
 			// 
@@ -270,11 +390,35 @@
 			this.columnHeader11.Text = "DATA VALIDADE";
 			this.columnHeader11.Width = 200;
 			// 
+			// contextMenuStrip_produtos
+			// 
+			this.contextMenuStrip_produtos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eDITARToolStripMenuItem,
+            this.eXCLUIRToolStripMenuItem});
+			this.contextMenuStrip_produtos.Name = "contextMenuStrip1";
+			this.contextMenuStrip_produtos.Size = new System.Drawing.Size(120, 48);
+			// 
+			// eDITARToolStripMenuItem
+			// 
+			this.eDITARToolStripMenuItem.Image = global::EterPharma.Properties.Resources.editar;
+			this.eDITARToolStripMenuItem.Name = "eDITARToolStripMenuItem";
+			this.eDITARToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.eDITARToolStripMenuItem.Text = "EDITAR";
+			this.eDITARToolStripMenuItem.Click += new System.EventHandler(this.eDITARToolStripMenuItem_Click);
+			// 
+			// eXCLUIRToolStripMenuItem
+			// 
+			this.eXCLUIRToolStripMenuItem.Image = global::EterPharma.Properties.Resources.lixo;
+			this.eXCLUIRToolStripMenuItem.Name = "eXCLUIRToolStripMenuItem";
+			this.eXCLUIRToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.eXCLUIRToolStripMenuItem.Text = "EXCLUIR";
+			this.eXCLUIRToolStripMenuItem.Click += new System.EventHandler(this.eXCLUIRToolStripMenuItem_Click);
+			// 
 			// groupBox_ne
 			// 
 			this.groupBox_ne.Controls.Add(this.groupBox_insert);
 			this.groupBox_ne.Controls.Add(this.pictureBox_novaV);
-			this.groupBox_ne.Controls.Add(this.dateTimePicker2);
+			this.groupBox_ne.Controls.Add(this.dateTimePicker_dataD);
 			this.groupBox_ne.Controls.Add(this.comboBox_user);
 			this.groupBox_ne.Controls.Add(this.label2);
 			this.groupBox_ne.Controls.Add(this.label1);
@@ -307,6 +451,19 @@
 			this.groupBox_insert.TabStop = false;
 			this.groupBox_insert.Visible = false;
 			// 
+			// pictureBox_addCategoria
+			// 
+			this.pictureBox_addCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_addCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_addCategoria.Image = global::EterPharma.Properties.Resources.mais;
+			this.pictureBox_addCategoria.Location = new System.Drawing.Point(521, 39);
+			this.pictureBox_addCategoria.Name = "pictureBox_addCategoria";
+			this.pictureBox_addCategoria.Size = new System.Drawing.Size(33, 33);
+			this.pictureBox_addCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_addCategoria.TabIndex = 23;
+			this.pictureBox_addCategoria.TabStop = false;
+			this.pictureBox_addCategoria.Click += new System.EventHandler(this.pictureBox_addCategoria_Click);
+			// 
 			// comboBox_categoria
 			// 
 			this.comboBox_categoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -328,11 +485,24 @@
 			this.numericUpDown_qtd.Size = new System.Drawing.Size(71, 33);
 			this.numericUpDown_qtd.TabIndex = 21;
 			// 
+			// pictureBox_addItem
+			// 
+			this.pictureBox_addItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_addItem.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_addItem.Image = global::EterPharma.Properties.Resources.adicionar_ficheiro;
+			this.pictureBox_addItem.Location = new System.Drawing.Point(489, 158);
+			this.pictureBox_addItem.Name = "pictureBox_addItem";
+			this.pictureBox_addItem.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_addItem.TabIndex = 10;
+			this.pictureBox_addItem.TabStop = false;
+			this.pictureBox_addItem.Click += new System.EventHandler(this.pictureBox_addItem_Click);
+			// 
 			// dateTimePicker_data
 			// 
 			this.dateTimePicker_data.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.dateTimePicker_data.CustomFormat = "dd/MM/yyyy";
 			this.dateTimePicker_data.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker_data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker_data.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePicker_data.Location = new System.Drawing.Point(415, 119);
 			this.dateTimePicker_data.Name = "dateTimePicker_data";
 			this.dateTimePicker_data.Size = new System.Drawing.Size(139, 33);
@@ -404,15 +574,27 @@
 			this.textBox_codigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_codigo_KeyDown);
 			this.textBox_codigo.Validated += new System.EventHandler(this.textBox_codigo_Validated);
 			// 
-			// dateTimePicker2
+			// pictureBox_novaV
 			// 
-			this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.pictureBox_novaV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_novaV.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_novaV.Image = global::EterPharma.Properties.Resources.novo_arquivo;
+			this.pictureBox_novaV.Location = new System.Drawing.Point(495, 15);
+			this.pictureBox_novaV.Name = "pictureBox_novaV";
+			this.pictureBox_novaV.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_novaV.TabIndex = 10;
+			this.pictureBox_novaV.TabStop = false;
+			this.pictureBox_novaV.Click += new System.EventHandler(this.pictureBox_novaV_Click);
+			// 
+			// dateTimePicker_dataD
+			// 
+			this.dateTimePicker_dataD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker2.Location = new System.Drawing.Point(274, 47);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(207, 33);
-			this.dateTimePicker2.TabIndex = 15;
+			this.dateTimePicker_dataD.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.dateTimePicker_dataD.Location = new System.Drawing.Point(274, 47);
+			this.dateTimePicker_dataD.Name = "dateTimePicker_dataD";
+			this.dateTimePicker_dataD.Size = new System.Drawing.Size(207, 33);
+			this.dateTimePicker_dataD.TabIndex = 15;
 			// 
 			// comboBox_user
 			// 
@@ -446,59 +628,6 @@
 			this.label1.TabIndex = 13;
 			this.label1.Text = "FUNCIONÁRIO:";
 			// 
-			// contextMenuStrip_produtos
-			// 
-			this.contextMenuStrip_produtos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eDITARToolStripMenuItem,
-            this.eXCLUIRToolStripMenuItem});
-			this.contextMenuStrip_produtos.Name = "contextMenuStrip1";
-			this.contextMenuStrip_produtos.Size = new System.Drawing.Size(181, 70);
-			// 
-			// eXCLUIRToolStripMenuItem
-			// 
-			this.eXCLUIRToolStripMenuItem.Image = global::EterPharma.Properties.Resources.lixo;
-			this.eXCLUIRToolStripMenuItem.Name = "eXCLUIRToolStripMenuItem";
-			this.eXCLUIRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.eXCLUIRToolStripMenuItem.Text = "EXCLUIR";
-			this.eXCLUIRToolStripMenuItem.Click += new System.EventHandler(this.eXCLUIRToolStripMenuItem_Click);
-			// 
-			// pictureBox_addCategoria
-			// 
-			this.pictureBox_addCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_addCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_addCategoria.Image = global::EterPharma.Properties.Resources.mais;
-			this.pictureBox_addCategoria.Location = new System.Drawing.Point(521, 39);
-			this.pictureBox_addCategoria.Name = "pictureBox_addCategoria";
-			this.pictureBox_addCategoria.Size = new System.Drawing.Size(33, 33);
-			this.pictureBox_addCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox_addCategoria.TabIndex = 23;
-			this.pictureBox_addCategoria.TabStop = false;
-			this.pictureBox_addCategoria.Click += new System.EventHandler(this.pictureBox_addCategoria_Click);
-			// 
-			// pictureBox_addItem
-			// 
-			this.pictureBox_addItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_addItem.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_addItem.Image = global::EterPharma.Properties.Resources.adicionar_ficheiro;
-			this.pictureBox_addItem.Location = new System.Drawing.Point(489, 158);
-			this.pictureBox_addItem.Name = "pictureBox_addItem";
-			this.pictureBox_addItem.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_addItem.TabIndex = 10;
-			this.pictureBox_addItem.TabStop = false;
-			this.pictureBox_addItem.Click += new System.EventHandler(this.pictureBox_addItem_Click);
-			// 
-			// pictureBox_novaV
-			// 
-			this.pictureBox_novaV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_novaV.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_novaV.Image = global::EterPharma.Properties.Resources.novo_arquivo;
-			this.pictureBox_novaV.Location = new System.Drawing.Point(495, 15);
-			this.pictureBox_novaV.Name = "pictureBox_novaV";
-			this.pictureBox_novaV.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_novaV.TabIndex = 10;
-			this.pictureBox_novaV.TabStop = false;
-			this.pictureBox_novaV.Click += new System.EventHandler(this.pictureBox_novaV_Click);
-			// 
 			// pictureBox3
 			// 
 			this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -511,35 +640,17 @@
 			this.pictureBox3.TabStop = false;
 			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
 			// 
-			// pictureBox_novo
+			// pictureBox1
 			// 
-			this.pictureBox_novo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_novo.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_novo.Image = global::EterPharma.Properties.Resources.novo_arquivo;
-			this.pictureBox_novo.Location = new System.Drawing.Point(224, 83);
-			this.pictureBox_novo.Name = "pictureBox_novo";
-			this.pictureBox_novo.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_novo.TabIndex = 14;
-			this.pictureBox_novo.TabStop = false;
-			this.pictureBox_novo.Click += new System.EventHandler(this.pictureBox_novo_Click);
-			// 
-			// pictureBox_busca
-			// 
-			this.pictureBox_busca.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_busca.Image = global::EterPharma.Properties.Resources.marketing_de_busca;
-			this.pictureBox_busca.Location = new System.Drawing.Point(11, 83);
-			this.pictureBox_busca.Name = "pictureBox_busca";
-			this.pictureBox_busca.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_busca.TabIndex = 13;
-			this.pictureBox_busca.TabStop = false;
-			// 
-			// eDITARToolStripMenuItem
-			// 
-			this.eDITARToolStripMenuItem.Image = global::EterPharma.Properties.Resources.editar;
-			this.eDITARToolStripMenuItem.Name = "eDITARToolStripMenuItem";
-			this.eDITARToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.eDITARToolStripMenuItem.Text = "EDITAR";
-			this.eDITARToolStripMenuItem.Click += new System.EventHandler(this.eDITARToolStripMenuItem_Click);
+			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox1.Image = global::EterPharma.Properties.Resources.salve_;
+			this.pictureBox1.Location = new System.Drawing.Point(879, 373);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox1.TabIndex = 10;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
 			// 
 			// GerarValidade
 			// 
@@ -547,6 +658,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(964, 444);
 			this.Controls.Add(this.groupBox3);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.pictureBox3);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.vScrollBar1);
@@ -554,23 +666,28 @@
 			this.Text = "GerarValidade";
 			this.Load += new System.EventHandler(this.GerarValidade_Load);
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).EndInit();
+			this.tabControl1.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).EndInit();
+			this.tabPage2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFileTemp)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
+			this.contextMenuStrip_produtos.ResumeLayout(false);
 			this.groupBox_ne.ResumeLayout(false);
 			this.groupBox_ne.PerformLayout();
 			this.groupBox_insert.ResumeLayout(false);
 			this.groupBox_insert.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).EndInit();
-			this.contextMenuStrip_produtos.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -583,18 +700,14 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.DataGridView dataGridView_user;
 		private System.Windows.Forms.GroupBox groupBox_ne;
 		private System.Windows.Forms.GroupBox groupBox5;
 		private System.Windows.Forms.DateTimePicker dateTimePicker1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 		private System.Windows.Forms.PictureBox pictureBox_busca;
 		private System.Windows.Forms.PictureBox pictureBox_novo;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox comboBox_user;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
+		private System.Windows.Forms.DateTimePicker dateTimePicker_dataD;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.GroupBox groupBox_insert;
 		private System.Windows.Forms.DateTimePicker dateTimePicker_data;
@@ -619,5 +732,17 @@
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip_produtos;
 		private System.Windows.Forms.ToolStripMenuItem eDITARToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem eXCLUIRToolStripMenuItem;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.DataGridView dataGridView_validadeFile;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+		private System.Windows.Forms.DataGridView dataGridView_validadeFileTemp;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
 	}
 }

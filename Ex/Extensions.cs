@@ -13,5 +13,6 @@ namespace EterPharma.Ex
 		{
 			return validadeCategorias.Find(x => x.ID==id).NOME;
 		}
+		
 	}
 }

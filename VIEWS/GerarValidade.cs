@@ -1,15 +1,19 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Vml.Spreadsheet;
 using EterPharma.Ex;
 using EterPharma.Models;
+using EterPharma.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace EterPharma.VIEWS
 {
@@ -18,11 +22,19 @@ namespace EterPharma.VIEWS
 		bool edit;
 		int editP;
 		bool news;
+		string editF;
+
+		string tempXML;
 
 		Validade validade;
 		List<ValidadeFiles> validadeFiles;
 		List<ValidadeProdutos> validadeProdutos;
 		List<ValidadeCategoria> validadeCategorias;
+
+		Dictionary<int, string> xmlTemps;
+		Dictionary<int, string> xmlFinalizadas;
+
+
 
 		Produtos produtosInput;
 
@@ -32,11 +44,64 @@ namespace EterPharma.VIEWS
 		}
 		private async void GerarValidade_Load(object sender, EventArgs e)
 		{
+			Task.Run(new Action(() => GetFilesXML()));
 			comboBox_user.Invoke(new Action(() => CBListUser()));
 			groupBox_ne.Size = new System.Drawing.Size(566, 88);
 			pictureBox_novaV.Image = Properties.Resources.novo_arquivo;
 		}
+		private void GetFilesXML()
+		{
 
+			dataGridView_validadeFileTemp.Invoke(new Action(() =>
+			{
+				dataGridView_validadeFileTemp.Rows.Clear();
+			}));
+			xmlTemps = new Dictionary<int, string>();
+			string[] fileEntriesTemps = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\TEMPS");
+			for (int i = 0; i < fileEntriesTemps.Length; i++)
+			{
+				if (fileEntriesTemps[i].ToUpper().EndsWith("XML"))
+				{
+					xmlTemps.Add(i, fileEntriesTemps[i]);
+					Validade tempV = RWXML.DeserializePessoaFromXml(fileEntriesTemps[i]);
+					dataGridView_validadeFileTemp.Invoke(new Action(() =>
+					{
+						dataGridView_validadeFileTemp.Rows.Add(new string[]
+					{
+						i.ToString(),tempV.NOME,tempV.DATA.ToString()
+					});
+					}));
+					
+
+
+
+				}
+			}
+			dataGridView_validadeFile.Invoke(new Action(() =>
+			{
+				dataGridView_validadeFile.Rows.Clear();
+			}));
+
+			string[] fileEntries = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\FINALIZADA");
+			xmlFinalizadas = new Dictionary<int, string>();
+			for (int i = 0; i < fileEntries.Length; i++)
+			{
+				if (fileEntries[i].ToUpper().EndsWith("XML"))
+				{
+					xmlFinalizadas.Add(i, fileEntries[i]);
+					Validade tempV = RWXML.DeserializePessoaFromXml(fileEntries[i]);
+					dataGridView_validadeFile.Invoke(new Action(() =>
+					{
+						dataGridView_validadeFile.Rows.Add(new string[]
+					{
+						i.ToString(),tempV.NOME,tempV.DATA.ToString()
+					});
+					}));
+
+				}
+
+			}
+		}
 		private void pictureBox3_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -103,17 +168,19 @@ namespace EterPharma.VIEWS
 
 		private void pictureBox_novaV_Click(object sender, EventArgs e)
 		{
-			groupBox_ne.Size = new System.Drawing.Size(566, 315);
-			groupBox_insert.Visible = true;
-
 			try
 			{
 				if (!news && !edit)
 				{
-					validade = new Validade { ID = 0, NOME = (MainWindow.database.Users[comboBox_user.SelectedIndex].Nome), DATA = dateTimePicker_data.Value };
+
+					validade = new Validade
+					{
+						ID = MainWindow.database.Users[comboBox_user.SelectedIndex].ID,
+						NOME = MainWindow.database.Users[comboBox_user.SelectedIndex].Nome,
+						DATA = dateTimePicker_data.Value
+					};
 					news = true;
 					pictureBox_novaV.Image = Properties.Resources.arquivo;
-					validade = new Validade();
 					if (validadeCategorias == null)
 					{
 						validadeCategorias = new List<ValidadeCategoria>();
@@ -121,7 +188,23 @@ namespace EterPharma.VIEWS
 						validade.CATEGORIA = validadeCategorias;
 						CBListCategoria();
 					}
+					groupBox_ne.Size = new System.Drawing.Size(566, 315);
+					groupBox_insert.Visible = true;
 
+				}
+				else
+				{
+					if (MessageBox.Show($"Deseja Cancelar esse documento ?", "Cancelar Documento", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+					{
+						news = edit = false;
+						validade = null;
+						validadeFiles = null;
+						validadeProdutos = null;
+						validadeCategorias = null;
+						produtosInput = null;
+						groupBox_insert.Visible = false;
+						GerarValidade_Load(null, null);
+					}
 				}
 			}
 			catch (Exception ex)
@@ -205,6 +288,8 @@ namespace EterPharma.VIEWS
 				pictureBox_addItem.Image = Properties.Resources.adicionar_ficheiro;
 
 			}
+
+			RWXML.SerializeToXmlFile(validade);
 			RefrashGrid();
 		}
 		private void RefrashGrid()
@@ -258,7 +343,7 @@ namespace EterPharma.VIEWS
 				if (tempProdutos != null)
 				{
 					produtosInput = tempProdutos;
-					textBox_nproduto.Text = $"{produtosInput.DESCRICAO_PRODUTO}";					
+					textBox_nproduto.Text = $"{produtosInput.DESCRICAO_PRODUTO}";
 					textBox_nproduto.ReadOnly = tempBool = true;
 				}
 				else
@@ -288,7 +373,7 @@ namespace EterPharma.VIEWS
 				if (listView1.SelectedItems.Count > 0)
 				{
 					int selectedItem = editP = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
-					edit = true; 
+					edit = true;
 					produtosInput = null;
 					pictureBox_addItem.Image = Properties.Resources.atualizar_ficheiro;
 
@@ -318,7 +403,7 @@ namespace EterPharma.VIEWS
 					int temp = int.Parse(listView1.SelectedItems[0]?.SubItems[0].Text);
 					if (MessageBox.Show($"Deseja excluir esse item ?\n{listView1.SelectedItems[0]?.SubItems[3].Text}", "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
 					{
-						
+
 						if (temp >= 0)
 						{
 							validadeProdutos.RemoveAt(temp);
@@ -337,6 +422,11 @@ namespace EterPharma.VIEWS
 
 				throw;
 			}
+		}
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace EterPharma.Services
 {
 	public static class RWXLSX
 	{
-		public static List<Produtos> ReadAll(string filename, System.Windows.Forms.ProgressBar progressBar)
+		public static List<Produtos> ReadAllProdutos(string filename, System.Windows.Forms.ProgressBar progressBar)
 		{
 			List<Produtos> list = null;
 			try

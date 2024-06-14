@@ -69,7 +69,7 @@ namespace EterPharma.VIEWS
 					textBox_contador.Text = $"AGUARDE, LENDO ARQUIVO ...";
 					await Task.Run(() =>
 					{
-						tempProdutos = RWXLSX.ReadAll(openFileDialog.FileName, progressBar);
+						tempProdutos = RWXLSX.ReadAllProdutos(openFileDialog.FileName, progressBar);
 
 					});
 					textBox_contador.Text = $"TOTAL DE LINHAS LIDAS [{tempProdutos.Count} ]";

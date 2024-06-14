@@ -8,7 +8,7 @@ namespace EterPharma.Models
 {
 	public class Validade
 	{
-		public int ID { get; set; }
+		public string ID { get; set; }
 		public string NOME { get; set; }
 		public DateTime DATA { get; set; }
 

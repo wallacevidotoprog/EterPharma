@@ -138,6 +138,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Database.cs" />
     <Compile Include="Services\RWXLSX.cs" />
+    <Compile Include="Services\RWXML.cs" />
+    <Compile Include="Services\XMLVALIDADE.cs" />
     <Compile Include="VIEWS\DataBase.cs">
       <SubType>Form</SubType>
     </Compile>
