@@ -19,20 +19,18 @@ namespace EterPharma.VIEWS
 {
 	public partial class GerarValidade : Form
 	{
-		bool edit;
-		int editP;
-		bool news;
-		string editF;
-
-		string tempXML;
+		bool mode_edit;
+		bool editProduto;
+		int indexEditProduto;
+		bool mode_new;
+		string docFile;
 
 		Validade validade;
-		List<ValidadeFiles> validadeFiles;
 		List<ValidadeProdutos> validadeProdutos;
 		List<ValidadeCategoria> validadeCategorias;
 
-		Dictionary<int, string> xmlTemps;
-		Dictionary<int, string> xmlFinalizadas;
+		List<string> xmlTemps;
+		List<string> xmlFinalizadas;
 
 
 
@@ -42,13 +40,8 @@ namespace EterPharma.VIEWS
 		{
 			InitializeComponent();
 		}
-		private async void GerarValidade_Load(object sender, EventArgs e)
-		{
-			Task.Run(new Action(() => GetFilesXML()));
-			comboBox_user.Invoke(new Action(() => CBListUser()));
-			groupBox_ne.Size = new System.Drawing.Size(566, 88);
-			pictureBox_novaV.Image = Properties.Resources.novo_arquivo;
-		}
+
+		#region MyFunc
 		private void GetFilesXML()
 		{
 
@@ -56,24 +49,21 @@ namespace EterPharma.VIEWS
 			{
 				dataGridView_validadeFileTemp.Rows.Clear();
 			}));
-			xmlTemps = new Dictionary<int, string>();
+			xmlTemps = new List<string>();
 			string[] fileEntriesTemps = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\TEMPS");
 			for (int i = 0; i < fileEntriesTemps.Length; i++)
 			{
 				if (fileEntriesTemps[i].ToUpper().EndsWith("XML"))
 				{
-					xmlTemps.Add(i, fileEntriesTemps[i]);
+					xmlTemps.Add(fileEntriesTemps[i]);
 					Validade tempV = RWXML.DeserializePessoaFromXml(fileEntriesTemps[i]);
 					dataGridView_validadeFileTemp.Invoke(new Action(() =>
 					{
 						dataGridView_validadeFileTemp.Rows.Add(new string[]
 					{
-						i.ToString(),tempV.NOME,tempV.DATA.ToString()
-					});
+						tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
+					}); ;
 					}));
-					
-
-
 
 				}
 			}
@@ -83,33 +73,24 @@ namespace EterPharma.VIEWS
 			}));
 
 			string[] fileEntries = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\FINALIZADA");
-			xmlFinalizadas = new Dictionary<int, string>();
+			xmlFinalizadas = new List<string>();
 			for (int i = 0; i < fileEntries.Length; i++)
 			{
 				if (fileEntries[i].ToUpper().EndsWith("XML"))
 				{
-					xmlFinalizadas.Add(i, fileEntries[i]);
+					xmlFinalizadas.Add(fileEntries[i]);
 					Validade tempV = RWXML.DeserializePessoaFromXml(fileEntries[i]);
 					dataGridView_validadeFile.Invoke(new Action(() =>
 					{
 						dataGridView_validadeFile.Rows.Add(new string[]
 					{
-						i.ToString(),tempV.NOME,tempV.DATA.ToString()
+						tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
 					});
 					}));
 
 				}
 
 			}
-		}
-		private void pictureBox3_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-		private void pictureBox_novo_Click(object sender, EventArgs e)
-		{
-			groupBox_ne.Visible = true;
 		}
 		public void CBListUser()
 		{
@@ -122,7 +103,6 @@ namespace EterPharma.VIEWS
 					users.Add(
 						MainWindow.database.Users[i].ID,
 						$"{MainWindow.database.Users[i].ID} - {MainWindow.database.Users[i].Nome}");
-
 				}
 
 			}
@@ -157,141 +137,6 @@ namespace EterPharma.VIEWS
 
 
 		}
-
-		private void comboBox_user_Validated(object sender, EventArgs e)
-		{
-			if (!MainWindow.database.UserExite((string)comboBox_user.SelectedValue))
-			{
-				comboBox_user.SelectedIndex = 0;
-			}
-		}
-
-		private void pictureBox_novaV_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				if (!news && !edit)
-				{
-
-					validade = new Validade
-					{
-						ID = MainWindow.database.Users[comboBox_user.SelectedIndex].ID,
-						NOME = MainWindow.database.Users[comboBox_user.SelectedIndex].Nome,
-						DATA = dateTimePicker_data.Value
-					};
-					news = true;
-					pictureBox_novaV.Image = Properties.Resources.arquivo;
-					if (validadeCategorias == null)
-					{
-						validadeCategorias = new List<ValidadeCategoria>();
-						validadeCategorias.Add(new ValidadeCategoria { ID = 0, NOME = "S/ CATEGORIA" });
-						validade.CATEGORIA = validadeCategorias;
-						CBListCategoria();
-					}
-					groupBox_ne.Size = new System.Drawing.Size(566, 315);
-					groupBox_insert.Visible = true;
-
-				}
-				else
-				{
-					if (MessageBox.Show($"Deseja Cancelar esse documento ?", "Cancelar Documento", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-					{
-						news = edit = false;
-						validade = null;
-						validadeFiles = null;
-						validadeProdutos = null;
-						validadeCategorias = null;
-						produtosInput = null;
-						groupBox_insert.Visible = false;
-						GerarValidade_Load(null, null);
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-
-				throw;
-			}
-
-		}
-
-		private void pictureBox_addCategoria_Click(object sender, EventArgs e)
-		{
-			string result = InputBox.Show("Por favor, insira a categoria:", "Categoria");
-
-			if (result != string.Empty)
-			{
-
-				validadeCategorias.Add(new ValidadeCategoria { ID = validadeCategorias.Count, NOME = result });
-				CBListCategoria();
-			}
-		}
-
-		private void pictureBox_addItem_Click(object sender, EventArgs e)
-		{
-			if (validadeProdutos == null)
-			{
-				validadeProdutos = new List<ValidadeProdutos>();
-				validade.PRODUTOS = validadeProdutos;
-			}
-
-			if (produtosInput != null && !edit)
-			{
-				validadeProdutos.Add(new ValidadeProdutos
-				{
-					ID = validadeProdutos.Count(),
-					EAN = produtosInput.EAN,
-					COD_PRODUTO = produtosInput.COD_PRODUTO,
-					DESCRICAO_PRODUTO = produtosInput.DESCRICAO_PRODUTO,
-					CATEGORIA = comboBox_categoria.SelectedIndex,
-					DATA = dateTimePicker_data.Value,
-					QTD = (int)numericUpDown_qtd.Value
-
-				}); ;
-				textBox_codigo.Clear();
-				textBox_nproduto.Clear();
-				numericUpDown_qtd.Value = 1;
-			}
-			else if (textBox_nproduto.ReadOnly == false)
-			{
-				validadeProdutos.Add(new ValidadeProdutos
-				{
-					ID = validadeProdutos.Count(),
-					EAN = "NAN",
-					COD_PRODUTO = textBox_codigo.Text,
-					DESCRICAO_PRODUTO = textBox_nproduto.Text,
-					CATEGORIA = comboBox_categoria.SelectedIndex,
-					DATA = dateTimePicker_data.Value,
-					QTD = (int)numericUpDown_qtd.Value
-
-				});
-				produtosInput = null;
-				textBox_codigo.Clear();
-				textBox_nproduto.Clear();
-				textBox_nproduto.ReadOnly = true;
-				numericUpDown_qtd.Value = 1;
-			}
-			else if (produtosInput != null && edit)
-			{
-				validadeProdutos[editP].EAN = textBox_nproduto.ReadOnly ? produtosInput.EAN : "NAN";
-				validadeProdutos[editP].COD_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.COD_PRODUTO : textBox_codigo.Text;
-				validadeProdutos[editP].DESCRICAO_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.DESCRICAO_PRODUTO : textBox_nproduto.Text;
-				validadeProdutos[editP].QTD = (int)numericUpDown_qtd.Value;
-				validadeProdutos[editP].DATA = dateTimePicker_data.Value;
-				validadeProdutos[editP].CATEGORIA = comboBox_categoria.SelectedIndex;
-
-				produtosInput = null;
-				textBox_codigo.Clear();
-				textBox_nproduto.Clear();
-				textBox_nproduto.ReadOnly = true;
-				numericUpDown_qtd.Value = 1;
-				pictureBox_addItem.Image = Properties.Resources.adicionar_ficheiro;
-
-			}
-
-			RWXML.SerializeToXmlFile(validade);
-			RefrashGrid();
-		}
 		private void RefrashGrid()
 		{
 			listView1.Items.Clear();
@@ -314,14 +159,6 @@ namespace EterPharma.VIEWS
 					listView1.Items.Add(item);
 				}
 
-			}
-		}
-
-		private void textBox_codigo_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-			{
-				FProduto();
 			}
 		}
 		private bool FProduto()
@@ -360,10 +197,196 @@ namespace EterPharma.VIEWS
 			}
 			return tempBool;
 		}
-
-		private void textBox_codigo_Validated(object sender, EventArgs e)
+		private void OpenNewDoc(bool state)
 		{
-			FProduto();
+			groupBox_ne.Visible = state;
+			comboBox_user.Enabled = state;
+			dateTimePicker_dataD.Enabled = state;
+		}
+		private void NewDoc(bool state)
+		{
+			switch (state)
+			{
+				case true:
+					pictureBox_novaV.Image = Properties.Resources.arquivo;
+					groupBox_ne.Size = new Size(566, 315);
+					groupBox_insert.Visible = true;
+					comboBox_user.Enabled = false;
+					dateTimePicker_dataD.Enabled = false;
+					break;
+				case false:
+					pictureBox_novaV.Image = Properties.Resources.novo_arquivo;
+					mode_new = mode_edit = false;
+					docFile = null;
+					validade = null;
+					validadeProdutos = null;
+					validadeCategorias = null;
+					produtosInput = null;
+					groupBox_insert.Visible = false;
+					comboBox_user.Enabled = true;
+					dateTimePicker_dataD.Enabled = true;
+					groupBox_ne.Size = new Size(566, 88);
+					listView1.Items.Clear();
+					OpenNewDoc(false);
+					break;
+			}
+
+		}
+		private void ResetPropProduto()
+		{
+			produtosInput = null;
+			textBox_codigo.Clear();
+			textBox_nproduto.Clear();
+			textBox_nproduto.ReadOnly = true;
+			numericUpDown_qtd.Value = 1;
+			pictureBox_addItem.Image = Properties.Resources.adicionar_ficheiro;
+		}
+		#endregion
+
+		private async void GerarValidade_Load(object sender, EventArgs e)
+		{
+			Task.Run(new Action(() => GetFilesXML()));
+			comboBox_user.Invoke(new Action(() => CBListUser()));
+			groupBox_ne.Size = new System.Drawing.Size(566, 88);
+			pictureBox_novaV.Image = Properties.Resources.novo_arquivo;
+		}
+		private void pictureBox3_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void pictureBox_novo_Click(object sender, EventArgs e)
+		{
+			if (mode_new || mode_edit)
+			{
+				NewDoc(false);
+				OpenNewDoc(true);
+			}
+			else
+			{
+				OpenNewDoc(true);
+			}
+		}
+
+		private void comboBox_user_Validated(object sender, EventArgs e)
+		{
+			if (!MainWindow.database.UserExite((string)comboBox_user.SelectedValue))
+			{
+				comboBox_user.SelectedIndex = 0;
+			}
+		}
+
+		private void pictureBox_novaV_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (!mode_new && !mode_edit)
+				{
+					mode_new = true;
+					validade = new Validade
+					{
+						ID = MainWindow.database.Users[comboBox_user.SelectedIndex].ID,
+						NOME = MainWindow.database.Users[comboBox_user.SelectedIndex].Nome,
+						DATA = dateTimePicker_data.Value
+					};
+					if (validadeCategorias == null)
+					{
+						validadeCategorias = new List<ValidadeCategoria>();
+						validadeCategorias.Add(new ValidadeCategoria { ID = 0, NOME = "S/ CATEGORIA" });
+						validade.CATEGORIA = validadeCategorias;
+						CBListCategoria();
+					}
+					docFile = RWXML.SerializeToXmlFile(validade);
+					NewDoc(true);
+
+				}
+				else if (!mode_edit && mode_new)
+				{
+					if (MessageBox.Show($"Deseja excluir esse documento ?", "Excluir Documento", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+					{
+						NewDoc(false);
+					}
+				}
+				else if (mode_edit && !mode_new)
+				{
+
+					if (MessageBox.Show($"Deseja excluir esse documento ?", "Excluir Documento", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+					{
+						NewDoc(false);
+					}
+				}
+				else
+				{
+					if (MessageBox.Show($"Deseja Cancelar esse documento ?", "Cancelar Documento", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+					{
+						NewDoc(false);
+					}
+				}
+				GetFilesXML();
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
+
+		}
+
+		private void pictureBox_addCategoria_Click(object sender, EventArgs e)
+		{
+			string result = InputBox.Show("Por favor, insira a categoria:", "Categoria");
+
+			if (result != string.Empty)
+			{
+
+				validadeCategorias.Add(new ValidadeCategoria { ID = validadeCategorias.Count, NOME = result });
+				CBListCategoria();
+			}
+		}
+
+		private void pictureBox_addItem_Click(object sender, EventArgs e)
+		{
+			if (validadeProdutos == null)
+			{
+				validadeProdutos = new List<ValidadeProdutos>();
+				validade.PRODUTOS = validadeProdutos;
+			}
+
+			if (editProduto)
+			{
+				validadeProdutos[indexEditProduto].EAN = textBox_nproduto.ReadOnly ? produtosInput.EAN : "NAN";
+				validadeProdutos[indexEditProduto].COD_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.COD_PRODUTO : textBox_codigo.Text;
+				validadeProdutos[indexEditProduto].DESCRICAO_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.DESCRICAO_PRODUTO : textBox_nproduto.Text;
+				validadeProdutos[indexEditProduto].QTD = (int)numericUpDown_qtd.Value;
+				validadeProdutos[indexEditProduto].DATA = dateTimePicker_data.Value;
+				validadeProdutos[indexEditProduto].CATEGORIA = comboBox_categoria.SelectedIndex;
+				ResetPropProduto();
+			}
+			else if (mode_new && mode_edit && !editProduto)
+			{
+				validadeProdutos.Add(new ValidadeProdutos
+				{
+					ID = validadeProdutos.Count(),
+					EAN = textBox_nproduto.ReadOnly ? produtosInput.EAN : "NAN",
+					COD_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.COD_PRODUTO : textBox_codigo.Text.ToUpper(),
+					DESCRICAO_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.DESCRICAO_PRODUTO : textBox_nproduto.Text.ToUpper(),
+					CATEGORIA = comboBox_categoria.SelectedIndex,
+					DATA = dateTimePicker_data.Value,
+					QTD = (int)numericUpDown_qtd.Value
+
+				});
+				ResetPropProduto();
+			}
+			Task.Run(() => RWXML.SerializeToXmlFile(validade));
+			RefrashGrid();
+		}
+
+		private void textBox_codigo_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				FProduto();
+			}
 		}
 
 		private void eDITARToolStripMenuItem_Click(object sender, EventArgs e)
@@ -372,18 +395,17 @@ namespace EterPharma.VIEWS
 			{
 				if (listView1.SelectedItems.Count > 0)
 				{
-					int selectedItem = editP = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
-					edit = true;
+					int selectedItem = indexEditProduto = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+					editProduto = true;
 					produtosInput = null;
 					pictureBox_addItem.Image = Properties.Resources.atualizar_ficheiro;
 
-					textBox_codigo.Text = validadeProdutos[selectedItem].EAN == "" ? validadeProdutos[selectedItem].COD_PRODUTO : validadeProdutos[selectedItem].EAN;
+					textBox_codigo.Text = validadeProdutos[selectedItem].EAN == "NAN" ? validadeProdutos[selectedItem].COD_PRODUTO : validadeProdutos[selectedItem].EAN;
 					textBox_nproduto.Text = validadeProdutos[selectedItem].DESCRICAO_PRODUTO;
 					numericUpDown_qtd.Value = validadeProdutos[selectedItem].QTD;
 					dateTimePicker_data.Value = validadeProdutos[selectedItem].DATA;
 					comboBox_categoria.SelectedIndex = validadeProdutos[selectedItem].CATEGORIA;
 					FProduto();
-
 				}
 			}
 			catch (Exception ex)
@@ -424,9 +446,80 @@ namespace EterPharma.VIEWS
 			}
 		}
 
-		private void pictureBox1_Click(object sender, EventArgs e)
+		private async void dataGridView_validadeFile_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
+			if (mode_new || mode_edit)
+			{
+				DialogResult result = MessageBox.Show("Há um documento em aberto, deseja fecha-lo ?\nOs dados seram salvos em TEMP", "ALERTA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+				if (result == DialogResult.Cancel)
+				{ return; }
+				else if (result == DialogResult.OK)
+				{
+					await Task.Run(() => RWXML.SerializeToXmlFile(validade));	
+				}
+			}
+			try
+			{
+				validade = null;
+				validadeCategorias = null;
+				validadeProdutos = null;
+				switch (((DataGridView)sender).Name)
+				{
+					case "dataGridView_validadeFile":
 
+						validade = RWXML.DeserializePessoaFromXml(xmlFinalizadas[e.RowIndex]);
+						break;
+					case "dataGridView_validadeFileTemp":
+						validade = RWXML.DeserializePessoaFromXml(xmlTemps[e.RowIndex]);
+						break;
+				}
+
+				if (validade != null)
+				{
+					validadeProdutos = validade.PRODUTOS;
+					validadeCategorias = validade.CATEGORIA;
+					dateTimePicker_dataD.Value = validade.DATA;
+					comboBox_user.SelectedIndex = Extensions.ReturnIndexUser(validade.ID);
+
+					groupBox_ne.Size = new Size(566, 315);
+					groupBox_ne.Visible = true;
+					groupBox_insert.Visible = true;
+					comboBox_user.Enabled = false;
+					dateTimePicker_dataD.Enabled = false;
+					mode_edit = true;
+					pictureBox_novaV.Image = Properties.Resources.arquivo;
+					CBListCategoria();
+					RefrashGrid();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
+		}
+
+		private void pictureBox_delCategoria_Click(object sender, EventArgs e)
+		{
+			if (comboBox_categoria.SelectedIndex == 0)
+			{
+				return;
+			}
+
+			if (MessageBox.Show("Deseja excluir essa categoria.", validadeCategorias[comboBox_categoria.SelectedIndex].NOME, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+			{
+				validadeCategorias.RemoveAt(comboBox_categoria.SelectedIndex);
+
+				for (int i = 0; i < validadeProdutos.Count; i++)
+				{
+					if (validadeProdutos[i].CATEGORIA == comboBox_categoria.SelectedIndex)
+					{
+						validadeProdutos[i].CATEGORIA = 0;
+					}
+				}
+
+				CBListCategoria();
+				RefrashGrid();
+			}
 		}
 	}
 }

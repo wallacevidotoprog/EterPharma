@@ -13,6 +13,19 @@ namespace EterPharma.Ex
 		{
 			return validadeCategorias.Find(x => x.ID==id).NOME;
 		}
-		
+
+		public static int ReturnIndexUser(string id)
+		{
+			int retId = -1;
+            for (int i = 0; i < MainWindow.database.Users.Count; i++)
+            {
+				if (MainWindow.database.Users[i].ID == id)
+				{
+					retId = i;
+					break;
+				}
+            }
+			return retId;
+        }
 	}
 }

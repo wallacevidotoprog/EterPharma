@@ -19,13 +19,15 @@ namespace EterPharma.Services
 				return (Validade)serializer.Deserialize(streamReader);
 			}
 		}
-		public static void SerializeToXmlFile(this Validade obj)
+		public static string SerializeToXmlFile(this Validade obj,bool temp=true)
 		{
+			string fileName = $@"{Directory.GetCurrentDirectory()}\DADOS\VALIDADE\{(temp? "TEMPS": "FINALIZADA")}\{obj.ID}-{obj.NOME.Replace(" ",null)}-{obj.DATA.ToString("ddMMyyyHHmmss")}.xml";
 			XmlSerializer serializer = new XmlSerializer(typeof(Validade));
-			using (StreamWriter streamWriter = new StreamWriter(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\TEMPS\{obj.ID}-{obj.NOME.Trim()}-{obj.DATA.ToString("ddMMyyyHHmmss")}.xml",false,Encoding.UTF8))
+			using (StreamWriter streamWriter = new StreamWriter(fileName,false,Encoding.UTF8))
 			{
 				serializer.Serialize(streamWriter, obj);
 			}
+			return fileName;
 		}
 	}
 }
