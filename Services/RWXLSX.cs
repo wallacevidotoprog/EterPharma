@@ -14,7 +14,7 @@ namespace EterPharma.Services
 			List<Produtos> list = null;
 			try
 			{
-				progressBar.Invoke(new Action(() => progressBar.Style = ProgressBarStyle.Marquee ));
+				progressBar.Invoke(new Action(() => progressBar.Style = ProgressBarStyle.Marquee));
 				using (var workbook = new XLWorkbook(filename))
 				{
 					var worksheet = workbook.Worksheet(1);
@@ -43,7 +43,7 @@ namespace EterPharma.Services
 			catch (Exception ex)
 			{
 
-				MessageBox.Show($"Erro ao ler XLSX\n{ex.Message}","ERRO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+				MessageBox.Show($"Erro ao ler XLSX\n{ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -53,6 +53,40 @@ namespace EterPharma.Services
 
 			return list;
 
+		}
+
+		public static void SalveValidade(Validade validade,string salveFile)
+		{
+			try
+			{
+				using (XLWorkbook workbook = new XLWorkbook())
+				{
+					var worksheet = workbook.Worksheets.Add(validade.ID);
+					worksheet.Cell("A1").Value = "CÓDIGO";
+					worksheet.Cell("B1").Value = "DESCRIÇÃO DO PRODUTO";
+					worksheet.Cell("C1").Value = "QUANTIDADE";
+					worksheet.Cell("D1").Value = "VALIDADE";
+
+					int line = 2;
+					for (int i = 0; i < validade.PRODUTOS.Count; i++)
+					{
+						worksheet.Cell($"A{line}").Value = validade.PRODUTOS[i].COD_PRODUTO;
+						worksheet.Cell($"B{line}").Value = validade.PRODUTOS[i].DESCRICAO_PRODUTO;
+						worksheet.Cell($"C{line}").Value = validade.PRODUTOS[i].QTD;
+						worksheet.Cell($"D{line}").Value = validade.PRODUTOS[i].DATA.ToShortDateString();
+						line++;
+					}
+					worksheet.Columns().AdjustToContents();
+					workbook.SaveAs(salveFile);
+
+					MessageBox.Show("Planilha criada com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
 		}
 	}
 }

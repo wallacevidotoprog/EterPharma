@@ -34,18 +34,12 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.dataGridView_validadeFile = new System.Windows.Forms.DataGridView();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.dataGridView_validadeFileTemp = new System.Windows.Forms.DataGridView();
-			this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.pictureBox_novo = new System.Windows.Forms.PictureBox();
 			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker_dataBusca = new System.Windows.Forms.DateTimePicker();
 			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -78,8 +72,16 @@
 			this.comboBox_user = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.pictureBox_salvar = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.indexs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -99,7 +101,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_salvar)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -155,6 +157,7 @@
 			this.dataGridView_validadeFile.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
 			this.dataGridView_validadeFile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
 			this.dataGridView_validadeFile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.index,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
@@ -171,32 +174,6 @@
 			this.dataGridView_validadeFile.Size = new System.Drawing.Size(281, 235);
 			this.dataGridView_validadeFile.TabIndex = 4;
 			this.dataGridView_validadeFile.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_validadeFile_CellDoubleClick);
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-			this.dataGridViewTextBoxColumn1.FillWeight = 68.96552F;
-			this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			this.dataGridViewTextBoxColumn1.Width = 43;
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
-			this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
-			this.dataGridViewTextBoxColumn2.FillWeight = 200F;
-			this.dataGridViewTextBoxColumn2.HeaderText = "NOME";
-			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-			this.dataGridViewTextBoxColumn2.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
-			this.dataGridViewTextBoxColumn3.DataPropertyName = "Data";
-			this.dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
-			this.dataGridViewTextBoxColumn3.HeaderText = "DATA";
-			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-			this.dataGridViewTextBoxColumn3.ReadOnly = true;
 			// 
 			// tabPage2
 			// 
@@ -219,6 +196,7 @@
 			this.dataGridView_validadeFileTemp.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
 			this.dataGridView_validadeFileTemp.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
 			this.dataGridView_validadeFileTemp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.indexs,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
@@ -236,37 +214,11 @@
 			this.dataGridView_validadeFileTemp.TabIndex = 4;
 			this.dataGridView_validadeFileTemp.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_validadeFile_CellDoubleClick);
 			// 
-			// dataGridViewTextBoxColumn4
-			// 
-			this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.dataGridViewTextBoxColumn4.DataPropertyName = "ID";
-			this.dataGridViewTextBoxColumn4.FillWeight = 68.96552F;
-			this.dataGridViewTextBoxColumn4.HeaderText = "ID";
-			this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-			this.dataGridViewTextBoxColumn4.ReadOnly = true;
-			this.dataGridViewTextBoxColumn4.Width = 43;
-			// 
-			// dataGridViewTextBoxColumn5
-			// 
-			this.dataGridViewTextBoxColumn5.DataPropertyName = "Nome";
-			this.dataGridViewTextBoxColumn5.FillWeight = 200F;
-			this.dataGridViewTextBoxColumn5.HeaderText = "NOME";
-			this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-			this.dataGridViewTextBoxColumn5.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn6
-			// 
-			this.dataGridViewTextBoxColumn6.DataPropertyName = "Data";
-			this.dataGridViewTextBoxColumn6.FillWeight = 193.1035F;
-			this.dataGridViewTextBoxColumn6.HeaderText = "DATA";
-			this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-			this.dataGridViewTextBoxColumn6.ReadOnly = true;
-			// 
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.pictureBox_novo);
 			this.groupBox2.Controls.Add(this.pictureBox_busca);
-			this.groupBox2.Controls.Add(this.dateTimePicker1);
+			this.groupBox2.Controls.Add(this.dateTimePicker_dataBusca);
 			this.groupBox2.Controls.Add(this.label6);
 			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox2.Location = new System.Drawing.Point(3, 16);
@@ -296,17 +248,18 @@
 			this.pictureBox_busca.Size = new System.Drawing.Size(65, 65);
 			this.pictureBox_busca.TabIndex = 13;
 			this.pictureBox_busca.TabStop = false;
+			this.pictureBox_busca.Click += new System.EventHandler(this.pictureBox_busca_Click);
 			// 
-			// dateTimePicker1
+			// dateTimePicker_dataBusca
 			// 
-			this.dateTimePicker1.CustomFormat = "MM/yyyy";
-			this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker1.Location = new System.Drawing.Point(11, 44);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.ShowUpDown = true;
-			this.dateTimePicker1.Size = new System.Drawing.Size(278, 33);
-			this.dateTimePicker1.TabIndex = 0;
+			this.dateTimePicker_dataBusca.CustomFormat = "MM/yyyy";
+			this.dateTimePicker_dataBusca.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.dateTimePicker_dataBusca.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker_dataBusca.Location = new System.Drawing.Point(11, 44);
+			this.dateTimePicker_dataBusca.Name = "dateTimePicker_dataBusca";
+			this.dateTimePicker_dataBusca.ShowUpDown = true;
+			this.dateTimePicker_dataBusca.Size = new System.Drawing.Size(278, 33);
+			this.dateTimePicker_dataBusca.TabIndex = 0;
 			// 
 			// label6
 			// 
@@ -400,7 +353,7 @@
             this.eDITARToolStripMenuItem,
             this.eXCLUIRToolStripMenuItem});
 			this.contextMenuStrip_produtos.Name = "contextMenuStrip1";
-			this.contextMenuStrip_produtos.Size = new System.Drawing.Size(181, 70);
+			this.contextMenuStrip_produtos.Size = new System.Drawing.Size(120, 48);
 			// 
 			// eDITARToolStripMenuItem
 			// 
@@ -650,16 +603,17 @@
 			this.label1.TabIndex = 13;
 			this.label1.Text = "FUNCIONÁRIO:";
 			// 
-			// pictureBox1
+			// pictureBox_salvar
 			// 
-			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox1.Image = global::EterPharma.Properties.Resources.salve_;
-			this.pictureBox1.Location = new System.Drawing.Point(879, 373);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox1.TabIndex = 10;
-			this.pictureBox1.TabStop = false;
+			this.pictureBox_salvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_salvar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_salvar.Image = global::EterPharma.Properties.Resources.salve_;
+			this.pictureBox_salvar.Location = new System.Drawing.Point(879, 373);
+			this.pictureBox_salvar.Name = "pictureBox_salvar";
+			this.pictureBox_salvar.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_salvar.TabIndex = 10;
+			this.pictureBox_salvar.TabStop = false;
+			this.pictureBox_salvar.Click += new System.EventHandler(this.pictureBox_salvar_Click);
 			// 
 			// pictureBox3
 			// 
@@ -673,13 +627,79 @@
 			this.pictureBox3.TabStop = false;
 			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
 			// 
+			// index
+			// 
+			this.index.HeaderText = "index";
+			this.index.Name = "index";
+			this.index.ReadOnly = true;
+			this.index.Visible = false;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+			this.dataGridViewTextBoxColumn1.FillWeight = 68.96552F;
+			this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			this.dataGridViewTextBoxColumn1.ReadOnly = true;
+			this.dataGridViewTextBoxColumn1.Width = 43;
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
+			this.dataGridViewTextBoxColumn2.FillWeight = 200F;
+			this.dataGridViewTextBoxColumn2.HeaderText = "NOME";
+			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			this.dataGridViewTextBoxColumn2.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this.dataGridViewTextBoxColumn3.DataPropertyName = "Data";
+			this.dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
+			this.dataGridViewTextBoxColumn3.HeaderText = "DATA";
+			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+			this.dataGridViewTextBoxColumn3.ReadOnly = true;
+			// 
+			// indexs
+			// 
+			this.indexs.HeaderText = "index";
+			this.indexs.Name = "indexs";
+			this.indexs.ReadOnly = true;
+			this.indexs.Visible = false;
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.dataGridViewTextBoxColumn4.DataPropertyName = "ID";
+			this.dataGridViewTextBoxColumn4.FillWeight = 68.96552F;
+			this.dataGridViewTextBoxColumn4.HeaderText = "ID";
+			this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+			this.dataGridViewTextBoxColumn4.ReadOnly = true;
+			this.dataGridViewTextBoxColumn4.Width = 43;
+			// 
+			// dataGridViewTextBoxColumn5
+			// 
+			this.dataGridViewTextBoxColumn5.DataPropertyName = "Nome";
+			this.dataGridViewTextBoxColumn5.FillWeight = 200F;
+			this.dataGridViewTextBoxColumn5.HeaderText = "NOME";
+			this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+			this.dataGridViewTextBoxColumn5.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn6
+			// 
+			this.dataGridViewTextBoxColumn6.DataPropertyName = "Data";
+			this.dataGridViewTextBoxColumn6.FillWeight = 193.1035F;
+			this.dataGridViewTextBoxColumn6.HeaderText = "DATA";
+			this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+			this.dataGridViewTextBoxColumn6.ReadOnly = true;
+			// 
 			// GerarValidade
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(964, 444);
 			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.pictureBox_salvar);
 			this.Controls.Add(this.pictureBox3);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.vScrollBar1);
@@ -708,7 +728,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_salvar)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			this.ResumeLayout(false);
 
@@ -724,7 +744,7 @@
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.GroupBox groupBox_ne;
 		private System.Windows.Forms.GroupBox groupBox5;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dateTimePicker_dataBusca;
 		private System.Windows.Forms.PictureBox pictureBox_busca;
 		private System.Windows.Forms.PictureBox pictureBox_novo;
 		private System.Windows.Forms.Label label1;
@@ -754,18 +774,20 @@
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip_produtos;
 		private System.Windows.Forms.ToolStripMenuItem eDITARToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem eXCLUIRToolStripMenuItem;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox pictureBox_salvar;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.DataGridView dataGridView_validadeFile;
+		private System.Windows.Forms.DataGridView dataGridView_validadeFileTemp;
+		private System.Windows.Forms.PictureBox pictureBox_delCategoria;
+		private System.Windows.Forms.DataGridViewTextBoxColumn index;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-		private System.Windows.Forms.DataGridView dataGridView_validadeFileTemp;
+		private System.Windows.Forms.DataGridViewTextBoxColumn indexs;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-		private System.Windows.Forms.PictureBox pictureBox_delCategoria;
 	}
 }

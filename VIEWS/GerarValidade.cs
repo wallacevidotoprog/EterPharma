@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Vml.Spreadsheet;
 using EterPharma.Ex;
 using EterPharma.Models;
@@ -10,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,7 +63,7 @@ namespace EterPharma.VIEWS
 					{
 						dataGridView_validadeFileTemp.Rows.Add(new string[]
 					{
-						tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
+						i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
 					}); ;
 					}));
 
@@ -84,7 +86,7 @@ namespace EterPharma.VIEWS
 					{
 						dataGridView_validadeFile.Rows.Add(new string[]
 					{
-						tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
+						i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
 					});
 					}));
 
@@ -346,6 +348,7 @@ namespace EterPharma.VIEWS
 
 		private void pictureBox_addItem_Click(object sender, EventArgs e)
 		{
+			pictureBox_addItem.Focus();
 			if (validadeProdutos == null)
 			{
 				validadeProdutos = new List<ValidadeProdutos>();
@@ -362,7 +365,7 @@ namespace EterPharma.VIEWS
 				validadeProdutos[indexEditProduto].CATEGORIA = comboBox_categoria.SelectedIndex;
 				ResetPropProduto();
 			}
-			else if (mode_new && mode_edit && !editProduto)
+			else /*if (mode_new && mode_edit && !editProduto)*/
 			{
 				validadeProdutos.Add(new ValidadeProdutos
 				{
@@ -455,7 +458,8 @@ namespace EterPharma.VIEWS
 				{ return; }
 				else if (result == DialogResult.OK)
 				{
-					await Task.Run(() => RWXML.SerializeToXmlFile(validade));	
+					await Task.Run(() => RWXML.SerializeToXmlFile(validade));
+					GetFilesXML();
 				}
 			}
 			try
@@ -467,10 +471,10 @@ namespace EterPharma.VIEWS
 				{
 					case "dataGridView_validadeFile":
 
-						validade = RWXML.DeserializePessoaFromXml(xmlFinalizadas[e.RowIndex]);
+						validade = RWXML.DeserializePessoaFromXml(xmlFinalizadas[Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value)]);
 						break;
 					case "dataGridView_validadeFileTemp":
-						validade = RWXML.DeserializePessoaFromXml(xmlTemps[e.RowIndex]);
+						validade = RWXML.DeserializePessoaFromXml(xmlTemps[Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value)]);
 						break;
 				}
 
@@ -520,6 +524,80 @@ namespace EterPharma.VIEWS
 				CBListCategoria();
 				RefrashGrid();
 			}
+		}
+
+		private async void pictureBox_salvar_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				using (SaveFileDialog op = new SaveFileDialog())
+				{
+					await Task.Run(() => RWXML.SerializeToXmlFile(validade, false));
+					GetFilesXML();
+
+					op.FileName = $"{validade.NOME} ({validade.DATA.ToString("MMMM")}-{validade.DATA.Year}).xlsx";
+					op.Filter = "Excel Files|*.xlsx";
+					op.Title = "Save an Excel File";
+
+					if (op.ShowDialog() == DialogResult.OK)
+					{
+						await Task.Run(() => RWXLSX.SalveValidade(validade, op.FileName));
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
+		}
+
+		private void pictureBox_busca_Click(object sender, EventArgs e)
+		{
+			pictureBox_busca.Focus();
+			if (xmlFinalizadas != null)
+			{
+				dataGridView_validadeFile.Rows.Clear();
+				for (int i = 0; i < xmlFinalizadas.Count; i++)
+				{
+					if (xmlFinalizadas[i].ToUpper().EndsWith("XML"))
+					{
+						Validade tempV = RWXML.DeserializePessoaFromXml(xmlFinalizadas[i]);
+						if (tempV.DATA.Month == dateTimePicker_dataBusca.Value.Month && tempV.DATA.Year == dateTimePicker_dataBusca.Value.Year)
+						{
+							dataGridView_validadeFile.Rows.Add(new string[]
+							{
+							i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
+							});
+						}
+
+
+					}
+
+				}
+			}
+			if (xmlTemps != null)
+			{
+				dataGridView_validadeFileTemp.Rows.Clear();
+				for (int i = 0; i < xmlTemps.Count; i++)
+				{
+					if (xmlTemps[i].ToUpper().EndsWith("XML"))
+					{
+						Validade tempV = RWXML.DeserializePessoaFromXml(xmlTemps[i]);
+						if (tempV.DATA.Month == dateTimePicker_dataBusca.Value.Month && tempV.DATA.Year == dateTimePicker_dataBusca.Value.Year)
+						{
+							dataGridView_validadeFileTemp.Rows.Add(new string[]
+							{
+							i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
+							});
+						}
+
+
+					}
+
+				}
+			}
+
 		}
 	}
 }
