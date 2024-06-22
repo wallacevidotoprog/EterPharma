@@ -18,9 +18,9 @@ namespace EterPharma.Ex
 
 		public string InputText { get; private set; }
 
-		public InputBox(string prompt, string title)
+		public InputBox(string prompt, string title, bool pass)
 		{
-			// Configurar o formulário
+
 			Text = title;
 			Width = 300;
 			Height = 150;
@@ -31,26 +31,33 @@ namespace EterPharma.Ex
 			AcceptButton = okButton;
 			CancelButton = cancelButton;
 
-			// Adicionar o rótulo de prompt
+
 			Label promptLabel = new Label
 			{
 				Text = prompt,
 				AutoSize = true,
 				Location = new System.Drawing.Point(10, 10)
-				
+
 			};
 			Controls.Add(promptLabel);
 
-			// Adicionar o TextBox para entrada do usuário
+
 			inputTextBox = new TextBox
 			{
 				Location = new System.Drawing.Point(10, 40),
 				Width = 260,
 				CharacterCasing = CharacterCasing.Upper
+
 			};
+			if (pass)
+			{
+				inputTextBox.PasswordChar = '*';
+			}
+
+			inputTextBox.KeyDown += OkButton_KeyDown;
 			Controls.Add(inputTextBox);
 
-			// Adicionar o botão OK
+
 			okButton = new Button
 			{
 				Text = "OK",
@@ -60,7 +67,7 @@ namespace EterPharma.Ex
 			okButton.Click += OkButton_Click;
 			Controls.Add(okButton);
 
-			// Adicionar o botão Cancelar
+
 			cancelButton = new Button
 			{
 				Text = "Cancelar",
@@ -70,14 +77,23 @@ namespace EterPharma.Ex
 			Controls.Add(cancelButton);
 		}
 
+		private void OkButton_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				InputText = inputTextBox.Text;
+				DialogResult= DialogResult.OK;
+			}
+		}
+
 		private void OkButton_Click(object sender, EventArgs e)
 		{
 			InputText = inputTextBox.Text;
 		}
 
-		public static string Show(string prompt, string title)
+		public static string Show(string prompt, string title, bool pass = false)
 		{
-			using (InputBox inputBox = new InputBox(prompt, title))
+			using (InputBox inputBox = new InputBox(prompt, title, pass))
 			{
 				return inputBox.ShowDialog() == DialogResult.OK ? inputBox.InputText : null;
 			}

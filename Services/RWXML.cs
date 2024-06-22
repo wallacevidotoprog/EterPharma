@@ -11,17 +11,24 @@ namespace EterPharma.Services
 {
 	public static class RWXML
 	{
-		public static Validade DeserializePessoaFromXml(string xml)
+		public static async Task<Validade> DeserializePessoaFromXmlAsync(string xml, bool ev=false)
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(Validade));
-			using (StreamReader streamReader = new StreamReader(xml, Encoding.UTF8))
+			Validade validade = new Validade();
+			using (FileStream fs = new FileStream(xml, FileMode.Open, FileAccess.Read))
 			{
-				return (Validade)serializer.Deserialize(streamReader);
+				validade = (Validade)await Task.Run(() => serializer.Deserialize(fs));
+				fs.Close();
 			}
+			if (ev)
+			{
+				validade?.InitEvents();
+			}
+			return validade;
 		}
-		public static string SerializeToXmlFile(this Validade obj, bool temp = true)
+		public static async Task<string> SerializeToXmlFileAsync(Validade obj)
 		{
-			string fileName = $@"{Directory.GetCurrentDirectory()}\DADOS\VALIDADE\{(temp ? "TEMPS" : "FINALIZADA")}\{obj.ID}-{obj.NOME.Replace(" ", null)}-{obj.DATA.ToString("ddMMyyyHHmmss")}.xml";
+			string fileName = $@"{Directory.GetCurrentDirectory()}\DADOS\VALIDADE\{obj.DADOS.ID}-{obj.DADOS.NOME.Replace(" ", null)}-{obj.DADOS.DATA.ToString("ddMMyyyHHmmss")}.xml";
 
 
 			if (File.Exists(fileName))
@@ -29,11 +36,12 @@ namespace EterPharma.Services
 				File.Delete(fileName);
 			}
 
-
 			XmlSerializer serializer = new XmlSerializer(typeof(Validade));
-			using (StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.UTF8))
+			using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
 			{
-				serializer.Serialize(streamWriter, obj);
+				serializer.Serialize(fs, obj);
+				//await Task.Run(() => serializer.Serialize(fs, obj));
+				fs.Close();
 			}
 			return fileName;
 		}

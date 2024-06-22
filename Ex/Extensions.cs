@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EterPharma.Ex
 {
@@ -27,5 +28,23 @@ namespace EterPharma.Ex
             }
 			return retId;
         }
+
+		public static int ReturnIndexUserCB(string id, ComboBox cb)
+		{
+
+			BindingSource sb = (BindingSource)cb.DataSource;
+			Dictionary<string, string> tempD = (Dictionary<string, string>)sb.DataSource;
+
+			int index = 0;
+			foreach (var kvp in tempD)
+			{
+				if (kvp.Key.Equals(id))
+				{
+					return index;
+				}
+				index++;
+			}
+			return -1;
+		}
 	}
 }

@@ -28,11 +28,8 @@ namespace EterPharma.VIEWS
 		string docFile;
 
 		Validade validade;
-		List<ValidadeProdutos> validadeProdutos;
-		List<ValidadeCategoria> validadeCategorias;
 
-		List<string> xmlTemps;
-		List<string> xmlFinalizadas;
+		List<string> xmlFiles;
 
 
 
@@ -44,54 +41,25 @@ namespace EterPharma.VIEWS
 		}
 
 		#region MyFunc
-		private void GetFilesXML()
+		private async void GetFilesXML()
 		{
-
-			dataGridView_validadeFileTemp.Invoke(new Action(() =>
-			{
-				dataGridView_validadeFileTemp.Rows.Clear();
-			}));
-			xmlTemps = new List<string>();
-			string[] fileEntriesTemps = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\TEMPS");
-			for (int i = 0; i < fileEntriesTemps.Length; i++)
-			{
-				if (fileEntriesTemps[i].ToUpper().EndsWith("XML"))
-				{
-					xmlTemps.Add(fileEntriesTemps[i]);
-					Validade tempV = RWXML.DeserializePessoaFromXml(fileEntriesTemps[i]);
-					dataGridView_validadeFileTemp.Invoke(new Action(() =>
-					{
-						dataGridView_validadeFileTemp.Rows.Add(new string[]
-					{
-						i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
-					}); ;
-					}));
-
-				}
-			}
 			dataGridView_validadeFile.Invoke(new Action(() =>
 			{
 				dataGridView_validadeFile.Rows.Clear();
 			}));
-
-			string[] fileEntries = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\FINALIZADA");
-			xmlFinalizadas = new List<string>();
+			string[] fileEntries = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\", "*.xml");
+			xmlFiles = new List<string>();
 			for (int i = 0; i < fileEntries.Length; i++)
 			{
-				if (fileEntries[i].ToUpper().EndsWith("XML"))
+				xmlFiles.Add(fileEntries[i]);
+				Validade tempV = await RWXML.DeserializePessoaFromXmlAsync(fileEntries[i]);
+				dataGridView_validadeFile.Invoke(new Action(() =>
 				{
-					xmlFinalizadas.Add(fileEntries[i]);
-					Validade tempV = RWXML.DeserializePessoaFromXml(fileEntries[i]);
-					dataGridView_validadeFile.Invoke(new Action(() =>
-					{
-						dataGridView_validadeFile.Rows.Add(new string[]
-					{
-						i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
-					});
-					}));
-
-				}
-
+					dataGridView_validadeFile.Rows.Add(new string[]
+				{
+						i.ToString(),tempV.DADOS.DATA.ToString("ddMMyyHmmss"),tempV.DADOS.NOME,tempV.DADOS.DATA.ToString()
+				});
+				}));
 			}
 		}
 		public void CBListUser()
@@ -120,14 +88,14 @@ namespace EterPharma.VIEWS
 		{
 			Dictionary<int, string> categoria = new Dictionary<int, string>();
 
-			for (int i = 0; i < validadeCategorias.Count; i++)
+			for (int i = 0; i < validade.CATEGORIA.Count; i++)
 			{
-				ListViewGroup group = new ListViewGroup(validadeCategorias[i].NOME, HorizontalAlignment.Left);
+				ListViewGroup group = new ListViewGroup(validade.CATEGORIA[i].NOME, HorizontalAlignment.Left);
 				listView1.Groups.Add(group);
 
 				categoria.Add(
-						validadeCategorias[i].ID,
-						$"{validadeCategorias[i].ID} - {validadeCategorias[i].NOME}");
+						 validade.CATEGORIA[i].ID,
+						$"{validade.CATEGORIA[i].ID} - {validade.CATEGORIA[i].NOME}");
 			}
 			BindingSource bindingSource = new BindingSource
 			{
@@ -143,12 +111,13 @@ namespace EterPharma.VIEWS
 		{
 			listView1.Items.Clear();
 			ListViewItem item = null;
-			for (int i = 0; i < validadeCategorias.Count; i++)
+			for (int i = 0; i < validade.CATEGORIA.Count; i++)
 			{
-				ListViewGroup group = new ListViewGroup(validadeCategorias[i].NOME, HorizontalAlignment.Left);
+				ListViewGroup group = new ListViewGroup(validade.CATEGORIA[i].NOME, HorizontalAlignment.Left);
 				listView1.Groups.Add(group);
 
-				List<ValidadeProdutos> tp = validadeProdutos.Where(x => x.CATEGORIA == validadeCategorias[i].ID).ToList();
+				List<ValidadeProdutos> tp = validade.PRODUTOS.Where(x => x.CATEGORIA == validade.CATEGORIA[i].ID).ToList();
+
 				for (int x = 0; x < tp.Count; x++)
 				{
 					item = new ListViewItem(tp[x].ID.ToString());
@@ -156,7 +125,7 @@ namespace EterPharma.VIEWS
 					item.SubItems.Add(tp[x].COD_PRODUTO);
 					item.SubItems.Add(tp[x].DESCRICAO_PRODUTO);
 					item.SubItems.Add(tp[x].QTD.ToString());
-					item.SubItems.Add(tp[x].DATA.ToString());
+					item.SubItems.Add(tp[x].DATA.ToString("dd/MM/yyyy"));
 					item.Group = group;
 					listView1.Items.Add(item);
 				}
@@ -170,6 +139,7 @@ namespace EterPharma.VIEWS
 			{
 				Produtos tempProdutos;
 				produtosInput = null;
+
 				if (textBox_codigo.Text.Trim().Length < 7)
 				{
 					tempProdutos = MainWindow.database.Produtos.Find(x => x.COD_PRODUTO.Contains(textBox_codigo.Text.Trim()));
@@ -184,11 +154,14 @@ namespace EterPharma.VIEWS
 					produtosInput = tempProdutos;
 					textBox_nproduto.Text = $"{produtosInput.DESCRICAO_PRODUTO}";
 					textBox_nproduto.ReadOnly = tempBool = true;
+
+					numericUpDown_qtd.Focus();
 				}
 				else
 				{
 					MessageBox.Show("Cédigo não encontrado.\nDigite o nome do produto no campo a baixo do código.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					textBox_nproduto.ReadOnly = false;
+					textBox_nproduto.Focus();
 				}
 
 			}
@@ -204,6 +177,7 @@ namespace EterPharma.VIEWS
 			groupBox_ne.Visible = state;
 			comboBox_user.Enabled = state;
 			dateTimePicker_dataD.Enabled = state;
+
 		}
 		private void NewDoc(bool state)
 		{
@@ -221,8 +195,6 @@ namespace EterPharma.VIEWS
 					mode_new = mode_edit = false;
 					docFile = null;
 					validade = null;
-					validadeProdutos = null;
-					validadeCategorias = null;
 					produtosInput = null;
 					groupBox_insert.Visible = false;
 					comboBox_user.Enabled = true;
@@ -249,6 +221,7 @@ namespace EterPharma.VIEWS
 		{
 			Task.Run(new Action(() => GetFilesXML()));
 			comboBox_user.Invoke(new Action(() => CBListUser()));
+
 			groupBox_ne.Size = new System.Drawing.Size(566, 88);
 			pictureBox_novaV.Image = Properties.Resources.novo_arquivo;
 		}
@@ -257,8 +230,16 @@ namespace EterPharma.VIEWS
 			this.Close();
 		}
 
-		private void pictureBox_novo_Click(object sender, EventArgs e)
+		private async void pictureBox_novo_Click(object sender, EventArgs e)
 		{
+			if (validade != null)
+			{
+				if (MessageBox.Show($"Existe um arquivo aberto, deseja fecha-lo ?\n(As alterações serão salvas)", "ALERTA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+				{
+					return;
+				}
+				//				await Task.Run(() => RWXML.SerializeToXmlFile(validade));
+			}
 			if (mode_new || mode_edit)
 			{
 				NewDoc(false);
@@ -278,27 +259,20 @@ namespace EterPharma.VIEWS
 			}
 		}
 
-		private void pictureBox_novaV_Click(object sender, EventArgs e)
+		private async void pictureBox_novaV_Click(object sender, EventArgs e)
 		{
 			try
 			{
+				pictureBox_novaV.Focus();
 				if (!mode_new && !mode_edit)
 				{
 					mode_new = true;
-					validade = new Validade
-					{
-						ID = MainWindow.database.Users[comboBox_user.SelectedIndex].ID,
-						NOME = MainWindow.database.Users[comboBox_user.SelectedIndex].Nome,
-						DATA = dateTimePicker_data.Value
-					};
-					if (validadeCategorias == null)
-					{
-						validadeCategorias = new List<ValidadeCategoria>();
-						validadeCategorias.Add(new ValidadeCategoria { ID = 0, NOME = "S/ CATEGORIA" });
-						validade.CATEGORIA = validadeCategorias;
-						CBListCategoria();
-					}
-					docFile = RWXML.SerializeToXmlFile(validade);
+					validade = new Validade();
+					validade.Init
+					(MainWindow.database.Users[Extensions.ReturnIndexUser(comboBox_user.SelectedValue.ToString())].ID, MainWindow.database.Users[Extensions.ReturnIndexUser(comboBox_user.SelectedValue.ToString())].Nome, dateTimePicker_dataD.Value
+					);
+					CBListCategoria();
+					docFile = await RWXML.SerializeToXmlFileAsync(validade);
 					NewDoc(true);
 
 				}
@@ -338,10 +312,10 @@ namespace EterPharma.VIEWS
 		{
 			string result = InputBox.Show("Por favor, insira a categoria:", "Categoria");
 
-			if (result != string.Empty)
+			if (result != "")
 			{
 
-				validadeCategorias.Add(new ValidadeCategoria { ID = validadeCategorias.Count, NOME = result });
+				validade.CATEGORIA.Add(new ValidadeCategoria { ID = validade.CATEGORIA.Count, NOME = result });
 				CBListCategoria();
 			}
 		}
@@ -349,27 +323,30 @@ namespace EterPharma.VIEWS
 		private void pictureBox_addItem_Click(object sender, EventArgs e)
 		{
 			pictureBox_addItem.Focus();
-			if (validadeProdutos == null)
+
+			if (produtosInput == null && textBox_nproduto.ReadOnly == true)
 			{
-				validadeProdutos = new List<ValidadeProdutos>();
-				validade.PRODUTOS = validadeProdutos;
+				FProduto();
 			}
 
 			if (editProduto)
 			{
-				validadeProdutos[indexEditProduto].EAN = textBox_nproduto.ReadOnly ? produtosInput.EAN : "NAN";
-				validadeProdutos[indexEditProduto].COD_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.COD_PRODUTO : textBox_codigo.Text;
-				validadeProdutos[indexEditProduto].DESCRICAO_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.DESCRICAO_PRODUTO : textBox_nproduto.Text;
-				validadeProdutos[indexEditProduto].QTD = (int)numericUpDown_qtd.Value;
-				validadeProdutos[indexEditProduto].DATA = dateTimePicker_data.Value;
-				validadeProdutos[indexEditProduto].CATEGORIA = comboBox_categoria.SelectedIndex;
+				validade.PRODUTOS[indexEditProduto].EAN = textBox_nproduto.ReadOnly ? produtosInput.EAN : "NAN";
+				validade.PRODUTOS[indexEditProduto].COD_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.COD_PRODUTO : textBox_codigo.Text;
+				validade.PRODUTOS[indexEditProduto].DESCRICAO_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.DESCRICAO_PRODUTO : textBox_nproduto.Text;
+				validade.PRODUTOS[indexEditProduto].QTD = (int)numericUpDown_qtd.Value;
+				validade.PRODUTOS[indexEditProduto].DATA = dateTimePicker_data.Value;
+				validade.PRODUTOS[indexEditProduto].CATEGORIA = comboBox_categoria.SelectedIndex;
+				editProduto = false;
+				validade.WriteFileAsync();
 				ResetPropProduto();
 			}
 			else /*if (mode_new && mode_edit && !editProduto)*/
 			{
-				validadeProdutos.Add(new ValidadeProdutos
+
+				validade.PRODUTOS.Add(new ValidadeProdutos
 				{
-					ID = validadeProdutos.Count(),
+					ID = validade.PRODUTOS.Count(),
 					EAN = textBox_nproduto.ReadOnly ? produtosInput.EAN : "NAN",
 					COD_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.COD_PRODUTO : textBox_codigo.Text.ToUpper(),
 					DESCRICAO_PRODUTO = textBox_nproduto.ReadOnly ? produtosInput.DESCRICAO_PRODUTO : textBox_nproduto.Text.ToUpper(),
@@ -378,10 +355,12 @@ namespace EterPharma.VIEWS
 					QTD = (int)numericUpDown_qtd.Value
 
 				});
+
 				ResetPropProduto();
 			}
-			Task.Run(() => RWXML.SerializeToXmlFile(validade));
+			//			Task.Run(() => RWXML.SerializeToXmlFile(validade));
 			RefrashGrid();
+			textBox_codigo.Focus();
 		}
 
 		private void textBox_codigo_KeyDown(object sender, KeyEventArgs e)
@@ -403,11 +382,11 @@ namespace EterPharma.VIEWS
 					produtosInput = null;
 					pictureBox_addItem.Image = Properties.Resources.atualizar_ficheiro;
 
-					textBox_codigo.Text = validadeProdutos[selectedItem].EAN == "NAN" ? validadeProdutos[selectedItem].COD_PRODUTO : validadeProdutos[selectedItem].EAN;
-					textBox_nproduto.Text = validadeProdutos[selectedItem].DESCRICAO_PRODUTO;
-					numericUpDown_qtd.Value = validadeProdutos[selectedItem].QTD;
-					dateTimePicker_data.Value = validadeProdutos[selectedItem].DATA;
-					comboBox_categoria.SelectedIndex = validadeProdutos[selectedItem].CATEGORIA;
+					textBox_codigo.Text = validade.PRODUTOS[selectedItem].EAN == "NAN" ? validade.PRODUTOS[selectedItem].COD_PRODUTO : validade.PRODUTOS[selectedItem].EAN;
+					textBox_nproduto.Text = validade.PRODUTOS[selectedItem].DESCRICAO_PRODUTO;
+					numericUpDown_qtd.Value = validade.PRODUTOS[selectedItem].QTD;
+					dateTimePicker_data.Value = validade.PRODUTOS[selectedItem].DATA;
+					comboBox_categoria.SelectedIndex = validade.PRODUTOS[selectedItem].CATEGORIA;
 					FProduto();
 				}
 			}
@@ -431,11 +410,11 @@ namespace EterPharma.VIEWS
 
 						if (temp >= 0)
 						{
-							validadeProdutos.RemoveAt(temp);
+							validade.PRODUTOS.RemoveAt(temp);
 
-							for (int i = 0; i < validadeProdutos.Count; i++)
+							for (int i = 0; i < validade.PRODUTOS.Count; i++)
 							{
-								validadeProdutos[i].ID = i;
+								validade.PRODUTOS[i].ID = i;
 							}
 							RefrashGrid();
 						}
@@ -453,37 +432,28 @@ namespace EterPharma.VIEWS
 		{
 			if (mode_new || mode_edit)
 			{
-				DialogResult result = MessageBox.Show("Há um documento em aberto, deseja fecha-lo ?\nOs dados seram salvos em TEMP", "ALERTA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+				DialogResult result = MessageBox.Show("Há um documento em aberto, deseja fecha-lo ?\nOs dados seram salvos.", "ALERTA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 				if (result == DialogResult.Cancel)
 				{ return; }
 				else if (result == DialogResult.OK)
 				{
-					await Task.Run(() => RWXML.SerializeToXmlFile(validade));
-					GetFilesXML();
+					int indexRow = e.RowIndex;
+					await Task.Run(() => validade.WriteFileAsync());					
+					((DataGridView)sender).Rows[indexRow].Selected = true;
 				}
 			}
 			try
 			{
 				validade = null;
-				validadeCategorias = null;
-				validadeProdutos = null;
-				switch (((DataGridView)sender).Name)
-				{
-					case "dataGridView_validadeFile":
+				validade = await RWXML.DeserializePessoaFromXmlAsync(xmlFiles[Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value)],true);
+				docFile = xmlFiles[Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value)];
 
-						validade = RWXML.DeserializePessoaFromXml(xmlFinalizadas[Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value)]);
-						break;
-					case "dataGridView_validadeFileTemp":
-						validade = RWXML.DeserializePessoaFromXml(xmlTemps[Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value)]);
-						break;
-				}
 
 				if (validade != null)
 				{
-					validadeProdutos = validade.PRODUTOS;
-					validadeCategorias = validade.CATEGORIA;
-					dateTimePicker_dataD.Value = validade.DATA;
-					comboBox_user.SelectedIndex = Extensions.ReturnIndexUser(validade.ID);
+					dateTimePicker_dataD.Value = validade.DADOS.DATA;
+
+					comboBox_user.SelectedIndex = Extensions.ReturnIndexUserCB(validade.DADOS.ID, comboBox_user);
 
 					groupBox_ne.Size = new Size(566, 315);
 					groupBox_ne.Visible = true;
@@ -495,6 +465,7 @@ namespace EterPharma.VIEWS
 					CBListCategoria();
 					RefrashGrid();
 				}
+				GetFilesXML();
 			}
 			catch (Exception ex)
 			{
@@ -509,15 +480,15 @@ namespace EterPharma.VIEWS
 				return;
 			}
 
-			if (MessageBox.Show("Deseja excluir essa categoria.", validadeCategorias[comboBox_categoria.SelectedIndex].NOME, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+			if (MessageBox.Show("Deseja excluir essa categoria.", validade.CATEGORIA[comboBox_categoria.SelectedIndex].NOME, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
 			{
-				validadeCategorias.RemoveAt(comboBox_categoria.SelectedIndex);
+				validade.CATEGORIA.RemoveAt(comboBox_categoria.SelectedIndex);
 
-				for (int i = 0; i < validadeProdutos.Count; i++)
+				for (int i = 0; i < validade.PRODUTOS.Count; i++)
 				{
-					if (validadeProdutos[i].CATEGORIA == comboBox_categoria.SelectedIndex)
+					if (validade.PRODUTOS[i].CATEGORIA == comboBox_categoria.SelectedIndex)
 					{
-						validadeProdutos[i].CATEGORIA = 0;
+						validade.PRODUTOS[i].CATEGORIA = 0;
 					}
 				}
 
@@ -528,20 +499,61 @@ namespace EterPharma.VIEWS
 
 		private async void pictureBox_salvar_Click(object sender, EventArgs e)
 		{
+			if (validade == null)
+			{
+				return;
+			}
+			//			await Task.Run(() => RWXML.SerializeToXmlFile(validade));
+			GetFilesXML();
+			NewDoc(false);
+
+
+		}
+
+		private async void pictureBox_busca_Click(object sender, EventArgs e)
+		{
+			pictureBox_busca.Focus();
+			if (xmlFiles != null)
+			{
+				dataGridView_validadeFile.Rows.Clear();
+				for (int i = 0; i < xmlFiles.Count; i++)
+				{
+					if (xmlFiles[i].ToUpper().EndsWith("XML"))
+					{
+						Validade tempV = await RWXML.DeserializePessoaFromXmlAsync(xmlFiles[i]);
+						if (tempV.DADOS.DATA.Month == dateTimePicker_dataBusca.Value.Month && tempV.DADOS.DATA.Year == dateTimePicker_dataBusca.Value.Year)
+						{
+							dataGridView_validadeFile.Rows.Add(new string[]
+							{
+							i.ToString(),tempV.DADOS.DATA.ToString("ddMMyyHmmss"),tempV.DADOS.NOME,tempV.DADOS.DATA.ToString()
+							});
+						}
+
+
+					}
+
+				}
+			}
+		}
+
+		private async void pictureBox_exportExcel_Click(object sender, EventArgs e)
+		{
 			try
 			{
+				if (validade == null)
+				{
+					return;
+				}
 				using (SaveFileDialog op = new SaveFileDialog())
 				{
-					await Task.Run(() => RWXML.SerializeToXmlFile(validade, false));
-					GetFilesXML();
-
-					op.FileName = $"{validade.NOME} ({validade.DATA.ToString("MMMM")}-{validade.DATA.Year}).xlsx";
+					op.FileName = $"{validade.DADOS.NOME} ({validade.DADOS.DATA.ToString("MMMM")}-{validade.DADOS.DATA.Year}).xlsx";
 					op.Filter = "Excel Files|*.xlsx";
 					op.Title = "Save an Excel File";
 
 					if (op.ShowDialog() == DialogResult.OK)
 					{
-						await Task.Run(() => RWXLSX.SalveValidade(validade, op.FileName));
+						pictureBox_salvar_Click(null, null);
+						//						await Task.Run(() => RWXLSX.SalveValidade(validade, op.FileName));
 					}
 				}
 			}
@@ -550,54 +562,6 @@ namespace EterPharma.VIEWS
 
 				throw;
 			}
-		}
-
-		private void pictureBox_busca_Click(object sender, EventArgs e)
-		{
-			pictureBox_busca.Focus();
-			if (xmlFinalizadas != null)
-			{
-				dataGridView_validadeFile.Rows.Clear();
-				for (int i = 0; i < xmlFinalizadas.Count; i++)
-				{
-					if (xmlFinalizadas[i].ToUpper().EndsWith("XML"))
-					{
-						Validade tempV = RWXML.DeserializePessoaFromXml(xmlFinalizadas[i]);
-						if (tempV.DATA.Month == dateTimePicker_dataBusca.Value.Month && tempV.DATA.Year == dateTimePicker_dataBusca.Value.Year)
-						{
-							dataGridView_validadeFile.Rows.Add(new string[]
-							{
-							i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
-							});
-						}
-
-
-					}
-
-				}
-			}
-			if (xmlTemps != null)
-			{
-				dataGridView_validadeFileTemp.Rows.Clear();
-				for (int i = 0; i < xmlTemps.Count; i++)
-				{
-					if (xmlTemps[i].ToUpper().EndsWith("XML"))
-					{
-						Validade tempV = RWXML.DeserializePessoaFromXml(xmlTemps[i]);
-						if (tempV.DATA.Month == dateTimePicker_dataBusca.Value.Month && tempV.DATA.Year == dateTimePicker_dataBusca.Value.Year)
-						{
-							dataGridView_validadeFileTemp.Rows.Add(new string[]
-							{
-							i.ToString(),tempV.DATA.ToString("ddMMyyHmmss"),tempV.NOME,tempV.DATA.ToString()
-							});
-						}
-
-
-					}
-
-				}
-			}
-
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace EterPharma.Services
 {
 	public static class RWXLSX
 	{
-		public static List<Produtos> ReadAllProdutos(string filename, System.Windows.Forms.ProgressBar progressBar)
+		public static List<Produtos> ReadAllProdutos(string filename, ProgressBar progressBar)
 		{
 			List<Produtos> list = null;
 			try
@@ -61,7 +61,7 @@ namespace EterPharma.Services
 			{
 				using (XLWorkbook workbook = new XLWorkbook())
 				{
-					var worksheet = workbook.Worksheets.Add(validade.ID);
+					var worksheet = workbook.Worksheets.Add(validade.DADOS.ID);
 					worksheet.Cell("A1").Value = "CÓDIGO";
 					worksheet.Cell("B1").Value = "DESCRIÇÃO DO PRODUTO";
 					worksheet.Cell("C1").Value = "QUANTIDADE";

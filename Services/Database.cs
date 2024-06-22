@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.ExtendedProperties;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using DocumentFormat.OpenXml.Spreadsheet;
+using EterPharma.Ex;
 using EterPharma.Models;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EterPharma.Services
 {
@@ -17,21 +16,24 @@ namespace EterPharma.Services
 	{
 		private System.Windows.Forms.ProgressBar _progressBar;
 		public List<Produtos> Produtos;
-		public List<User> Users;
+		public eList<User> Users;
 
 		public  Database(System.Windows.Forms.ProgressBar progressBar, System.Windows.Forms.ToolStrip toolStrip)
 		{
 			_progressBar = progressBar;
 			Init(toolStrip);
-			
 		}
 
 		private async void Init(System.Windows.Forms.ToolStrip toolStrip)
 		{
 			await Task.Run(() => Produtos = ReadDb.ReadProdutos(_progressBar));
 			await Task.Run(() => Users = ReadDb.ReadUsers(_progressBar));
+			Users.ItemEdit += UserEvents;
+
 			toolStrip.Invoke(new Action(() => { toolStrip.Enabled = true; }));
 		}
+
+		public void UserEvents(object sender, EventArgs e) => WriteUserBinary();
 
 		public bool UserExite(string id)
 		{
@@ -44,14 +46,14 @@ namespace EterPharma.Services
 			}
 			return false;
 		}
-		public bool WriteProdutos()
+		public bool WriteProdutosBinary()
 		{
 			bool stats = false;
 			stats = WriteDb.WriteProdutos(Produtos,_progressBar);
 			_progressBar.Invoke(new Action(() => _progressBar.Value = 0));
 			return stats;
 		}
-		public bool WriteUser()
+		public bool WriteUserBinary()
 		{
 			bool stats = false;
 			stats = WriteDb.WriteUser(Users, _progressBar);
@@ -124,9 +126,9 @@ namespace EterPharma.Services
 			return list;
 		}
 
-		public static List<User> ReadUsers(System.Windows.Forms.ProgressBar progressBar)
+		public static eList<User> ReadUsers(System.Windows.Forms.ProgressBar progressBar)
 		{
-			List<User> list = new List<User>();
+			eList<User> list = new eList<User>();
 			try
 			{
 				if (File.Exists(Directory.GetCurrentDirectory() + @"\DADOS\user.eter"))
@@ -146,8 +148,8 @@ namespace EterPharma.Services
 									Nome = reader.ReadString(),
 									Funcao = (Funcao)reader.ReadInt32(),
 									Status = reader.ReadBoolean()
-
-								});
+									
+								},false);
 								progressBar.Invoke(new Action(() => progressBar.Increment(1)));
 							}
 						}
@@ -209,7 +211,7 @@ namespace EterPharma.Services
 			return false;
 
 		}
-		public static bool WriteUser(List<User> user, System.Windows.Forms.ProgressBar progressBar)
+		public static bool WriteUser(eList<User> user, System.Windows.Forms.ProgressBar progressBar)
 		{
 
 			try

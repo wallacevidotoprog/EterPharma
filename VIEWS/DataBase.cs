@@ -1,4 +1,6 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using EterPharma.Ex;
 using EterPharma.Models;
 using EterPharma.Properties;
 using EterPharma.Services;
@@ -48,11 +50,7 @@ namespace EterPharma.VIEWS
 			}
 			if (MainWindow.database?.Users != null)
 			{
-				dataGridView_user.Invoke(new Action(() => { 
-					
-					dataGridView_user.DataSource = MainWindow.database.Users; 
-				
-				}));
+				dataGridView_user.Invoke(new Action(() => { dataGridView_user.DataSource = MainWindow.database.Users.ToList(); }));
 			}
 		}
 
@@ -81,8 +79,8 @@ namespace EterPharma.VIEWS
 		private void pictureBox_atualiza_Click(object sender, EventArgs e)
 		{
 			MainWindow.database.Produtos = tempProdutos;
-			dataGridView_dados.DataSource = MainWindow.database.Produtos;
-			MainWindow.database.WriteProdutos();
+			dataGridView_dados.DataSource = MainWindow.database.Produtos.ToList();
+			MainWindow.database.WriteProdutosBinary();
 		}
 
 		private void pictureBox_busca_Click(object sender, EventArgs e)
@@ -139,7 +137,7 @@ namespace EterPharma.VIEWS
 		{
 			if (MainWindow.database.Users == null)
 			{
-				MainWindow.database.Users = new List<User>();
+				MainWindow.database.Users = new eList<User>();
 			}
 
 			if (edit && editIDINDEX != -1)
@@ -147,7 +145,7 @@ namespace EterPharma.VIEWS
 				MainWindow.database.Users[editIDINDEX].ID = textBox_id.Text;
 				MainWindow.database.Users[editIDINDEX].Nome = textBox_nome.Text;
 				MainWindow.database.Users[editIDINDEX].Funcao = (Funcao)comboBox_funcao.SelectedIndex;
-				MainWindow.database.WriteUser();
+				//MainWindow.database.WriteUser();
 				dataGridView_user.Rows[editIDINDEX].Cells[0].Value = textBox_id.Text;
 				dataGridView_user.Rows[editIDINDEX].Cells[1].Value = textBox_nome.Text;
 				dataGridView_user.Rows[editIDINDEX].Cells[2].Value = (Funcao)comboBox_funcao.SelectedIndex;
@@ -170,13 +168,11 @@ namespace EterPharma.VIEWS
 							Status = true
 
 						});
-						dataGridView_user.Rows.Add(new object[]
-						{
-							 textBox_id.Text,textBox_nome.Text,(Funcao)comboBox_funcao.SelectedIndex,true
-						});
-						MainWindow.database.WriteUser();
+
+
+						// MainWindow.database.WriteUser();
+
 						dataGridView_user.DataSource = MainWindow.database.Users.ToList();
-						dataGridView_user.CurrentCell = dataGridView_user.Rows[editIDINDEX].Cells[0];
 						pictureBox4_Click(null, null);
 					}
 					else
@@ -224,7 +220,7 @@ namespace EterPharma.VIEWS
 			if (edit && editIDINDEX != -1)
 			{
 				dataGridView_user.Rows[editIDINDEX].Cells[3].Value = MainWindow.database.Users[editIDINDEX].Status = !MainWindow.database.Users[editIDINDEX].Status;
-				MainWindow.database.WriteUser();
+				MainWindow.database.UserEvents(null,null);
 				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
 				dataGridView_user.CurrentCell = dataGridView_user.Rows[editIDINDEX].Cells[0];
 				pictureBox4_Click(null, null);
@@ -236,7 +232,7 @@ namespace EterPharma.VIEWS
 			if (edit && editIDINDEX != -1)
 			{
 				MainWindow.database.Users.RemoveAt(editIDINDEX);
-				MainWindow.database.WriteUser();
+				//MainWindow.database.WriteUser();
 				pictureBox4_Click(null, null);
 				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
 

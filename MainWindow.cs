@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
+using EterPharma.Ex;
 using EterPharma.Models;
 using EterPharma.Services;
 using EterPharma.VIEWS;
@@ -47,23 +48,6 @@ namespace EterPharma
 		{
 			database = new Database(progressBar_status, toolStrip1);
 		}
-
-		private void dATABASEToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			DataBase form = new DataBase
-			{
-				TopLevel = false,
-				FormBorderStyle = FormBorderStyle.None,
-				Dock = DockStyle.Fill,
-				progressBar = progressBar_status
-			};
-			form.FormClosed += new FormClosedEventHandler(this.ChildForm_FormClosed);
-			this.panel_center.Controls.Clear();
-			this.panel_center.Controls.Add(form);
-			form.Show();
-			this.toolStrip1.Visible = false;
-		}
-
 		private void gERARVALIDADEDOMÊSToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			GerarValidade form = new GerarValidade
@@ -77,6 +61,25 @@ namespace EterPharma
 			this.panel_center.Controls.Add(form);
 			form.Show();
 			this.toolStrip1.Visible = false;
+		}
+
+		private void toolStripButton_conf_Click(object sender, EventArgs e)
+		{
+			if (InputBox.Show("Qual a senha:","SENHA =D",true)=="32195018")
+			{
+				DataBase form = new DataBase
+				{
+					TopLevel = false,
+					FormBorderStyle = FormBorderStyle.None,
+					Dock = DockStyle.Fill,
+					progressBar = progressBar_status
+				};
+				form.FormClosed += new FormClosedEventHandler(this.ChildForm_FormClosed);
+				this.panel_center.Controls.Clear();
+				this.panel_center.Controls.Add(form);
+				form.Show();
+				this.toolStrip1.Visible = false;
+			}
 		}
 	}
 }

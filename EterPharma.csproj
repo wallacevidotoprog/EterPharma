@@ -121,10 +121,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ex\DatabaseEventArgs.cs" />
+    <Compile Include="Ex\DataGridViewCheckBoxImageColumn.cs" />
+    <Compile Include="Ex\eList.cs" />
     <Compile Include="Ex\Extensions.cs" />
     <Compile Include="Ex\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ex\Item.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +278,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\documento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuracoes-da-web.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

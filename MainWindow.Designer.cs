@@ -30,14 +30,14 @@
 		{
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.progressBar_status = new System.Windows.Forms.ProgressBar();
-			this.panel_center = new System.Windows.Forms.Panel();
 			this.toolStripButton_manipulacao = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
 			this.gERARVALIDADEDOMÊSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.rELATÓRIOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.dATABASEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripButton_conf = new System.Windows.Forms.ToolStripButton();
+			this.progressBar_status = new System.Windows.Forms.ProgressBar();
+			this.panel_center = new System.Windows.Forms.Panel();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -48,7 +48,8 @@
             this.toolStripSeparator1,
             this.toolStripButton_manipulacao,
             this.toolStripSeparator2,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripButton_conf});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -60,29 +61,6 @@
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 93);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 93);
-			// 
-			// progressBar_status
-			// 
-			this.progressBar_status.Cursor = System.Windows.Forms.Cursors.AppStarting;
-			this.progressBar_status.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.progressBar_status.Location = new System.Drawing.Point(0, 440);
-			this.progressBar_status.Name = "progressBar_status";
-			this.progressBar_status.Size = new System.Drawing.Size(800, 10);
-			this.progressBar_status.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-			this.progressBar_status.TabIndex = 1;
-			// 
-			// panel_center
-			// 
-			this.panel_center.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel_center.Location = new System.Drawing.Point(0, 93);
-			this.panel_center.Name = "panel_center";
-			this.panel_center.Size = new System.Drawing.Size(800, 347);
-			this.panel_center.TabIndex = 2;
 			// 
 			// toolStripButton_manipulacao
 			// 
@@ -100,13 +78,17 @@
 			this.toolStripButton_manipulacao.ToolTipText = "MANIPULAÇÃO";
 			this.toolStripButton_manipulacao.Click += new System.EventHandler(this.toolStripButton_manipulacao_Click);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 93);
+			// 
 			// toolStripButton1
 			// 
 			this.toolStripButton1.AutoSize = false;
 			this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gERARVALIDADEDOMÊSToolStripMenuItem,
-            this.rELATÓRIOToolStripMenuItem,
-            this.dATABASEToolStripMenuItem});
+            this.rELATÓRIOToolStripMenuItem});
 			this.toolStripButton1.Image = global::EterPharma.Properties.Resources.expirado;
 			this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -132,12 +114,41 @@
 			this.rELATÓRIOToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.rELATÓRIOToolStripMenuItem.Text = "RELATÓRIO";
 			// 
-			// dATABASEToolStripMenuItem
+			// toolStripButton_conf
 			// 
-			this.dATABASEToolStripMenuItem.Name = "dATABASEToolStripMenuItem";
-			this.dATABASEToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-			this.dATABASEToolStripMenuItem.Text = "DATABASE";
-			this.dATABASEToolStripMenuItem.Click += new System.EventHandler(this.dATABASEToolStripMenuItem_Click);
+			this.toolStripButton_conf.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+			this.toolStripButton_conf.AutoSize = false;
+			this.toolStripButton_conf.Font = new System.Drawing.Font("Segoe UI", 7F);
+			this.toolStripButton_conf.Image = global::EterPharma.Properties.Resources.configuracoes_da_web;
+			this.toolStripButton_conf.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.toolStripButton_conf.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+			this.toolStripButton_conf.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton_conf.Name = "toolStripButton_conf";
+			this.toolStripButton_conf.Size = new System.Drawing.Size(90, 90);
+			this.toolStripButton_conf.Tag = "CONFIGURAÇÕES";
+			this.toolStripButton_conf.Text = "CONFIGURAÇÕES";
+			this.toolStripButton_conf.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.toolStripButton_conf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolStripButton_conf.ToolTipText = "CONFIGURAÇÕES";
+			this.toolStripButton_conf.Click += new System.EventHandler(this.toolStripButton_conf_Click);
+			// 
+			// progressBar_status
+			// 
+			this.progressBar_status.Cursor = System.Windows.Forms.Cursors.AppStarting;
+			this.progressBar_status.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.progressBar_status.Location = new System.Drawing.Point(0, 440);
+			this.progressBar_status.Name = "progressBar_status";
+			this.progressBar_status.Size = new System.Drawing.Size(800, 10);
+			this.progressBar_status.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+			this.progressBar_status.TabIndex = 1;
+			// 
+			// panel_center
+			// 
+			this.panel_center.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel_center.Location = new System.Drawing.Point(0, 93);
+			this.panel_center.Name = "panel_center";
+			this.panel_center.Size = new System.Drawing.Size(800, 347);
+			this.panel_center.TabIndex = 2;
 			// 
 			// MainWindow
 			// 
@@ -168,9 +179,9 @@
 		private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
 		private System.Windows.Forms.ToolStripMenuItem gERARVALIDADEDOMÊSToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem rELATÓRIOToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem dATABASEToolStripMenuItem;
 		private System.Windows.Forms.ProgressBar progressBar_status;
 		private System.Windows.Forms.Panel panel_center;
+		private System.Windows.Forms.ToolStripButton toolStripButton_conf;
 	}
 }
 
