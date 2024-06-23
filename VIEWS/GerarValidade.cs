@@ -1,21 +1,15 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
-using DocumentFormat.OpenXml.Vml.Spreadsheet;
-using EterPharma.Ex;
+﻿using EterPharma.Ex;
 using EterPharma.Models;
 using EterPharma.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
+using static ClosedXML.Excel.XLPredefinedFormat;
 
 namespace EterPharma.VIEWS
 {
@@ -61,29 +55,7 @@ namespace EterPharma.VIEWS
 				});
 				}));
 			}
-		}
-		public void CBListUser()
-		{
-			Dictionary<string, string> users = new Dictionary<string, string>();
-
-			for (int i = 0; i < MainWindow.database.Users.Count; i++)
-			{
-				if (MainWindow.database.Users[i].Status)
-				{
-					users.Add(
-						MainWindow.database.Users[i].ID,
-						$"{MainWindow.database.Users[i].ID} - {MainWindow.database.Users[i].Nome}");
-				}
-
-			}
-			BindingSource bindingSource = new BindingSource
-			{
-				DataSource = users
-			};
-			comboBox_user.DataSource = bindingSource;
-			comboBox_user.DisplayMember = "Value";
-			comboBox_user.ValueMember = "Key";
-		}
+		}		
 		public void CBListCategoria()
 		{
 			Dictionary<int, string> categoria = new Dictionary<int, string>();
@@ -142,7 +114,7 @@ namespace EterPharma.VIEWS
 
 				if (textBox_codigo.Text.Trim().Length < 7)
 				{
-					tempProdutos = MainWindow.database.Produtos.Find(x => x.COD_PRODUTO.Contains(textBox_codigo.Text.Trim()));
+					tempProdutos = MainWindow.database.Produtos.Find(x => x.COD_PRODUTO.Contains(textBox_codigo.Text.Trim().Replace(" ", null).PadLeft(6, '0')));
 				}
 				else
 				{
@@ -220,9 +192,9 @@ namespace EterPharma.VIEWS
 		private async void GerarValidade_Load(object sender, EventArgs e)
 		{
 			Task.Run(new Action(() => GetFilesXML()));
-			comboBox_user.Invoke(new Action(() => CBListUser()));
+			comboBox_user.Invoke(new Action(() => comboBox_user.CBListUser()));			
 
-			groupBox_ne.Size = new System.Drawing.Size(566, 88);
+			groupBox_ne.Size = new Size(566, 88);
 			pictureBox_novaV.Image = Properties.Resources.novo_arquivo;
 		}
 		private void pictureBox3_Click(object sender, EventArgs e)
@@ -341,9 +313,8 @@ namespace EterPharma.VIEWS
 				validade.WriteFileAsync();
 				ResetPropProduto();
 			}
-			else /*if (mode_new && mode_edit && !editProduto)*/
+			else 
 			{
-
 				validade.PRODUTOS.Add(new ValidadeProdutos
 				{
 					ID = validade.PRODUTOS.Count(),
@@ -355,10 +326,8 @@ namespace EterPharma.VIEWS
 					QTD = (int)numericUpDown_qtd.Value
 
 				});
-
 				ResetPropProduto();
 			}
-			//			Task.Run(() => RWXML.SerializeToXmlFile(validade));
 			RefrashGrid();
 			textBox_codigo.Focus();
 		}
@@ -401,7 +370,6 @@ namespace EterPharma.VIEWS
 		{
 			try
 			{
-
 				if (listView1.SelectedItems.Count > 0)
 				{
 					int temp = int.Parse(listView1.SelectedItems[0]?.SubItems[0].Text);
@@ -503,7 +471,7 @@ namespace EterPharma.VIEWS
 			{
 				return;
 			}
-			//			await Task.Run(() => RWXML.SerializeToXmlFile(validade));
+			await Task.Run(() => validade.WriteFileAsync());
 			GetFilesXML();
 			NewDoc(false);
 
@@ -528,10 +496,7 @@ namespace EterPharma.VIEWS
 							i.ToString(),tempV.DADOS.DATA.ToString("ddMMyyHmmss"),tempV.DADOS.NOME,tempV.DADOS.DATA.ToString()
 							});
 						}
-
-
 					}
-
 				}
 			}
 		}
@@ -553,7 +518,9 @@ namespace EterPharma.VIEWS
 					if (op.ShowDialog() == DialogResult.OK)
 					{
 						pictureBox_salvar_Click(null, null);
-						//						await Task.Run(() => RWXLSX.SalveValidade(validade, op.FileName));
+						MainWindow.database._progressBar.Style = ProgressBarStyle.Marquee;
+						await Task.Run(() => RWXLSX.SalveValidade(validade, op.FileName,true));
+						MainWindow.database._progressBar.Style = ProgressBarStyle.Continuous;
 					}
 				}
 			}

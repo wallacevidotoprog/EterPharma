@@ -1,30 +1,27 @@
-﻿using DocumentFormat.OpenXml.ExtendedProperties;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
-using DocumentFormat.OpenXml.Spreadsheet;
-using EterPharma.Ex;
+﻿using EterPharma.Ex;
 using EterPharma.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EterPharma.Services
 {
 	public class Database
 	{
-		private System.Windows.Forms.ProgressBar _progressBar;
+		public ProgressBar _progressBar;
 		public List<Produtos> Produtos;
 		public eList<User> Users;
 
-		public  Database(System.Windows.Forms.ProgressBar progressBar, System.Windows.Forms.ToolStrip toolStrip)
+		public  Database(ProgressBar progressBar, ToolStrip toolStrip)
 		{
 			_progressBar = progressBar;
 			Init(toolStrip);
 		}
 
-		private async void Init(System.Windows.Forms.ToolStrip toolStrip)
+		private async void Init(ToolStrip toolStrip)
 		{
 			await Task.Run(() => Produtos = ReadDb.ReadProdutos(_progressBar));
 			await Task.Run(() => Users = ReadDb.ReadUsers(_progressBar));

@@ -46,5 +46,32 @@ namespace EterPharma.Ex
 			}
 			return -1;
 		}
+
+		public static ComboBox CBListUser(this ComboBox cb)
+		{
+			Dictionary<string, string> users = new Dictionary<string, string>();
+
+			for (int i = 0; i < MainWindow.database.Users.Count; i++)
+			{
+				if (MainWindow.database.Users[i].Status)
+				{
+					users.Add(
+						MainWindow.database.Users[i].ID,
+						$"{MainWindow.database.Users[i].ID} - {MainWindow.database.Users[i].Nome}");
+				}
+			}
+
+			BindingSource bindingSource = new BindingSource
+			{
+				DataSource = users
+			};
+			cb.DataSource = bindingSource;
+			cb.DisplayMember = "Value";
+			cb.ValueMember = "Key";
+
+			return cb;
+		}
+
+
 	}
 }
