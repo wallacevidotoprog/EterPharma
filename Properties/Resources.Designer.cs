@@ -203,6 +203,16 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap importar {
+            get {
+                object obj = ResourceManager.GetObject("importar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap interruptor {
             get {
                 object obj = ResourceManager.GetObject("interruptor", resourceCulture);
@@ -273,9 +283,29 @@ namespace EterPharma.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap metrica {
+            get {
+                object obj = ResourceManager.GetObject("metrica", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap novo_arquivo {
             get {
                 object obj = ResourceManager.GetObject("novo-arquivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap prioritizar {
+            get {
+                object obj = ResourceManager.GetObject("prioritizar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

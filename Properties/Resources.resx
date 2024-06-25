@@ -118,8 +118,50 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="marketing-de-busca" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\marketing-de-busca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lixo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lixo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arquivo-de-documento1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arquivo-de-documento1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mandar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mandar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="adicionar-ficheiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adicionar-ficheiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="novo-arquivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\novo-arquivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="configuracoes-da-web" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\configuracoes-da-web.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medicamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medicamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="limpar_limpo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\limpar-limpo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="v" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\verificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="botao-de-deletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\botao-de-deletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\remover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mais" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mais.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,76 +169,43 @@
   <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\botao-x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mandar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mandar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="salve-" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salve-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="interruptor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\interruptor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arquivo-de-documento1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arquivo-de-documento1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="limpar_limpo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\limpar-limpo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="medicamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\medicamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="atualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\atualizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-de-deletar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-de-deletar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arquivo-de-documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arquivo-de-documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="v" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\verificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arquivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arquivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-ficheiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-ficheiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="desligar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\desligar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="atualizar_ficheiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\atualizar-ficheiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lixo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lixo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="atualizar_ficheiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\atualizar-ficheiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arquivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arquivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="remover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\remover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="novo-arquivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\novo-arquivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="marketing-de-busca" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\marketing-de-busca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="expirado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\expirado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arquivo-de-documento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arquivo-de-documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="configuracoes-da-web" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\configuracoes-da-web.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="salve-" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salve-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="interruptor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\interruptor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="desligar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\desligar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="importar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\importar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prioritizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prioritizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="metrica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\metrica.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

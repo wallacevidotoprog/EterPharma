@@ -128,5 +128,52 @@ namespace EterPharma.Services
 				throw;
 			}
 		}
+
+		public static void SalveValidade(List<ValidadeProdutos> validade, string salveFile)
+		{
+			try
+			{
+				using (XLWorkbook workbook = new XLWorkbook())
+				{
+
+
+					var worksheet = workbook.Worksheets.Add(DateTime.Now.ToString("dd-MM-yyyy"));
+					worksheet.Cell("A1").Value = "CÓDIGO";
+					worksheet.Cell("B1").Value = "DESCRIÇÃO DO PRODUTO";
+					worksheet.Cell("C1").Value = "QUANTIDADE";
+					worksheet.Cell("D1").Value = "VALIDADE";
+
+					IXLRange title = worksheet.Range($"A1:D1");
+					title.Style.Font.SetBold().Font.FontSize = 16;
+					title.Style.Fill.SetBackgroundColor(XLColor.FromArgb(189, 189, 183));
+					int line = 2;
+
+					for (int x = 0; x < validade.Count; x++)
+					{
+						worksheet.Cell($"A{line}").Value = validade[x].COD_PRODUTO;
+						worksheet.Cell($"B{line}").Value = validade[x].DESCRICAO_PRODUTO;
+						worksheet.Cell($"C{line}").Value = validade[x].QTD;
+						worksheet.Cell($"D{line}").Value = validade[x].DATA.ToShortDateString();
+						line++;
+					}
+
+					line--;
+					worksheet.Range($"A1:D{line}").Style.Border.TopBorder = XLBorderStyleValues.Thin;
+					worksheet.Range($"A1:D{line}").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+					worksheet.Range($"A1:D{line}").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+					worksheet.Range($"A1:D{line}").Style.Border.LeftBorder = XLBorderStyleValues.Thin;
+					worksheet.Range($"A1:D{line}").Style.Border.RightBorder = XLBorderStyleValues.Thin;
+
+					worksheet.Columns().AdjustToContents();
+					workbook.SaveAs(salveFile);
+					MessageBox.Show("Planilha criada com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
+		}
 	}
 }

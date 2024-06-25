@@ -38,8 +38,6 @@
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.pictureBox_novo = new System.Windows.Forms.PictureBox();
-			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
 			this.dateTimePicker_dataBusca = new System.Windows.Forms.DateTimePicker();
 			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -52,15 +50,10 @@
 			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.contextMenuStrip_produtos = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.eDITARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.eXCLUIRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox_ne = new System.Windows.Forms.GroupBox();
 			this.groupBox_insert = new System.Windows.Forms.GroupBox();
-			this.pictureBox_delCategoria = new System.Windows.Forms.PictureBox();
-			this.pictureBox_addCategoria = new System.Windows.Forms.PictureBox();
 			this.comboBox_categoria = new System.Windows.Forms.ComboBox();
 			this.numericUpDown_qtd = new System.Windows.Forms.NumericUpDown();
-			this.pictureBox_addItem = new System.Windows.Forms.PictureBox();
 			this.dateTimePicker_data = new System.Windows.Forms.DateTimePicker();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -68,33 +61,40 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.textBox_nproduto = new System.Windows.Forms.TextBox();
 			this.textBox_codigo = new System.Windows.Forms.TextBox();
-			this.pictureBox_novaV = new System.Windows.Forms.PictureBox();
 			this.dateTimePicker_dataD = new System.Windows.Forms.DateTimePicker();
 			this.comboBox_user = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.pictureBox_exportExcel = new System.Windows.Forms.PictureBox();
 			this.pictureBox_salvar = new System.Windows.Forms.PictureBox();
+			this.eDITARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.eXCLUIRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pictureBox_delCategoria = new System.Windows.Forms.PictureBox();
+			this.pictureBox_addCategoria = new System.Windows.Forms.PictureBox();
+			this.pictureBox_addItem = new System.Windows.Forms.PictureBox();
+			this.pictureBox_novaV = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox_novo = new System.Windows.Forms.PictureBox();
+			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).BeginInit();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.contextMenuStrip_produtos.SuspendLayout();
 			this.groupBox_ne.SuspendLayout();
 			this.groupBox_insert.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_delCategoria)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_salvar)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_delCategoria)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// vScrollBar1
@@ -136,6 +136,7 @@
 			this.dataGridView_validadeFile.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dataGridView_validadeFile.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
 			this.dataGridView_validadeFile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+			this.dataGridView_validadeFile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView_validadeFile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.index,
             this.dataGridViewTextBoxColumn1,
@@ -200,29 +201,6 @@
 			this.groupBox2.Size = new System.Drawing.Size(295, 158);
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
-			// 
-			// pictureBox_novo
-			// 
-			this.pictureBox_novo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_novo.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_novo.Image = global::EterPharma.Properties.Resources.novo_arquivo;
-			this.pictureBox_novo.Location = new System.Drawing.Point(224, 83);
-			this.pictureBox_novo.Name = "pictureBox_novo";
-			this.pictureBox_novo.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_novo.TabIndex = 14;
-			this.pictureBox_novo.TabStop = false;
-			this.pictureBox_novo.Click += new System.EventHandler(this.pictureBox_novo_Click);
-			// 
-			// pictureBox_busca
-			// 
-			this.pictureBox_busca.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_busca.Image = global::EterPharma.Properties.Resources.marketing_de_busca;
-			this.pictureBox_busca.Location = new System.Drawing.Point(11, 83);
-			this.pictureBox_busca.Name = "pictureBox_busca";
-			this.pictureBox_busca.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_busca.TabIndex = 13;
-			this.pictureBox_busca.TabStop = false;
-			this.pictureBox_busca.Click += new System.EventHandler(this.pictureBox_busca_Click);
 			// 
 			// dateTimePicker_dataBusca
 			// 
@@ -329,22 +307,6 @@
 			this.contextMenuStrip_produtos.Name = "contextMenuStrip1";
 			this.contextMenuStrip_produtos.Size = new System.Drawing.Size(120, 48);
 			// 
-			// eDITARToolStripMenuItem
-			// 
-			this.eDITARToolStripMenuItem.Image = global::EterPharma.Properties.Resources.editar;
-			this.eDITARToolStripMenuItem.Name = "eDITARToolStripMenuItem";
-			this.eDITARToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-			this.eDITARToolStripMenuItem.Text = "EDITAR";
-			this.eDITARToolStripMenuItem.Click += new System.EventHandler(this.eDITARToolStripMenuItem_Click);
-			// 
-			// eXCLUIRToolStripMenuItem
-			// 
-			this.eXCLUIRToolStripMenuItem.Image = global::EterPharma.Properties.Resources.lixo;
-			this.eXCLUIRToolStripMenuItem.Name = "eXCLUIRToolStripMenuItem";
-			this.eXCLUIRToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-			this.eXCLUIRToolStripMenuItem.Text = "EXCLUIR";
-			this.eXCLUIRToolStripMenuItem.Click += new System.EventHandler(this.eXCLUIRToolStripMenuItem_Click);
-			// 
 			// groupBox_ne
 			// 
 			this.groupBox_ne.Controls.Add(this.groupBox_insert);
@@ -383,32 +345,6 @@
 			this.groupBox_insert.TabStop = false;
 			this.groupBox_insert.Visible = false;
 			// 
-			// pictureBox_delCategoria
-			// 
-			this.pictureBox_delCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_delCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_delCategoria.Image = global::EterPharma.Properties.Resources.remover;
-			this.pictureBox_delCategoria.Location = new System.Drawing.Point(544, 39);
-			this.pictureBox_delCategoria.Name = "pictureBox_delCategoria";
-			this.pictureBox_delCategoria.Size = new System.Drawing.Size(33, 33);
-			this.pictureBox_delCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox_delCategoria.TabIndex = 23;
-			this.pictureBox_delCategoria.TabStop = false;
-			this.pictureBox_delCategoria.Click += new System.EventHandler(this.pictureBox_delCategoria_Click);
-			// 
-			// pictureBox_addCategoria
-			// 
-			this.pictureBox_addCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_addCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_addCategoria.Image = global::EterPharma.Properties.Resources.mais;
-			this.pictureBox_addCategoria.Location = new System.Drawing.Point(505, 39);
-			this.pictureBox_addCategoria.Name = "pictureBox_addCategoria";
-			this.pictureBox_addCategoria.Size = new System.Drawing.Size(33, 33);
-			this.pictureBox_addCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox_addCategoria.TabIndex = 23;
-			this.pictureBox_addCategoria.TabStop = false;
-			this.pictureBox_addCategoria.Click += new System.EventHandler(this.pictureBox_addCategoria_Click);
-			// 
 			// comboBox_categoria
 			// 
 			this.comboBox_categoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -434,18 +370,6 @@
             0,
             0,
             0});
-			// 
-			// pictureBox_addItem
-			// 
-			this.pictureBox_addItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_addItem.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_addItem.Image = global::EterPharma.Properties.Resources.adicionar_ficheiro;
-			this.pictureBox_addItem.Location = new System.Drawing.Point(512, 158);
-			this.pictureBox_addItem.Name = "pictureBox_addItem";
-			this.pictureBox_addItem.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_addItem.TabIndex = 10;
-			this.pictureBox_addItem.TabStop = false;
-			this.pictureBox_addItem.Click += new System.EventHandler(this.pictureBox_addItem_Click);
 			// 
 			// dateTimePicker_data
 			// 
@@ -523,18 +447,6 @@
 			this.textBox_codigo.TabIndex = 0;
 			this.textBox_codigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_codigo_KeyDown);
 			// 
-			// pictureBox_novaV
-			// 
-			this.pictureBox_novaV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox_novaV.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_novaV.Image = global::EterPharma.Properties.Resources.novo_arquivo;
-			this.pictureBox_novaV.Location = new System.Drawing.Point(518, 15);
-			this.pictureBox_novaV.Name = "pictureBox_novaV";
-			this.pictureBox_novaV.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox_novaV.TabIndex = 10;
-			this.pictureBox_novaV.TabStop = false;
-			this.pictureBox_novaV.Click += new System.EventHandler(this.pictureBox_novaV_Click);
-			// 
 			// dateTimePicker_dataD
 			// 
 			this.dateTimePicker_dataD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -601,6 +513,72 @@
 			this.pictureBox_salvar.TabStop = false;
 			this.pictureBox_salvar.Click += new System.EventHandler(this.pictureBox_salvar_Click);
 			// 
+			// eDITARToolStripMenuItem
+			// 
+			this.eDITARToolStripMenuItem.Image = global::EterPharma.Properties.Resources.editar;
+			this.eDITARToolStripMenuItem.Name = "eDITARToolStripMenuItem";
+			this.eDITARToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.eDITARToolStripMenuItem.Text = "EDITAR";
+			this.eDITARToolStripMenuItem.Click += new System.EventHandler(this.eDITARToolStripMenuItem_Click);
+			// 
+			// eXCLUIRToolStripMenuItem
+			// 
+			this.eXCLUIRToolStripMenuItem.Image = global::EterPharma.Properties.Resources.lixo;
+			this.eXCLUIRToolStripMenuItem.Name = "eXCLUIRToolStripMenuItem";
+			this.eXCLUIRToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.eXCLUIRToolStripMenuItem.Text = "EXCLUIR";
+			this.eXCLUIRToolStripMenuItem.Click += new System.EventHandler(this.eXCLUIRToolStripMenuItem_Click);
+			// 
+			// pictureBox_delCategoria
+			// 
+			this.pictureBox_delCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_delCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_delCategoria.Image = global::EterPharma.Properties.Resources.remover;
+			this.pictureBox_delCategoria.Location = new System.Drawing.Point(544, 39);
+			this.pictureBox_delCategoria.Name = "pictureBox_delCategoria";
+			this.pictureBox_delCategoria.Size = new System.Drawing.Size(33, 33);
+			this.pictureBox_delCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_delCategoria.TabIndex = 23;
+			this.pictureBox_delCategoria.TabStop = false;
+			this.pictureBox_delCategoria.Click += new System.EventHandler(this.pictureBox_delCategoria_Click);
+			// 
+			// pictureBox_addCategoria
+			// 
+			this.pictureBox_addCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_addCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_addCategoria.Image = global::EterPharma.Properties.Resources.mais;
+			this.pictureBox_addCategoria.Location = new System.Drawing.Point(505, 39);
+			this.pictureBox_addCategoria.Name = "pictureBox_addCategoria";
+			this.pictureBox_addCategoria.Size = new System.Drawing.Size(33, 33);
+			this.pictureBox_addCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_addCategoria.TabIndex = 23;
+			this.pictureBox_addCategoria.TabStop = false;
+			this.pictureBox_addCategoria.Click += new System.EventHandler(this.pictureBox_addCategoria_Click);
+			// 
+			// pictureBox_addItem
+			// 
+			this.pictureBox_addItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_addItem.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_addItem.Image = global::EterPharma.Properties.Resources.adicionar_ficheiro;
+			this.pictureBox_addItem.Location = new System.Drawing.Point(512, 158);
+			this.pictureBox_addItem.Name = "pictureBox_addItem";
+			this.pictureBox_addItem.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_addItem.TabIndex = 10;
+			this.pictureBox_addItem.TabStop = false;
+			this.pictureBox_addItem.Click += new System.EventHandler(this.pictureBox_addItem_Click);
+			// 
+			// pictureBox_novaV
+			// 
+			this.pictureBox_novaV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_novaV.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_novaV.Image = global::EterPharma.Properties.Resources.novo_arquivo;
+			this.pictureBox_novaV.Location = new System.Drawing.Point(518, 15);
+			this.pictureBox_novaV.Name = "pictureBox_novaV";
+			this.pictureBox_novaV.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_novaV.TabIndex = 10;
+			this.pictureBox_novaV.TabStop = false;
+			this.pictureBox_novaV.Click += new System.EventHandler(this.pictureBox_novaV_Click);
+			// 
 			// pictureBox3
 			// 
 			this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -612,6 +590,29 @@
 			this.pictureBox3.TabIndex = 10;
 			this.pictureBox3.TabStop = false;
 			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+			// 
+			// pictureBox_novo
+			// 
+			this.pictureBox_novo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_novo.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_novo.Image = global::EterPharma.Properties.Resources.novo_arquivo;
+			this.pictureBox_novo.Location = new System.Drawing.Point(224, 83);
+			this.pictureBox_novo.Name = "pictureBox_novo";
+			this.pictureBox_novo.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_novo.TabIndex = 14;
+			this.pictureBox_novo.TabStop = false;
+			this.pictureBox_novo.Click += new System.EventHandler(this.pictureBox_novo_Click);
+			// 
+			// pictureBox_busca
+			// 
+			this.pictureBox_busca.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_busca.Image = global::EterPharma.Properties.Resources.marketing_de_busca;
+			this.pictureBox_busca.Location = new System.Drawing.Point(11, 83);
+			this.pictureBox_busca.Name = "pictureBox_busca";
+			this.pictureBox_busca.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_busca.TabIndex = 13;
+			this.pictureBox_busca.TabStop = false;
+			this.pictureBox_busca.Click += new System.EventHandler(this.pictureBox_busca_Click);
 			// 
 			// GerarValidade
 			// 
@@ -632,8 +633,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
 			this.contextMenuStrip_produtos.ResumeLayout(false);
@@ -641,14 +640,16 @@
 			this.groupBox_ne.PerformLayout();
 			this.groupBox_insert.ResumeLayout(false);
 			this.groupBox_insert.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_delCategoria)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_qtd)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_salvar)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_delCategoria)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addCategoria)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_addItem)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novaV)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_novo)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
 			this.ResumeLayout(false);
 
 		}

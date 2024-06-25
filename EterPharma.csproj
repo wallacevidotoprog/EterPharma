@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>farmacia.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.102.2.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>packages\ClosedXML.0.102.2\lib\netstandard2.0\ClosedXML.dll</HintPath>
@@ -193,6 +196,9 @@
     <EmbeddedResource Include="VIEWS\Manipulados.resx">
       <DependentUpon>Manipulados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VIEWS\RelatorioValidade.resx">
+      <DependentUpon>RelatorioValidade.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -287,6 +293,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\configuracoes-da-web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\importar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prioritizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\metrica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="farmacia.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

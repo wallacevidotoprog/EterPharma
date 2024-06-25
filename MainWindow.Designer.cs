@@ -28,16 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton_manipulacao = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.progressBar_status = new System.Windows.Forms.ProgressBar();
+			this.panel_center = new System.Windows.Forms.Panel();
+			this.toolStripButton_manipulacao = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
 			this.gERARVALIDADEDOMÊSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.rELATÓRIOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripButton_conf = new System.Windows.Forms.ToolStripButton();
-			this.progressBar_status = new System.Windows.Forms.ProgressBar();
-			this.panel_center = new System.Windows.Forms.Panel();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -62,6 +63,29 @@
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 93);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 93);
+			// 
+			// progressBar_status
+			// 
+			this.progressBar_status.Cursor = System.Windows.Forms.Cursors.AppStarting;
+			this.progressBar_status.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.progressBar_status.Location = new System.Drawing.Point(0, 440);
+			this.progressBar_status.Name = "progressBar_status";
+			this.progressBar_status.Size = new System.Drawing.Size(800, 10);
+			this.progressBar_status.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+			this.progressBar_status.TabIndex = 1;
+			// 
+			// panel_center
+			// 
+			this.panel_center.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel_center.Location = new System.Drawing.Point(0, 93);
+			this.panel_center.Name = "panel_center";
+			this.panel_center.Size = new System.Drawing.Size(800, 347);
+			this.panel_center.TabIndex = 2;
+			// 
 			// toolStripButton_manipulacao
 			// 
 			this.toolStripButton_manipulacao.AutoSize = false;
@@ -77,11 +101,6 @@
 			this.toolStripButton_manipulacao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.toolStripButton_manipulacao.ToolTipText = "MANIPULAÇÃO";
 			this.toolStripButton_manipulacao.Click += new System.EventHandler(this.toolStripButton_manipulacao_Click);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 93);
 			// 
 			// toolStripButton1
 			// 
@@ -103,6 +122,7 @@
 			// 
 			// gERARVALIDADEDOMÊSToolStripMenuItem
 			// 
+			this.gERARVALIDADEDOMÊSToolStripMenuItem.Image = global::EterPharma.Properties.Resources.prioritizar;
 			this.gERARVALIDADEDOMÊSToolStripMenuItem.Name = "gERARVALIDADEDOMÊSToolStripMenuItem";
 			this.gERARVALIDADEDOMÊSToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.gERARVALIDADEDOMÊSToolStripMenuItem.Text = "GERAR VALIDADE DO MÊS";
@@ -110,9 +130,11 @@
 			// 
 			// rELATÓRIOToolStripMenuItem
 			// 
+			this.rELATÓRIOToolStripMenuItem.Image = global::EterPharma.Properties.Resources.metrica;
 			this.rELATÓRIOToolStripMenuItem.Name = "rELATÓRIOToolStripMenuItem";
 			this.rELATÓRIOToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.rELATÓRIOToolStripMenuItem.Text = "RELATÓRIO";
+			this.rELATÓRIOToolStripMenuItem.Click += new System.EventHandler(this.rELATÓRIOToolStripMenuItem_Click);
 			// 
 			// toolStripButton_conf
 			// 
@@ -132,24 +154,6 @@
 			this.toolStripButton_conf.ToolTipText = "CONFIGURAÇÕES";
 			this.toolStripButton_conf.Click += new System.EventHandler(this.toolStripButton_conf_Click);
 			// 
-			// progressBar_status
-			// 
-			this.progressBar_status.Cursor = System.Windows.Forms.Cursors.AppStarting;
-			this.progressBar_status.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.progressBar_status.Location = new System.Drawing.Point(0, 440);
-			this.progressBar_status.Name = "progressBar_status";
-			this.progressBar_status.Size = new System.Drawing.Size(800, 10);
-			this.progressBar_status.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-			this.progressBar_status.TabIndex = 1;
-			// 
-			// panel_center
-			// 
-			this.panel_center.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel_center.Location = new System.Drawing.Point(0, 93);
-			this.panel_center.Name = "panel_center";
-			this.panel_center.Size = new System.Drawing.Size(800, 347);
-			this.panel_center.TabIndex = 2;
-			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +162,7 @@
 			this.Controls.Add(this.panel_center);
 			this.Controls.Add(this.progressBar_status);
 			this.Controls.Add(this.toolStrip1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "ETER PHARMA";

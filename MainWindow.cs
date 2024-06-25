@@ -4,6 +4,7 @@ using EterPharma.Ex;
 using EterPharma.Models;
 using EterPharma.Services;
 using EterPharma.VIEWS;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,5 +82,61 @@ namespace EterPharma
 				this.toolStrip1.Visible = false;
 			}
 		}
+
+		private void rELATÓRIOToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			RelatorioValidade form = new RelatorioValidade
+			{
+				TopLevel = false,
+				FormBorderStyle = FormBorderStyle.None,
+				Dock = DockStyle.Fill
+			};
+			form.FormClosed += new FormClosedEventHandler(this.ChildForm_FormClosed);
+			this.panel_center.Controls.Clear();
+			this.panel_center.Controls.Add(form);
+			form.Show();
+			this.toolStrip1.Visible = false;
+		}
+
+
+		
+		//private async void toolStripButton2_Click(object sender, EventArgs e)
+		//{
+		//	//WebBrowser webBrowser = new WebBrowser() { ScriptErrorsSuppressed = true };
+		//	webBrowser.ScriptErrorsSuppressed = true;
+		//	webBrowser.Navigate("https://www.situacao-cadastral.com/");
+		//	string appName = System.IO.Path.GetFileName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+
+		//	SetBrowserFeatureControlKey("FEATURE_BROWSER_EMULATION", appName, 11001);
+		//	try
+		//	{
+		//		var doc = webBrowser.Document;
+		//		if (doc != null)
+		//		{
+		//			var inputCpf = doc.GetElementById("doc");
+		//			inputCpf.SetAttribute("value", "44461013820");
+		//			var form = doc.GetElementsByTagName("form")[0];
+		//			if (form != null)
+		//			{
+		//				form.InvokeMember("submit");
+		//			}
+		//		}
+				
+		//	}
+		//	catch (Exception)
+		//	{
+
+				
+		//	}
+
+			
+		//}
+		//private static void SetBrowserFeatureControlKey(string feature, string appName, uint value)
+		//{
+		//	using (var key = Registry.CurrentUser.CreateSubKey($@"Software\Microsoft\Internet Explorer\Main\FeatureControl\{feature}", RegistryKeyPermissionCheck.ReadWriteSubTree))
+		//	{
+		//		key?.SetValue(appName, value, RegistryValueKind.DWord);
+		//	}
+		//}
 	}
 }
