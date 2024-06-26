@@ -53,6 +53,7 @@ namespace EterPharma.VIEWS
 		}
 		private void RelatorioValidade_Load(object sender, EventArgs e)
 		{
+			numericUpDown_mesV.Value = 4;
 			validadeList = new List<(Validade validade, bool status)>();
 			Task.Run(new Action(() => GetFilesXML()));
 		}
@@ -127,6 +128,14 @@ namespace EterPharma.VIEWS
 							item.SubItems.Add(Value.validade.PRODUTOS[j].QTD.ToString());
 							item.SubItems.Add(Value.validade.PRODUTOS[j].DATA.ToString("dd/MM/yyyy"));
 							item.Group = group;
+
+
+
+
+							if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= Value.validade.PRODUTOS[j].DATA.Month )
+							{
+								item.BackColor = Color.LightCoral;
+							}
 							listView_produtos.Items.Add(item);
 
 							validadeProdutos.Add(Value.validade.PRODUTOS[j]);
@@ -160,6 +169,42 @@ namespace EterPharma.VIEWS
 					{
 						MainWindow.database._progressBar.Style = ProgressBarStyle.Marquee;
 						await Task.Run(() => RWXLSX.SalveValidade(validadeProdutos, op.FileName));
+						MainWindow.database._progressBar.Style = ProgressBarStyle.Continuous;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
+		}
+
+		private async void pictureBox_exV_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (validadeProdutos == null)
+				{
+					return;
+				}
+				
+
+
+				var temp = validadeProdutos.Where(x=> x.DATA.Month <= (DateTime.Now.Month + numericUpDown_mesV.Value)).ToList();
+
+
+
+				using (SaveFileDialog op = new SaveFileDialog())
+				{
+					op.FileName = $"Listagem de validade de {dateTimePicker_dataBusca.Value.ToString("MMMM-yyyy")}.xlsx";
+					op.Filter = "Excel Files|*.xlsx";
+					op.Title = "Save an Excel File";
+
+					if (op.ShowDialog() == DialogResult.OK)
+					{
+						MainWindow.database._progressBar.Style = ProgressBarStyle.Marquee;
+						await Task.Run(() => RWXLSX.SalveValidade(temp, op.FileName));
 						MainWindow.database._progressBar.Style = ProgressBarStyle.Continuous;
 					}
 				}

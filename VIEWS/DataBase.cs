@@ -19,17 +19,22 @@ namespace EterPharma.VIEWS
 {
 	public partial class DataBase : Form
 	{
-		public ProgressBar progressBar { get; set; }
+		public ProgressBar progressBar_status { get; set; }
 		List<Produtos> tempProdutos;
 		bool edit = false;
 		int editIDINDEX = -1;
 		public DataBase()
 		{
 			InitializeComponent();
+			if (InputBox.Show("Qual a senha:", "SENHA =D", true) != "32195018")
+			{
+				this.Close();
+			}
 		}
 		private async void DataBase_Load(object sender, EventArgs e)
 		{
-			comboBox_tipo.SelectedIndex = 0;
+			
+				comboBox_tipo.SelectedIndex = 0;
 			comboBox_funcao.DataSource = Enum.GetValues(typeof(Funcao)).Cast<Funcao>().ToList();
 			await Task.Run(() => DataProdutosGrid());
 
@@ -67,7 +72,7 @@ namespace EterPharma.VIEWS
 					textBox_contador.Text = $"AGUARDE, LENDO ARQUIVO ...";
 					await Task.Run(() =>
 					{
-						tempProdutos = RWXLSX.ReadAllProdutos(openFileDialog.FileName, progressBar);
+						tempProdutos = RWXLSX.ReadAllProdutos(openFileDialog.FileName, progressBar_status);
 
 					});
 					textBox_contador.Text = $"TOTAL DE LINHAS LIDAS [{tempProdutos.Count} ]";
@@ -185,10 +190,10 @@ namespace EterPharma.VIEWS
 					MessageBox.Show("Preencha todos os campos.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
-			
+
 		}
 
-		
+
 		private void pictureBox4_Click(object sender, EventArgs e)
 		{
 			textBox_id.Clear();
@@ -220,7 +225,7 @@ namespace EterPharma.VIEWS
 			if (edit && editIDINDEX != -1)
 			{
 				dataGridView_user.Rows[editIDINDEX].Cells[3].Value = MainWindow.database.Users[editIDINDEX].Status = !MainWindow.database.Users[editIDINDEX].Status;
-				MainWindow.database.UserEvents(null,null);
+				MainWindow.database.UserEvents(null, null);
 				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
 				dataGridView_user.CurrentCell = dataGridView_user.Rows[editIDINDEX].Cells[0];
 				pictureBox4_Click(null, null);

@@ -31,6 +31,11 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.dataGridView_validadeFile = new System.Windows.Forms.DataGridView();
+			this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.pictureBox_busca = new System.Windows.Forms.PictureBox();
 			this.dateTimePicker_dataBusca = new System.Windows.Forms.DateTimePicker();
@@ -48,11 +53,10 @@
 			this.pictureBox_import = new System.Windows.Forms.PictureBox();
 			this.pictureBox_exportExcel = new System.Windows.Forms.PictureBox();
 			this.pictureBox_sair = new System.Windows.Forms.PictureBox();
-			this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.pictureBox_exV = new System.Windows.Forms.PictureBox();
+			this.numericUpDown_mesV = new System.Windows.Forms.NumericUpDown();
+			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).BeginInit();
@@ -63,6 +67,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sair)).BeginInit();
+			this.groupBox6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exV)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_mesV)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -116,6 +123,50 @@
 			this.dataGridView_validadeFile.Size = new System.Drawing.Size(422, 351);
 			this.dataGridView_validadeFile.TabIndex = 5;
 			this.dataGridView_validadeFile.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_validadeFile_CellContentClick);
+			// 
+			// index
+			// 
+			this.index.HeaderText = "index";
+			this.index.Name = "index";
+			this.index.ReadOnly = true;
+			this.index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.index.Visible = false;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+			this.dataGridViewTextBoxColumn1.FillWeight = 68.96552F;
+			this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			this.dataGridViewTextBoxColumn1.ReadOnly = true;
+			this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.dataGridViewTextBoxColumn1.Width = 24;
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
+			this.dataGridViewTextBoxColumn2.FillWeight = 200F;
+			this.dataGridViewTextBoxColumn2.HeaderText = "NOME";
+			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			this.dataGridViewTextBoxColumn2.ReadOnly = true;
+			this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this.dataGridViewTextBoxColumn3.DataPropertyName = "Data";
+			this.dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
+			this.dataGridViewTextBoxColumn3.HeaderText = "DATA";
+			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+			this.dataGridViewTextBoxColumn3.ReadOnly = true;
+			this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			// 
+			// Action
+			// 
+			this.Action.FillWeight = 30F;
+			this.Action.HeaderText = "";
+			this.Action.Name = "Action";
+			this.Action.ReadOnly = true;
 			// 
 			// groupBox2
 			// 
@@ -236,6 +287,7 @@
 			// 
 			// groupBox5
 			// 
+			this.groupBox5.Controls.Add(this.groupBox6);
 			this.groupBox5.Controls.Add(this.pictureBox_import);
 			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox5.Location = new System.Drawing.Point(3, 16);
@@ -280,49 +332,49 @@
 			this.pictureBox_sair.TabStop = false;
 			this.pictureBox_sair.Click += new System.EventHandler(this.pictureBox_sair_Click);
 			// 
-			// index
+			// groupBox6
 			// 
-			this.index.HeaderText = "index";
-			this.index.Name = "index";
-			this.index.ReadOnly = true;
-			this.index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.index.Visible = false;
+			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox6.Controls.Add(this.label1);
+			this.groupBox6.Controls.Add(this.numericUpDown_mesV);
+			this.groupBox6.Controls.Add(this.pictureBox_exV);
+			this.groupBox6.Location = new System.Drawing.Point(262, 16);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(204, 68);
+			this.groupBox6.TabIndex = 14;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "Exportar Produtos Próximo da Validade";
 			// 
-			// dataGridViewTextBoxColumn1
+			// pictureBox_exV
 			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-			this.dataGridViewTextBoxColumn1.FillWeight = 68.96552F;
-			this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.dataGridViewTextBoxColumn1.Width = 24;
+			this.pictureBox_exV.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_exV.Image = global::EterPharma.Properties.Resources.mandar;
+			this.pictureBox_exV.Location = new System.Drawing.Point(153, 19);
+			this.pictureBox_exV.Name = "pictureBox_exV";
+			this.pictureBox_exV.Size = new System.Drawing.Size(45, 45);
+			this.pictureBox_exV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_exV.TabIndex = 14;
+			this.pictureBox_exV.TabStop = false;
+			this.pictureBox_exV.Click += new System.EventHandler(this.pictureBox_exV_Click);
 			// 
-			// dataGridViewTextBoxColumn2
+			// numericUpDown_mesV
 			// 
-			this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
-			this.dataGridViewTextBoxColumn2.FillWeight = 200F;
-			this.dataGridViewTextBoxColumn2.HeaderText = "NOME";
-			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-			this.dataGridViewTextBoxColumn2.ReadOnly = true;
-			this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.numericUpDown_mesV.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.numericUpDown_mesV.Location = new System.Drawing.Point(92, 32);
+			this.numericUpDown_mesV.Name = "numericUpDown_mesV";
+			this.numericUpDown_mesV.Size = new System.Drawing.Size(55, 30);
+			this.numericUpDown_mesV.TabIndex = 15;
 			// 
-			// dataGridViewTextBoxColumn3
+			// label1
 			// 
-			this.dataGridViewTextBoxColumn3.DataPropertyName = "Data";
-			this.dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
-			this.dataGridViewTextBoxColumn3.HeaderText = "DATA";
-			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-			this.dataGridViewTextBoxColumn3.ReadOnly = true;
-			this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			// 
-			// Action
-			// 
-			this.Action.FillWeight = 30F;
-			this.Action.HeaderText = "";
-			this.Action.Name = "Action";
-			this.Action.ReadOnly = true;
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(6, 33);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(80, 31);
+			this.label1.TabIndex = 16;
+			this.label1.Text = "MÊS:";
 			// 
 			// RelatorioValidade
 			// 
@@ -347,6 +399,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sair)).EndInit();
+			this.groupBox6.ResumeLayout(false);
+			this.groupBox6.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exV)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_mesV)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -378,5 +434,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 		private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
+		private System.Windows.Forms.GroupBox groupBox6;
+		private System.Windows.Forms.PictureBox pictureBox_exV;
+		private System.Windows.Forms.NumericUpDown numericUpDown_mesV;
+		private System.Windows.Forms.Label label1;
 	}
 }
