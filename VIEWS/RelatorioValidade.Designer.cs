@@ -364,6 +364,7 @@
 			this.numericUpDown_mesV.Name = "numericUpDown_mesV";
 			this.numericUpDown_mesV.Size = new System.Drawing.Size(55, 30);
 			this.numericUpDown_mesV.TabIndex = 15;
+			this.numericUpDown_mesV.ValueChanged += new System.EventHandler(this.numericUpDown_mesV_ValueChanged);
 			// 
 			// label1
 			// 

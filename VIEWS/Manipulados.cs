@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.ExtendedProperties;
 using EterPharma.Ex;
 using EterPharma.Models;
+using EterPharma.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace EterPharma.VIEWS
 			InitializeComponent();
 		}
 
-		private void ClenAll()
+		private void CleanAll(object sender, EventArgs e)
 		{
 			dateTimePicker_data.Value = DateTime.Now;
 			textBox_atn.Clear();
@@ -46,7 +47,7 @@ namespace EterPharma.VIEWS
 
 		private void Manipulados_Load(object sender, EventArgs e)
 		{
-			ClenAll();
+			CleanAll(null,null);
 			comboBox_user.Invoke(new Action(() => comboBox_user.CBListUser()));
 		}
 
@@ -70,7 +71,7 @@ namespace EterPharma.VIEWS
 
 			manipulados = new ManipulacaoModel
 			{
-				ID = Guid.NewGuid(),
+				ID = Guid.NewGuid().ToString().Replace("-", null).ToUpper(),
 				DADOSATENDIMENTO = new DadosAtemdimento
 				{
 					ATEN_LOJA = MainWindow.database.Users[Extensions.ReturnIndexUser(comboBox_user.SelectedValue.ToString())].ID,
@@ -83,115 +84,58 @@ namespace EterPharma.VIEWS
 					RG = textBox_rg.Text,
 					NOME = textBox_nomeC.Text,
 					TELEFONE = textBox5_tel.Text,
-					ENDERECO = new Endereco
-					{
-						LOGRADOURO = textBox_log.Text,
-						NUMERO = textBox_num.Text,
-						BAIRRO = textBox_bairro.Text,
-						OBS = textBox_obsEnd.Text
-					}
+					ENDERECO = new List<Endereco>()
 				},
+				
 				MEDICAMENTO = list,
 				OBSGERAL = textBox_obsGeral.Text,
 				SITUCAO = comboBox_situacao.SelectedIndex,
 				FORMAPAGAMENTO = comboBox_pag.SelectedIndex,
 				MODOENTREGA = comboBox_modo.SelectedIndex
 			};
-
-			using (Aes aes = Aes.Create())
+			((DadosCliente)manipulados.DADOSCLIENTE).ENDERECO.Add(new Endereco
 			{
-				byte[] chave = aes.Key;
-				byte[] iv = aes.IV;
+				LOGRADOURO = textBox_log.Text,
+				NUMERO = textBox_num.Text,
+				BAIRRO = textBox_bairro.Text,
+				OBS = textBox_obsEnd.Text
+			});
+			((DadosCliente)manipulados.DADOSCLIENTE).ENDERECO.Add(new Endereco
+			{
+				LOGRADOURO = "rua 2",
+				NUMERO = "72b",
+				BAIRRO = "Estancia Bela Vista",
+				OBS = "Pé Vermelho"
+			});
 
+
+
+
+			eList<ManipulacaoModel> t1 = new eList<ManipulacaoModel>(); t1.Add(manipulados);
+			eList<DadosCliente> t2 = new eList<DadosCliente>(); t2.Add((DadosCliente)manipulados.DADOSCLIENTE);
+
+			WriteDb.WriteManipulado(t1,null);
+			WriteDb.WriteCliente(t2, null	);
 			
-
-
-				// Serializar e criptografar
-				SerializarPessoa(manipulados, Directory.GetCurrentDirectory() + @"\DADOS\man.eter", chave, iv);
-
-				// Desserializar e descriptografar
-				//ManipulacaoModel pessoaDesserializada = DesserializarPessoa(Directory.GetCurrentDirectory() + @"\DADOS\man.eter", chave, iv);
-				
-			}
-
-			return;
-			using (var stream = File.Open(Directory.GetCurrentDirectory() + @"\DADOS\man.eter", FileMode.Create, FileAccess.Write))
-			{
-				using (BinaryWriter writer = new BinaryWriter(stream, Encoding.UTF8, false))
-				{
-					writer.Write(manipulados.ID.ToByteArray());
-
-					writer.Write(manipulados.DADOSATENDIMENTO.ATEN_LOJA);
-					writer.Write(manipulados.DADOSATENDIMENTO.DATA.ToBinary());
-					writer.Write(manipulados.DADOSATENDIMENTO.ATEN_MANI);
-
-					writer.Write(manipulados.DADOSCLIENTE.CPF);
-					writer.Write(manipulados.DADOSCLIENTE.RG);
-					writer.Write(manipulados.DADOSCLIENTE.NOME);
-					writer.Write(manipulados.DADOSCLIENTE.TELEFONE);
-					writer.Write(manipulados.DADOSCLIENTE.ENDERECO.LOGRADOURO);
-					writer.Write(manipulados.DADOSCLIENTE.ENDERECO.NUMERO);
-					writer.Write(manipulados.DADOSCLIENTE.ENDERECO.BAIRRO);
-					writer.Write(manipulados.DADOSCLIENTE.ENDERECO.OBS);
-
-					writer.Write(manipulados.MEDICAMENTO.Count);
-
-					for (int i = 0; i < manipulados.MEDICAMENTO.Count; i++)
-					{
-						writer.Write(manipulados.MEDICAMENTO[i]);
-					}
-
-					writer.Write(manipulados.OBSGERAL);
-					writer.Write(manipulados.SITUCAO);
-					writer.Write(manipulados.FORMAPAGAMENTO);
-					writer.Write(manipulados.MODOENTREGA);
-
-					writer.Close();
-
-				}
-				stream.Close();
-			}
 		}
 
-		public void SerializarPessoa(ManipulacaoModel manip, string caminhoArquivo, byte[] chave, byte[] iv)
+		private void button2_Click(object sender, EventArgs e)
 		{
-			using (MemoryStream ms = new MemoryStream())
-			using (BinaryWriter writer = new BinaryWriter(ms))
-			{
-				writer.Write(manipulados.ID.ToByteArray());
-
-				writer.Write(manipulados.DADOSATENDIMENTO.ATEN_LOJA);
-				writer.Write(manipulados.DADOSATENDIMENTO.DATA.ToBinary());
-				writer.Write(manipulados.DADOSATENDIMENTO.ATEN_MANI);
-
-				writer.Write(manipulados.DADOSCLIENTE.CPF);
-				writer.Write(manipulados.DADOSCLIENTE.RG);
-				writer.Write(manipulados.DADOSCLIENTE.NOME);
-				writer.Write(manipulados.DADOSCLIENTE.TELEFONE);
-				writer.Write(manipulados.DADOSCLIENTE.ENDERECO.LOGRADOURO);
-				writer.Write(manipulados.DADOSCLIENTE.ENDERECO.NUMERO);
-				writer.Write(manipulados.DADOSCLIENTE.ENDERECO.BAIRRO);
-				writer.Write(manipulados.DADOSCLIENTE.ENDERECO.OBS);
-
-				writer.Write(manipulados.MEDICAMENTO.Count);
-
-				for (int i = 0; i < manipulados.MEDICAMENTO.Count; i++)
-				{
-					writer.Write(manipulados.MEDICAMENTO[i]);
-				}
-
-				writer.Write(manipulados.OBSGERAL);
-				writer.Write(manipulados.SITUCAO);
-				writer.Write(manipulados.FORMAPAGAMENTO);
-				writer.Write(manipulados.MODOENTREGA);
-
-				writer.Close();
-
-				byte[] dados = ms.ToArray();
-				byte[] dadosCriptografados =  CriptoBinary.Criptografar(dados);
-
-				File.WriteAllBytes(caminhoArquivo, dadosCriptografados);
-			}
+			textBox_atn.Text = "sdasdasfasfasfas";
+			textBox_cpf.Text = "sdasdasfasfasfas";
+			textBox_rg.Text = "sdasdasfasfasfas";
+			textBox_nomeC.Text = "sdasdasfasfasfas";
+			textBox5_tel.Text = "sdasdasfasfasfas";
+			textBox_log.Text = "sdasdasfasfasfas";
+			textBox_num.Text = "sdasdasfasfasfas";
+			textBox_bairro.Text = "sdasdasfasfasfas";
+			textBox_obsEnd.Text = "sdasdasfasfasfas";
+			dataGridView_medicamentos.Rows.Clear();
+			textBox_obsGeral.Text = "sdasdasfasfasfas";
+			comboBox_situacao.SelectedIndex = 0;
+			comboBox_pag.SelectedIndex = 0;
+			comboBox_modo.SelectedIndex = 0;
+			textBox_valorT.Text = "90,00";
 		}
 	}
 }

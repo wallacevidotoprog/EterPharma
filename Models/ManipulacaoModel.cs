@@ -9,9 +9,9 @@ namespace EterPharma.Models
 	[Serializable]
 	public class ManipulacaoModel
 	{
-		public Guid ID { get; set; }
+		public string ID { get; set; }
 		public DadosAtemdimento DADOSATENDIMENTO { get; set; }
-		public DadosCliente DADOSCLIENTE { get; set; }
+		public object DADOSCLIENTE { get; set; }
 		public List<string> MEDICAMENTO { get; set; }
 		public string OBSGERAL { get; set; }
         public int SITUCAO { get; set; }
@@ -33,7 +33,7 @@ namespace EterPharma.Models
 		public string RG { get; set; }
 		public string NOME { get; set; }
 		public string TELEFONE { get; set; }
-		public Endereco ENDERECO { get; set; }
+		public List<Endereco> ENDERECO { get; set; }
 	}
 	[Serializable]
 	public class Endereco

@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.comboBox_user = new System.Windows.Forms.ComboBox();
 			this.textBox_atn = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +50,8 @@
 			this.textBox_nomeC = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.textBox_rg = new System.Windows.Forms.TextBox();
+			this.label14 = new System.Windows.Forms.Label();
 			this.textBox_cpf = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -66,11 +69,9 @@
 			this.comboBox_situacao = new System.Windows.Forms.ComboBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox_clear = new System.Windows.Forms.PictureBox();
 			this.pictureBox_imprimir = new System.Windows.Forms.PictureBox();
-			this.comboBox_user = new System.Windows.Forms.ComboBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.textBox_rg = new System.Windows.Forms.TextBox();
+			this.button2 = new System.Windows.Forms.Button();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox4.SuspendLayout();
@@ -80,7 +81,7 @@
 			this.groupBox1.SuspendLayout();
 			this.groupBox7.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_clear)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_imprimir)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -100,9 +101,21 @@
 			this.groupBox2.TabIndex = 0;
 			this.groupBox2.TabStop = false;
 			// 
+			// comboBox_user
+			// 
+			this.comboBox_user.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+			this.comboBox_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.comboBox_user.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.comboBox_user.FormattingEnabled = true;
+			this.comboBox_user.Location = new System.Drawing.Point(8, 44);
+			this.comboBox_user.Name = "comboBox_user";
+			this.comboBox_user.Size = new System.Drawing.Size(257, 33);
+			this.comboBox_user.TabIndex = 6;
+			// 
 			// textBox_atn
 			// 
 			this.textBox_atn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_atn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_atn.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_atn.Location = new System.Drawing.Point(752, 44);
 			this.textBox_atn.Name = "textBox_atn";
@@ -203,6 +216,7 @@
 			// 
 			this.textBox_obsEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_obsEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_obsEnd.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_obsEnd.Location = new System.Drawing.Point(324, 108);
 			this.textBox_obsEnd.Name = "textBox_obsEnd";
@@ -221,6 +235,7 @@
 			// 
 			// textBox_bairro
 			// 
+			this.textBox_bairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_bairro.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_bairro.Location = new System.Drawing.Point(6, 108);
 			this.textBox_bairro.Name = "textBox_bairro";
@@ -240,6 +255,7 @@
 			// textBox_num
 			// 
 			this.textBox_num.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_num.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_num.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_num.Location = new System.Drawing.Point(896, 44);
 			this.textBox_num.Name = "textBox_num";
@@ -261,6 +277,7 @@
 			// 
 			this.textBox_log.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_log.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_log.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_log.Location = new System.Drawing.Point(6, 44);
 			this.textBox_log.Name = "textBox_log";
@@ -280,6 +297,7 @@
 			// textBox5_tel
 			// 
 			this.textBox5_tel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox5_tel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox5_tel.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox5_tel.Location = new System.Drawing.Point(743, 44);
 			this.textBox5_tel.Name = "textBox5_tel";
@@ -290,6 +308,7 @@
 			// 
 			this.textBox_nomeC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_nomeC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_nomeC.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_nomeC.Location = new System.Drawing.Point(424, 44);
 			this.textBox_nomeC.Name = "textBox_nomeC";
@@ -319,8 +338,28 @@
 			this.label4.TabIndex = 6;
 			this.label4.Text = "NOME:";
 			// 
+			// textBox_rg
+			// 
+			this.textBox_rg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.textBox_rg.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox_rg.Location = new System.Drawing.Point(234, 44);
+			this.textBox_rg.Name = "textBox_rg";
+			this.textBox_rg.Size = new System.Drawing.Size(184, 33);
+			this.textBox_rg.TabIndex = 11;
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label14.Location = new System.Drawing.Point(234, 16);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(42, 25);
+			this.label14.TabIndex = 10;
+			this.label14.Text = "RG:";
+			// 
 			// textBox_cpf
 			// 
+			this.textBox_cpf.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_cpf.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_cpf.Location = new System.Drawing.Point(6, 44);
 			this.textBox_cpf.Name = "textBox_cpf";
@@ -522,15 +561,16 @@
 			this.pictureBox3.TabStop = false;
 			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
 			// 
-			// pictureBox2
+			// pictureBox_clear
 			// 
-			this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox2.Image = global::EterPharma.Properties.Resources.limpar_limpo;
-			this.pictureBox2.Location = new System.Drawing.Point(83, 12);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(65, 65);
-			this.pictureBox2.TabIndex = 8;
-			this.pictureBox2.TabStop = false;
+			this.pictureBox_clear.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_clear.Image = global::EterPharma.Properties.Resources.limpar_limpo;
+			this.pictureBox_clear.Location = new System.Drawing.Point(83, 12);
+			this.pictureBox_clear.Name = "pictureBox_clear";
+			this.pictureBox_clear.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox_clear.TabIndex = 8;
+			this.pictureBox_clear.TabStop = false;
+			this.pictureBox_clear.Click += new System.EventHandler(this.CleanAll);
 			// 
 			// pictureBox_imprimir
 			// 
@@ -544,34 +584,15 @@
 			this.pictureBox_imprimir.TabStop = false;
 			this.pictureBox_imprimir.Click += new System.EventHandler(this.pictureBox_imprimir_Click);
 			// 
-			// comboBox_user
+			// button2
 			// 
-			this.comboBox_user.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-			this.comboBox_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.comboBox_user.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_user.FormattingEnabled = true;
-			this.comboBox_user.Location = new System.Drawing.Point(8, 44);
-			this.comboBox_user.Name = "comboBox_user";
-			this.comboBox_user.Size = new System.Drawing.Size(257, 33);
-			this.comboBox_user.TabIndex = 6;
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(234, 16);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(42, 25);
-			this.label14.TabIndex = 10;
-			this.label14.Text = "RG:";
-			// 
-			// textBox_rg
-			// 
-			this.textBox_rg.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_rg.Location = new System.Drawing.Point(234, 44);
-			this.textBox_rg.Name = "textBox_rg";
-			this.textBox_rg.Size = new System.Drawing.Size(184, 33);
-			this.textBox_rg.TabIndex = 11;
+			this.button2.Location = new System.Drawing.Point(331, 38);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 10;
+			this.button2.Text = "button2";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// Manipulados
 			// 
@@ -580,8 +601,9 @@
 			this.AutoScroll = true;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(1100, 702);
+			this.Controls.Add(this.button2);
 			this.Controls.Add(this.pictureBox3);
-			this.Controls.Add(this.pictureBox2);
+			this.Controls.Add(this.pictureBox_clear);
 			this.Controls.Add(this.pictureBox_imprimir);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
@@ -606,7 +628,7 @@
 			this.groupBox7.ResumeLayout(false);
 			this.groupBox7.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_clear)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_imprimir)).EndInit();
 			this.ResumeLayout(false);
 
@@ -651,10 +673,11 @@
 		private System.Windows.Forms.GroupBox groupBox7;
 		private System.Windows.Forms.TextBox textBox_valorT;
 		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.PictureBox pictureBox_clear;
 		private System.Windows.Forms.PictureBox pictureBox_imprimir;
 		private System.Windows.Forms.ComboBox comboBox_user;
 		private System.Windows.Forms.TextBox textBox_rg;
 		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Button button2;
 	}
 }

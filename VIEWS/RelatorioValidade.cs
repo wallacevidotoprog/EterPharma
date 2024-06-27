@@ -130,8 +130,6 @@ namespace EterPharma.VIEWS
 							item.Group = group;
 
 
-
-
 							if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= Value.validade.PRODUTOS[j].DATA.Month )
 							{
 								item.BackColor = Color.LightCoral;
@@ -147,7 +145,7 @@ namespace EterPharma.VIEWS
 			catch (Exception ex)
 			{
 
-				throw;
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -213,6 +211,34 @@ namespace EterPharma.VIEWS
 			{
 
 				throw;
+			}
+		}
+
+		private void numericUpDown_mesV_ValueChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (validadeProdutos==null)
+				{
+					return;
+				}
+
+				for (int i = 0; i < validadeProdutos.Count; i++)
+				{
+					if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= validadeProdutos[i].DATA.Month)
+					{
+						listView_produtos.Items[i].BackColor = Color.LightCoral;
+					}
+					else
+					{
+						listView_produtos.Items[i].BackColor = Color.White;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+
+				MessageBox.Show(ex.Message);
 			}
 		}
 	}
