@@ -73,6 +73,14 @@
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewCheckBoxColumn1 = new EterPharma.Ex.DataGridViewCheckBoxImageColumn();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.BUSCA = new System.Windows.Forms.GroupBox();
+			this.listBox_buca = new System.Windows.Forms.ListBox();
+			this.button_buscarEnd = new System.Windows.Forms.Button();
+			this.textBox_buscaEnd = new System.Windows.Forms.TextBox();
+			this.listBox_log = new System.Windows.Forms.ListBox();
+			this.listBox_bairro = new System.Windows.Forms.ListBox();
+			this.pictureBox7 = new System.Windows.Forms.PictureBox();
 			this.dataGridViewCheckBoxImageColumn1 = new EterPharma.Ex.DataGridViewCheckBoxImageColumn();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -98,12 +106,16 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.groupBox6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).BeginInit();
+			this.tabPage3.SuspendLayout();
+			this.BUSCA.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
@@ -652,6 +664,99 @@
 			this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.dataGridViewCheckBoxColumn1.Width = 56;
 			// 
+			// tabPage3
+			// 
+			this.tabPage3.Controls.Add(this.BUSCA);
+			this.tabPage3.Controls.Add(this.listBox_log);
+			this.tabPage3.Controls.Add(this.listBox_bairro);
+			this.tabPage3.Controls.Add(this.pictureBox7);
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(979, 424);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "LOGADOURO";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// BUSCA
+			// 
+			this.BUSCA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.BUSCA.Controls.Add(this.listBox_buca);
+			this.BUSCA.Controls.Add(this.button_buscarEnd);
+			this.BUSCA.Controls.Add(this.textBox_buscaEnd);
+			this.BUSCA.Location = new System.Drawing.Point(888, 77);
+			this.BUSCA.Name = "BUSCA";
+			this.BUSCA.Size = new System.Drawing.Size(85, 344);
+			this.BUSCA.TabIndex = 17;
+			this.BUSCA.TabStop = false;
+			this.BUSCA.Text = "BUSCA";
+			// 
+			// listBox_buca
+			// 
+			this.listBox_buca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.listBox_buca.FormattingEnabled = true;
+			this.listBox_buca.Location = new System.Drawing.Point(6, 94);
+			this.listBox_buca.Name = "listBox_buca";
+			this.listBox_buca.Size = new System.Drawing.Size(73, 238);
+			this.listBox_buca.TabIndex = 18;
+			this.listBox_buca.SelectedIndexChanged += new System.EventHandler(this.listBox_buca_SelectedIndexChanged);
+			// 
+			// button_buscarEnd
+			// 
+			this.button_buscarEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button_buscarEnd.Location = new System.Drawing.Point(6, 45);
+			this.button_buscarEnd.Name = "button_buscarEnd";
+			this.button_buscarEnd.Size = new System.Drawing.Size(73, 23);
+			this.button_buscarEnd.TabIndex = 17;
+			this.button_buscarEnd.Text = "button1";
+			this.button_buscarEnd.UseVisualStyleBackColor = true;
+			this.button_buscarEnd.Click += new System.EventHandler(this.button_buscarEnd_Click);
+			// 
+			// textBox_buscaEnd
+			// 
+			this.textBox_buscaEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_buscaEnd.Location = new System.Drawing.Point(6, 19);
+			this.textBox_buscaEnd.Name = "textBox_buscaEnd";
+			this.textBox_buscaEnd.Size = new System.Drawing.Size(73, 20);
+			this.textBox_buscaEnd.TabIndex = 16;
+			// 
+			// listBox_log
+			// 
+			this.listBox_log.Dock = System.Windows.Forms.DockStyle.Left;
+			this.listBox_log.FormattingEnabled = true;
+			this.listBox_log.Location = new System.Drawing.Point(383, 3);
+			this.listBox_log.Name = "listBox_log";
+			this.listBox_log.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.listBox_log.Size = new System.Drawing.Size(499, 418);
+			this.listBox_log.TabIndex = 15;
+			// 
+			// listBox_bairro
+			// 
+			this.listBox_bairro.Dock = System.Windows.Forms.DockStyle.Left;
+			this.listBox_bairro.FormattingEnabled = true;
+			this.listBox_bairro.Location = new System.Drawing.Point(3, 3);
+			this.listBox_bairro.Name = "listBox_bairro";
+			this.listBox_bairro.Size = new System.Drawing.Size(380, 418);
+			this.listBox_bairro.TabIndex = 14;
+			this.listBox_bairro.SelectedIndexChanged += new System.EventHandler(this.listBox_bairro_SelectedIndexChanged);
+			// 
+			// pictureBox7
+			// 
+			this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox7.Image = global::EterPharma.Properties.Resources.sair;
+			this.pictureBox7.Location = new System.Drawing.Point(906, 6);
+			this.pictureBox7.Name = "pictureBox7";
+			this.pictureBox7.Size = new System.Drawing.Size(65, 65);
+			this.pictureBox7.TabIndex = 13;
+			this.pictureBox7.TabStop = false;
+			this.pictureBox7.Click += new System.EventHandler(this.pictureBox3_Click);
+			// 
 			// dataGridViewCheckBoxImageColumn1
 			// 
 			this.dataGridViewCheckBoxImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -696,6 +801,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.groupBox6.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).EndInit();
+			this.tabPage3.ResumeLayout(false);
+			this.BUSCA.ResumeLayout(false);
+			this.BUSCA.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -748,5 +857,13 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 		private Ex.DataGridViewCheckBoxImageColumn dataGridViewCheckBoxColumn1;
 		private Ex.DataGridViewCheckBoxImageColumn dataGridViewCheckBoxImageColumn1;
+		private System.Windows.Forms.TabPage tabPage3;
+		private System.Windows.Forms.PictureBox pictureBox7;
+		private System.Windows.Forms.ListBox listBox_bairro;
+		private System.Windows.Forms.ListBox listBox_log;
+		private System.Windows.Forms.TextBox textBox_buscaEnd;
+		private System.Windows.Forms.GroupBox BUSCA;
+		private System.Windows.Forms.Button button_buscarEnd;
+		private System.Windows.Forms.ListBox listBox_buca;
 	}
 }

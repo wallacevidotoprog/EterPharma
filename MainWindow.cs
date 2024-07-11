@@ -17,6 +17,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using System.Data.OleDb;
+
 namespace EterPharma
 {
 	public partial class MainWindow : Form
@@ -54,9 +59,9 @@ namespace EterPharma
 			catch (Exception ex)
 			{
 
-				
+
 			}
-			
+
 		}
 
 		private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -67,14 +72,19 @@ namespace EterPharma
 		private async void MainWindow_Load(object sender, EventArgs e)
 		{
 			database = new Database(progressBar_status, toolStrip1);
+
+			
 		}
-		private void gERARVALIDADEDOMÊSToolStripMenuItem_Click(object sender, EventArgs e)=> OpenForm(new GerarValidade());
+		private void gERARVALIDADEDOMÊSToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new GerarValidade());
 
-		private void toolStripButton_conf_Click(object sender, EventArgs e)=> OpenForm(new DataBase());
+		private void toolStripButton_conf_Click(object sender, EventArgs e) => OpenForm(new DataBase());
 
-		private void rELATÓRIOToolStripMenuItem_Click(object sender, EventArgs e)=> OpenForm(new RelatorioValidade());
-		
+		private void rELATÓRIOToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new RelatorioValidade());
 
-		private void fORMUToolStripMenuItem_Click(object sender, EventArgs e)=> OpenForm(new Manipulados());
+
+		private void fORMUToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new Manipulados());
+
 	}
+
+
 }

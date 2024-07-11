@@ -14,7 +14,7 @@ namespace EterPharma.Ex
 	[Serializable]
 	public class eList<T> : List<T>
 	{
-		
+
 		public event EventHandler ItemEdit;
 		public void OnEndEdit() => ItemEdit?.Invoke(this, new EventArgs());
 		public new void Add(T item, bool ev = true)
@@ -30,8 +30,6 @@ namespace EterPharma.Ex
 			base.RemoveAt(index);
 			OnEndEdit();
 		}
-		
-
 
 	}
 }

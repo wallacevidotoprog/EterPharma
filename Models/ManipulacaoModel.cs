@@ -33,7 +33,7 @@ namespace EterPharma.Models
 		public string RG { get; set; }
 		public string NOME { get; set; }
 		public string TELEFONE { get; set; }
-		public List<Endereco> ENDERECO { get; set; }
+		public object ENDERECO { get; set; }
 	}
 	[Serializable]
 	public class Endereco

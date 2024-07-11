@@ -33,6 +33,7 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton_manipulacao = new System.Windows.Forms.ToolStripDropDownButton();
 			this.fORMUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.rELATÓRIOToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
 			this.gERARVALIDADEDOMÊSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,6 @@
 			this.toolStripButton_conf = new System.Windows.Forms.ToolStripButton();
 			this.progressBar_status = new System.Windows.Forms.ProgressBar();
 			this.panel_center = new System.Windows.Forms.Panel();
-			this.rELATÓRIOToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -88,9 +88,16 @@
 			// 
 			this.fORMUToolStripMenuItem.Image = global::EterPharma.Properties.Resources.editar;
 			this.fORMUToolStripMenuItem.Name = "fORMUToolStripMenuItem";
-			this.fORMUToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.fORMUToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
 			this.fORMUToolStripMenuItem.Text = "FORMULÁRIO";
 			this.fORMUToolStripMenuItem.Click += new System.EventHandler(this.fORMUToolStripMenuItem_Click);
+			// 
+			// rELATÓRIOToolStripMenuItem1
+			// 
+			this.rELATÓRIOToolStripMenuItem1.Image = global::EterPharma.Properties.Resources.metrica;
+			this.rELATÓRIOToolStripMenuItem1.Name = "rELATÓRIOToolStripMenuItem1";
+			this.rELATÓRIOToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+			this.rELATÓRIOToolStripMenuItem1.Text = "RELATÓRIO";
 			// 
 			// toolStripSeparator2
 			// 
@@ -166,13 +173,6 @@
 			this.panel_center.Name = "panel_center";
 			this.panel_center.Size = new System.Drawing.Size(800, 347);
 			this.panel_center.TabIndex = 2;
-			// 
-			// rELATÓRIOToolStripMenuItem1
-			// 
-			this.rELATÓRIOToolStripMenuItem1.Image = global::EterPharma.Properties.Resources.metrica;
-			this.rELATÓRIOToolStripMenuItem1.Name = "rELATÓRIOToolStripMenuItem1";
-			this.rELATÓRIOToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-			this.rELATÓRIOToolStripMenuItem1.Text = "RELATÓRIO";
 			// 
 			// MainWindow
 			// 

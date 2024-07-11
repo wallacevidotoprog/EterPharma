@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ClosedXML.Excel.XLPredefinedFormat;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EterPharma.VIEWS
@@ -27,7 +28,7 @@ namespace EterPharma.VIEWS
 
 		private void CleanAll(object sender, EventArgs e)
 		{
-			dateTimePicker_data.Value = DateTime.Now;
+			dateTimePicker_data.Value = System.DateTime.Now;
 			textBox_atn.Clear();
 			textBox_cpf.Clear();
 			textBox_rg.Clear();
@@ -47,8 +48,14 @@ namespace EterPharma.VIEWS
 
 		private void Manipulados_Load(object sender, EventArgs e)
 		{
-			CleanAll(null,null);
+			CleanAll(null, null);
 			comboBox_user.Invoke(new Action(() => comboBox_user.CBListUser()));
+
+
+
+
+
+
 		}
 
 		private void pictureBox3_Click(object sender, EventArgs e)
@@ -69,7 +76,8 @@ namespace EterPharma.VIEWS
 				}
 			}
 
-			manipulados = new ManipulacaoModel
+			
+			MainWindow.database.RegisterManipulacao(new ManipulacaoModel
 			{
 				ID = Guid.NewGuid().ToString().Replace("-", null).ToUpper(),
 				DADOSATENDIMENTO = new DadosAtemdimento
@@ -84,54 +92,47 @@ namespace EterPharma.VIEWS
 					RG = textBox_rg.Text,
 					NOME = textBox_nomeC.Text,
 					TELEFONE = textBox5_tel.Text,
-					ENDERECO = new List<Endereco>()
+					ENDERECO = new Endereco
+					{
+						LOGRADOURO = textBox_log.Text,
+						NUMERO = textBox_num.Text,
+						BAIRRO = textBox_bairro.Text,
+						OBS = textBox_obsEnd.Text
+					}
 				},
-				
+
 				MEDICAMENTO = list,
 				OBSGERAL = textBox_obsGeral.Text,
 				SITUCAO = comboBox_situacao.SelectedIndex,
 				FORMAPAGAMENTO = comboBox_pag.SelectedIndex,
 				MODOENTREGA = comboBox_modo.SelectedIndex
-			};
-			((DadosCliente)manipulados.DADOSCLIENTE).ENDERECO.Add(new Endereco
-			{
-				LOGRADOURO = textBox_log.Text,
-				NUMERO = textBox_num.Text,
-				BAIRRO = textBox_bairro.Text,
-				OBS = textBox_obsEnd.Text
-			});
-			((DadosCliente)manipulados.DADOSCLIENTE).ENDERECO.Add(new Endereco
-			{
-				LOGRADOURO = "rua 2",
-				NUMERO = "72b",
-				BAIRRO = "Estancia Bela Vista",
-				OBS = "Pé Vermelho"
 			});
 
+			//eList<ManipulacaoModel> t1 = new eList<ManipulacaoModel>(); t1.Add(manipulados);
+			//eList<DadosCliente> t2 = new eList<DadosCliente>(); t2.Add((DadosCliente)manipulados.DADOSCLIENTE);
 
+			//WriteDb.WriteManipulado(t1, null);
+			//WriteDb.WriteCliente(t2, null);
 
-
-			eList<ManipulacaoModel> t1 = new eList<ManipulacaoModel>(); t1.Add(manipulados);
-			eList<DadosCliente> t2 = new eList<DadosCliente>(); t2.Add((DadosCliente)manipulados.DADOSCLIENTE);
-
-			WriteDb.WriteManipulado(t1,null);
-			WriteDb.WriteCliente(t2, null	);
-			
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			textBox_atn.Text = "sdasdasfasfasfas";
-			textBox_cpf.Text = "sdasdasfasfasfas";
-			textBox_rg.Text = "sdasdasfasfasfas";
-			textBox_nomeC.Text = "sdasdasfasfasfas";
-			textBox5_tel.Text = "sdasdasfasfasfas";
-			textBox_log.Text = "sdasdasfasfasfas";
-			textBox_num.Text = "sdasdasfasfasfas";
-			textBox_bairro.Text = "sdasdasfasfasfas";
-			textBox_obsEnd.Text = "sdasdasfasfasfas";
+			textBox_atn.Text = "JANAIRA";
+			textBox_cpf.Text = "857483948537";
+			textBox_rg.Text = "466294852";
+			textBox_nomeC.Text = "WALLACE VIDOTO DE MIRANDA";
+			textBox5_tel.Text = "17991983774";
+			textBox_log.Text = "ARMANDO RODRIGUES";
+			textBox_num.Text = "93";
+			textBox_bairro.Text = "ESTANCIA BELA VISTA";
+			textBox_obsEnd.Text = "CHACARA";
 			dataGridView_medicamentos.Rows.Clear();
-			textBox_obsGeral.Text = "sdasdasfasfasfas";
+			for (int i = 0; i < 5; i++)
+			{
+				dataGridView_medicamentos.Rows.Add($"REMEDIO 0{i}");
+			}
+			textBox_obsGeral.Text = "o cliente é louco";
 			comboBox_situacao.SelectedIndex = 0;
 			comboBox_pag.SelectedIndex = 0;
 			comboBox_modo.SelectedIndex = 0;

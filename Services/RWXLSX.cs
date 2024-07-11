@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml.ExtendedProperties;
 using EterPharma.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -96,7 +97,7 @@ namespace EterPharma.Services
 									worksheet.Cell($"D{line}").Value = tp[x].DATA.ToShortDateString();
 									line++;
 								}
-							}	
+							}
 						}
 					}
 					else
@@ -175,5 +176,120 @@ namespace EterPharma.Services
 				throw;
 			}
 		}
+
+		#region TEMP
+
+		
+		public static List<EnderecoSJRPDb> ReadStreet(string filename)
+		{
+			List<EnderecoSJRPDb> list = null;
+			try
+			{
+				using (var workbook = new XLWorkbook(filename))
+				{
+					var worksheet = workbook.Worksheet(1);
+					int rowCount = worksheet.LastRowUsed().RowNumber();
+					list = new List<EnderecoSJRPDb>();
+
+					string _bairro = string.Empty;
+					int _indexBairro = -1;
+
+					for (int r = 1; r < rowCount; r++)
+					{
+						string sTemp = worksheet.Cell(r, 1).GetValue<string>();
+
+						if (sTemp != "" && sTemp != null)
+						{
+
+							if (IsAnyCharacterBold(worksheet.Cell(r, 1)))
+							{
+
+								_bairro = RemoveCharI(sTemp);
+								list.Add(new EnderecoSJRPDb { BAIRRO = _bairro, LOGADOURO = new List<string>() });
+								_indexBairro++;
+							}
+							else
+							{
+
+								if (sTemp.Contains("\n"))
+								{
+									string[] aSTEmp = sTemp.Split('\n').Where(x=> x!= "").ToArray();
+
+									for (int i = 0; i < aSTEmp.Length; i++)
+									{
+										list[_indexBairro].LOGADOURO.Add(RemoveCharIeB(aSTEmp[i],$"line:{r}|Contains[] index:{i}"));
+									}
+								}
+								else
+								{
+									list[_indexBairro].LOGADOURO.Add(RemoveCharIeB(sTemp, $"line:{r}|x"));
+								}
+
+							}
+						}
+					}
+				}
+
+				WriteDb.WriteEndereco(list);
+			}
+			catch (Exception ex)
+			{
+				throw;
+				MessageBox.Show(ex + "");
+				MessageBox.Show($"Erro ao ler XLSX\n{ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			return list;
+
+		}
+
+		private static string RemoveCharIeB(string aSTEmp,string line ="null")
+		{
+			string atst = line;
+			if (aSTEmp == "")
+			{
+				return "NULL";
+			}
+
+			if (aSTEmp.Contains("|"))
+			{
+				aSTEmp = aSTEmp.Split('|')[0];
+			}
+			try
+			{
+				var tt = aSTEmp?.Substring(0, aSTEmp.IndexOf(' '));
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
+			
+			return aSTEmp?.Replace(aSTEmp?.Substring(0, aSTEmp.IndexOf(' ')), null).TrimStart();
+		}
+
+		private static string RemoveCharI(string sTemp)
+		{
+			if (sTemp == "")
+			{
+				return "NULL";
+			}
+			return sTemp?.Replace(sTemp.Substring(0, sTemp.IndexOf(' ')), null).Replace("|", null).TrimStart();
+
+		}
+		static bool IsAnyCharacterBold(IXLCell cell)
+		{
+			var richText = cell.GetRichText();
+
+			foreach (var rt in richText)
+			{
+				if (rt.Bold)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		#endregion
 	}
 }

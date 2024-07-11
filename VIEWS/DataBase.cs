@@ -1,17 +1,12 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
-using EterPharma.Ex;
+﻿using EterPharma.Ex;
 using EterPharma.Models;
 using EterPharma.Properties;
 using EterPharma.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,10 +28,15 @@ namespace EterPharma.VIEWS
 		}
 		private async void DataBase_Load(object sender, EventArgs e)
 		{
-			
-				comboBox_tipo.SelectedIndex = 0;
+
+			comboBox_tipo.SelectedIndex = 0;
 			comboBox_funcao.DataSource = Enum.GetValues(typeof(Funcao)).Cast<Funcao>().ToList();
 			await Task.Run(() => DataProdutosGrid());
+
+			for (int i = 0; i < MainWindow.database.EnderecoSJRPs.Count; i++)
+			{
+				listBox_bairro.Items.Add(MainWindow.database.EnderecoSJRPs[i].BAIRRO);
+			}
 
 		}
 
@@ -150,7 +150,7 @@ namespace EterPharma.VIEWS
 				MainWindow.database.Users[editIDINDEX].ID = textBox_id.Text;
 				MainWindow.database.Users[editIDINDEX].Nome = textBox_nome.Text;
 				MainWindow.database.Users[editIDINDEX].Funcao = (Funcao)comboBox_funcao.SelectedIndex;
-				//MainWindow.database.WriteUser();
+				MainWindow.database.UserEvents(null, null);
 				dataGridView_user.Rows[editIDINDEX].Cells[0].Value = textBox_id.Text;
 				dataGridView_user.Rows[editIDINDEX].Cells[1].Value = textBox_nome.Text;
 				dataGridView_user.Rows[editIDINDEX].Cells[2].Value = (Funcao)comboBox_funcao.SelectedIndex;
@@ -173,9 +173,6 @@ namespace EterPharma.VIEWS
 							Status = true
 
 						});
-
-
-						// MainWindow.database.WriteUser();
 
 						dataGridView_user.DataSource = MainWindow.database.Users.ToList();
 						pictureBox4_Click(null, null);
@@ -237,9 +234,62 @@ namespace EterPharma.VIEWS
 			if (edit && editIDINDEX != -1)
 			{
 				MainWindow.database.Users.RemoveAt(editIDINDEX);
-				//MainWindow.database.WriteUser();
 				pictureBox4_Click(null, null);
 				dataGridView_user.DataSource = MainWindow.database.Users.ToList();
+
+			}
+		}
+
+		private void listBox_bairro_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listBox_bairro.SelectedIndex != -1)
+			{
+				listBox_log.Items.Clear();
+				int selectedIndex = listBox_bairro.SelectedIndex;
+				for (int i = 0; i < MainWindow.database.EnderecoSJRPs[selectedIndex].LOGADOURO.Count; i++)
+				{
+					listBox_log.Items.Add(MainWindow.database.EnderecoSJRPs[selectedIndex].LOGADOURO[i]);
+				}
+			}
+
+		}
+
+		private void button_buscarEnd_Click(object sender, EventArgs e)
+		{
+			List<string> t = MainWindow.database.GetZone(textBox_buscaEnd.Text);
+			listBox_buca.Items.Clear();
+			if (t.Count > 0)
+			{
+				
+				for (int i = 0; i < t.Count; i++)
+				{
+					listBox_buca.Items.Add($"BAIRRO: {t[i]}");
+				}
+			}
+
+			
+		}
+
+		private void listBox_buca_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listBox_buca.SelectedIndex != -1)
+			{
+				for (int i = 0; i < listBox_bairro.Items.Count; i++)
+				{
+					if (listBox_bairro.Items[i].ToString() == listBox_buca.Items[listBox_buca.SelectedIndex].ToString().Replace("BAIRRO: ", null))
+					{
+						listBox_bairro.SetSelected(i, true);
+						break;
+					}
+				}
+				for (int i = 0; i < listBox_log.Items.Count; i++)
+				{
+					if (listBox_log.Items[i].ToString().Contains(textBox_buscaEnd.Text.ToUpper()))
+					{
+						listBox_log.SetSelected(i, true);
+					}
+				}
+
 
 			}
 		}

@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.ExtendedProperties;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.ExtendedProperties;
 using EterPharma.Ex;
 using EterPharma.Models;
 using EterPharma.VIEWS;
@@ -23,6 +24,8 @@ namespace EterPharma.Services
 		public eList<DadosCliente> Clientes;
 		public eList<ManipulacaoModel> Manipulados;
 
+		public eList<EnderecoSJRPDb> EnderecoSJRPs;
+
 		public Database(System.Windows.Forms.ProgressBar progressBar, ToolStrip toolStrip)
 		{
 			_progressBar = progressBar;
@@ -37,8 +40,9 @@ namespace EterPharma.Services
 			toolStrip.Invoke(new Action(() => { toolStrip.Enabled = true; }));
 			await Task.Run(() => Clientes = ReadDb.ReadClientes(_progressBar));
 			await Task.Run(() => Manipulados = ReadDb.ReadManipulado(_progressBar));
+			await Task.Run(() => EnderecoSJRPs = ReadDb.ReadEndereco(_progressBar));
 
-			
+
 		}
 
 		public void UserEvents(object sender, EventArgs e) => WriteUserBinary();
@@ -55,6 +59,33 @@ namespace EterPharma.Services
 			return false;
 		}
 
+		public List<string> GetZone(string street)
+		{
+			var t = EnderecoSJRPs
+				.SelectMany(end => end.LOGADOURO.Select(i => new { end.BAIRRO, LOG = i }))
+				.Where(l => l.LOG.Contains(street.ToUpper()))
+				.ToList();
+
+			List<string> bairro = new List<string>();
+
+			foreach (var item in t)
+			{
+				if (!bairro.Contains(item.BAIRRO))
+				{
+					bairro.Add(item.BAIRRO);
+				}
+			}
+
+			return bairro;
+		}
+
+		public bool RegisterManipulacao(ManipulacaoModel model)
+		{
+
+			WriteManipuladosBinary();
+			WriteClientesBinary();
+			return false;
+		}
 		public bool WriteProdutosBinary()
 		{
 			bool stats = false;
@@ -62,7 +93,6 @@ namespace EterPharma.Services
 			_progressBar.Invoke(new Action(() => _progressBar.Value = 0));
 			return stats;
 		}
-
 		public bool WriteUserBinary()
 		{
 			bool stats = false;
@@ -70,7 +100,7 @@ namespace EterPharma.Services
 			_progressBar.Invoke(new Action(() => _progressBar.Value = 0));
 			return stats;
 		}
-
+		
 		public bool WriteManipuladosBinary()
 		{
 			bool stats = false;
@@ -220,20 +250,23 @@ namespace EterPharma.Services
 									RG = reader.ReadString(),
 									NOME = reader.ReadString(),
 									TELEFONE = reader.ReadString(),
-									ENDERECO = new List<Endereco>()
+
 								};
-								int linesEnd = reader.ReadInt32();
-								for (int j = 0; j < linesEnd; j++)
+
+								int linesEnds = reader.ReadInt32();
+								temp.ENDERECO = new List<Endereco>();
+
+								for (int j = 0; j < linesEnds; j++)
 								{
-									temp.ENDERECO.Add(new Endereco
+									((List<Endereco>)temp.ENDERECO).Add(new Endereco
 									{
 										LOGRADOURO = reader.ReadString(),
-										NUMERO = reader.ReadString(),
-										BAIRRO = reader.ReadString(),
-										OBS = reader.ReadString()
+										NUMERO= reader.ReadString(),
+										BAIRRO= reader.ReadString(),
+										OBS= reader.ReadString()
 									});
-								}
 
+								}
 
 								list.Add(temp, false);
 								progressBar.Invoke(new Action(() => progressBar.Increment(1)));
@@ -256,6 +289,7 @@ namespace EterPharma.Services
 			}
 			return list;
 		}
+
 		public static eList<ManipulacaoModel> ReadManipulado(System.Windows.Forms.ProgressBar progressBar)
 		{
 			eList<ManipulacaoModel> list = new eList<ManipulacaoModel>();
@@ -293,6 +327,57 @@ namespace EterPharma.Services
 								for (int j = 0; j < linesEnd; j++)
 								{
 									temp.MEDICAMENTO.Add(reader.ReadString());
+								}
+
+
+								list.Add(temp, false);
+								progressBar.Invoke(new Action(() => progressBar.Increment(1)));
+							}
+						}
+					}
+				}
+				else
+				{
+					System.Windows.Forms.MessageBox.Show($"ERRO\nArquivo não encontrado.", "ReadClientes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+				}
+			}
+			catch (Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show($"ERRO\n{ex.Message}", "ReadClientes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+			}
+			finally
+			{
+				progressBar.Invoke(new Action(() => progressBar.Value = 0));
+			}
+			return list;
+		}
+
+		public static eList<EnderecoSJRPDb> ReadEndereco(System.Windows.Forms.ProgressBar progressBar)
+		{
+			eList<EnderecoSJRPDb> list = new eList<EnderecoSJRPDb>();
+			string fileName = (Directory.GetCurrentDirectory() + @"\DADOS\enderecoSJRP.eter");
+			try
+			{
+				if (File.Exists(fileName))
+				{
+					using (var stream = File.Open(fileName, FileMode.Open))
+					{
+						using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
+						{
+							int lines = reader.ReadInt32();
+							progressBar.Invoke(new Action(() => progressBar.Maximum = lines));
+
+							for (int i = 0; i < lines; i++)
+							{
+								var temp = new EnderecoSJRPDb
+								{
+									BAIRRO = reader.ReadString(),
+									LOGADOURO = new List<string>()
+								};
+								int linesEnd = reader.ReadInt32();
+								for (int j = 0; j < linesEnd; j++)
+								{
+									temp.LOGADOURO.Add(reader.ReadString());
 								}
 
 
@@ -431,13 +516,16 @@ namespace EterPharma.Services
 							writer.Write((string)clientes[i].NOME);
 							writer.Write((string)clientes[i].TELEFONE);
 
-							writer.Write((Int32)clientes[i].ENDERECO.Count);
-							for (int j = 0; j < clientes[i].ENDERECO.Count; j++)
+
+							List<Endereco> ends = (List<Endereco>)clientes[i].ENDERECO;
+
+							writer.Write((Int32)ends.Count);
+							for (int j = 0; j < ends.Count; j++)
 							{
-								writer.Write((string)clientes[i].ENDERECO[j].LOGRADOURO);
-								writer.Write((string)clientes[i].ENDERECO[j].NUMERO);
-								writer.Write((string)clientes[i].ENDERECO[j].BAIRRO);
-								writer.Write((string)clientes[i].ENDERECO[j].OBS);
+								writer.Write((string)ends[j].LOGRADOURO);
+								writer.Write((string)ends[j].NUMERO);
+								writer.Write((string)ends[j].BAIRRO);
+								writer.Write((string)ends[j].OBS);
 
 							}
 							progressBar?.Invoke(new Action(() => progressBar.Increment(1)));
@@ -519,7 +607,51 @@ namespace EterPharma.Services
 			return false;
 		}
 
+		public static bool WriteEndereco(List<EnderecoSJRPDb> enderecos)
+		{
+			try
+			{
+				string fileName = (Directory.GetCurrentDirectory() + @"\DADOS\enderecoSJRP.eter");
 
+				_backup = new BACKUP(fileName);
+
+				if (File.Exists(fileName))
+				{
+					File.Delete(fileName);
+				}
+				using (var stream = File.Open(fileName, FileMode.Create))
+				{
+					using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
+					{
+						writer.Write((Int32)enderecos.Count);
+						//progressBar?.Invoke(new Action(() => progressBar.Maximum = enderecos.Count));
+						for (int i = 0; i < enderecos.Count; i++)
+						{
+							writer.Write((string)enderecos[i].BAIRRO);
+							writer.Write((Int32)enderecos[i].LOGADOURO.Count);
+							for (int x = 0; x < enderecos[i].LOGADOURO.Count; x++)
+							{
+								writer.Write((string)enderecos[i].LOGADOURO[x].Replace("\r", null));
+							}
+
+							//progressBar?.Invoke(new Action(() => progressBar.Increment(1)));
+
+						}
+					}
+				}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				_backup.RestoreBackup();
+				System.Windows.Forms.MessageBox.Show($"ERRO\n{ex.Message}\nBACKUP Restaurado", "WriteCliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+				//progressBar?.Invoke(new Action(() => progressBar.Value = 0));
+				return false;
+			}
+			return false;
+
+			return false;
+		}
 
 	}
 
