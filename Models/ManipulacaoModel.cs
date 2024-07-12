@@ -14,7 +14,7 @@ namespace EterPharma.Models
 		public object DADOSCLIENTE { get; set; }
 		public List<string> MEDICAMENTO { get; set; }
 		public string OBSGERAL { get; set; }
-        public int SITUCAO { get; set; }
+		public int SITUCAO { get; set; }
 		public int FORMAPAGAMENTO { get; set; }
 		public int MODOENTREGA { get; set; }
 	}
@@ -34,6 +34,34 @@ namespace EterPharma.Models
 		public string NOME { get; set; }
 		public string TELEFONE { get; set; }
 		public object ENDERECO { get; set; }
+
+		public bool ExistAddress(Endereco endereco)
+		{
+			if (ENDERECO.GetType() == typeof(List<Endereco>))
+			{
+				List<Endereco> ends = (List<Endereco>)ENDERECO;
+
+				for (int i = 0; i < ends.Count; i++)
+				{
+					if (ends[i].LOGRADOURO.ToUpper() != endereco.LOGRADOURO.ToUpper() ||
+						ends[i].NUMERO.ToUpper() != endereco.NUMERO.ToUpper() ||
+						ends[i].BAIRRO.ToUpper() != endereco.BAIRRO.ToUpper())
+					{
+						return false;
+					}
+					else
+					{
+						if (ends[i].OBS.ToUpper() != endereco.OBS.ToUpper())
+						{
+							ends[i].OBS += $"\n{endereco.OBS.Replace(ends[i].OBS, null)}";
+						}
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
 	}
 	[Serializable]
 	public class Endereco

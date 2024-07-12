@@ -82,10 +82,38 @@ namespace EterPharma.Services
 		public bool RegisterManipulacao(ManipulacaoModel model)
 		{
 
-			WriteManipuladosBinary();
-			WriteClientesBinary();
-			return false;
+			DadosCliente tempC = (DadosCliente)model.DADOSCLIENTE;
+			
+			var result = Clientes
+			.Select((cpf, index) => new { CPF=cpf.CPF, INDEX=index })
+			.FirstOrDefault(x => x.CPF == tempC.CPF);
+
+
+			if (result != null)
+			{
+				if (!Clientes[result.INDEX].ExistAddress((Endereco)tempC.ENDERECO))
+				{
+					((List<Endereco>)Clientes[result.INDEX].ENDERECO).Add((Endereco)tempC.ENDERECO);
+				}
+			}
+			else
+			{
+				Clientes.Add(tempC);
+			}
+
+
+
+			model.DADOSCLIENTE = tempC.CPF;
+			Manipulados.Add(model);
+
+
+			bool wm = WriteManipuladosBinary();
+			bool wc = WriteClientesBinary();
+			return wm==wc;
 		}
+
+		#region WRITE
+
 		public bool WriteProdutosBinary()
 		{
 			bool stats = false;
@@ -100,7 +128,6 @@ namespace EterPharma.Services
 			_progressBar.Invoke(new Action(() => _progressBar.Value = 0));
 			return stats;
 		}
-		
 		public bool WriteManipuladosBinary()
 		{
 			bool stats = false;
@@ -115,6 +142,7 @@ namespace EterPharma.Services
 			_progressBar.Invoke(new Action(() => _progressBar.Value = 0));
 			return stats;
 		}
+		#endregion
 
 
 	}
@@ -261,9 +289,9 @@ namespace EterPharma.Services
 									((List<Endereco>)temp.ENDERECO).Add(new Endereco
 									{
 										LOGRADOURO = reader.ReadString(),
-										NUMERO= reader.ReadString(),
-										BAIRRO= reader.ReadString(),
-										OBS= reader.ReadString()
+										NUMERO = reader.ReadString(),
+										BAIRRO = reader.ReadString(),
+										OBS = reader.ReadString()
 									});
 
 								}
@@ -575,7 +603,7 @@ namespace EterPharma.Services
 							writer.Write((long)manipulados[i].DADOSATENDIMENTO.DATA.Ticks);
 							writer.Write((string)manipulados[i].DADOSATENDIMENTO.ATEN_MANI);
 
-							writer.Write((string)((DadosCliente)manipulados[i].DADOSCLIENTE).CPF);
+							writer.Write((string)manipulados[i].DADOSCLIENTE);
 
 							writer.Write((string)manipulados[i].OBSGERAL);
 							writer.Write((int)manipulados[i].SITUCAO);

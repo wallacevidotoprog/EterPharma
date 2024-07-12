@@ -108,12 +108,6 @@ namespace EterPharma.VIEWS
 				MODOENTREGA = comboBox_modo.SelectedIndex
 			});
 
-			//eList<ManipulacaoModel> t1 = new eList<ManipulacaoModel>(); t1.Add(manipulados);
-			//eList<DadosCliente> t2 = new eList<DadosCliente>(); t2.Add((DadosCliente)manipulados.DADOSCLIENTE);
-
-			//WriteDb.WriteManipulado(t1, null);
-			//WriteDb.WriteCliente(t2, null);
-
 		}
 
 		private void button2_Click(object sender, EventArgs e)
