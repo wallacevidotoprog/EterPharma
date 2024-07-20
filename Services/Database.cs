@@ -81,35 +81,43 @@ namespace EterPharma.Services
 
 		public bool RegisterManipulacao(ManipulacaoModel model)
 		{
-
-			DadosCliente tempC = (DadosCliente)model.DADOSCLIENTE;
-			
-			var result = Clientes
-			.Select((cpf, index) => new { CPF=cpf.CPF, INDEX=index })
-			.FirstOrDefault(x => x.CPF == tempC.CPF);
-
-
-			if (result != null)
+			try
 			{
-				if (!Clientes[result.INDEX].ExistAddress((Endereco)tempC.ENDERECO))
+				DadosCliente tempC = (DadosCliente)model.DADOSCLIENTE;
+
+				var result = Clientes
+				.Select((cpf, index) => new { CPF = cpf.CPF, INDEX = index })
+				.FirstOrDefault(x => x.CPF == tempC.CPF);
+
+
+				if (result != null)
 				{
-					((List<Endereco>)Clientes[result.INDEX].ENDERECO).Add((Endereco)tempC.ENDERECO);
+					if (!Clientes[result.INDEX].ExistAddress((Endereco)tempC.ENDERECO))
+					{
+						((List<Endereco>)Clientes[result.INDEX].ENDERECO).Add((Endereco)tempC.ENDERECO);
+					}
 				}
+				else
+				{
+					Clientes.Add(tempC);
+				}
+
+
+
+				model.DADOSCLIENTE = tempC.CPF;
+				Manipulados.Add(model);
+
+
+				bool wm = WriteManipuladosBinary();
+				bool wc = WriteClientesBinary();
+				return wm == wc;
 			}
-			else
+			catch (Exception EX)
 			{
-				Clientes.Add(tempC);
+
+				return false;
 			}
-
-
-
-			model.DADOSCLIENTE = tempC.CPF;
-			Manipulados.Add(model);
-
-
-			bool wm = WriteManipuladosBinary();
-			bool wc = WriteClientesBinary();
-			return wm==wc;
+			return false;
 		}
 
 		#region WRITE

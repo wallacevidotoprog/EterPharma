@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EterPharma.VIEWS
 {
@@ -33,6 +32,7 @@ namespace EterPharma.VIEWS
 			{
 				dataGridView_validadeFile.Rows.Clear();
 				validadeList.Clear();
+
 			}));
 
 			string[] fileEntries = Directory.GetFiles(Directory.GetCurrentDirectory() + $@"\DADOS\VALIDADE\", "*.xml");
@@ -50,10 +50,13 @@ namespace EterPharma.VIEWS
 				});
 				}));
 			}
+			pictureBox_busca.Invoke(new Action(() => { pictureBox_busca_Click(null, null); }));
 		}
 		private void RelatorioValidade_Load(object sender, EventArgs e)
 		{
-			numericUpDown_mesV.Value = 4;
+			DateTime timenew = dateTimePicker_ate.Value;
+			timenew = timenew.AddMonths(4);
+			dateTimePicker_ate.Value = timenew;
 			validadeList = new List<(Validade validade, bool status)>();
 			Task.Run(new Action(() => GetFilesXML()));
 		}
@@ -75,9 +78,9 @@ namespace EterPharma.VIEWS
 					if (xmlFiles[i].ToUpper().EndsWith("XML"))
 					{
 						Validade tempV = await RWXML.DeserializePessoaFromXmlAsync(xmlFiles[i]);
-						validadeList.Add((tempV, true));
 						if (tempV.DADOS.DATA.Month == dateTimePicker_dataBusca.Value.Month && tempV.DADOS.DATA.Year == dateTimePicker_dataBusca.Value.Year)
 						{
+							validadeList.Add((tempV, true));
 							dataGridView_validadeFile.Rows.Add(new object[]
 							{
 							i.ToString(),tempV.DADOS.DATA.ToString("ddMMyyHmmss"),tempV.DADOS.NOME,tempV.DADOS.DATA.ToString(),true
@@ -129,11 +132,10 @@ namespace EterPharma.VIEWS
 							item.SubItems.Add(Value.validade.PRODUTOS[j].DATA.ToString("dd/MM/yyyy"));
 							item.Group = group;
 
-
-							if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= Value.validade.PRODUTOS[j].DATA.Month )
-							{
-								item.BackColor = Color.LightCoral;
-							}
+							//if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= Value.validade.PRODUTOS[j].DATA.Month)
+							//{
+							//	item.BackColor = Color.LightCoral;
+							//}
 							listView_produtos.Items.Add(item);
 
 							validadeProdutos.Add(Value.validade.PRODUTOS[j]);
@@ -141,6 +143,8 @@ namespace EterPharma.VIEWS
 						}
 					}
 				}
+
+				mesV_ValueChanged(null, null);
 			}
 			catch (Exception ex)
 			{
@@ -186,10 +190,10 @@ namespace EterPharma.VIEWS
 				{
 					return;
 				}
-				
 
 
-				var temp = validadeProdutos.Where(x=> x.DATA.Month <= (DateTime.Now.Month + numericUpDown_mesV.Value)).ToList();
+
+				var temp = validadeProdutos.Where(x => x.DATA.Month <= (DateTime.Now.Month)).ToList();
 
 
 
@@ -214,21 +218,29 @@ namespace EterPharma.VIEWS
 			}
 		}
 
-		private void numericUpDown_mesV_ValueChanged(object sender, EventArgs e)
+		private void mesV_ValueChanged(object sender, EventArgs e)
 		{
 			try
 			{
-				if (validadeProdutos==null)
+				if (validadeProdutos == null)
 				{
 					return;
 				}
 
 				for (int i = 0; i < validadeProdutos.Count; i++)
 				{
-					if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= validadeProdutos[i].DATA.Month)
+					if (validadeProdutos[i].DATA.Month >= dateTimePicker_de.Value.Month &&
+						validadeProdutos[i].DATA.Year >= dateTimePicker_de.Value.Year &&
+						validadeProdutos[i].DATA.Month <= dateTimePicker_ate.Value.Month &&
+						validadeProdutos[i].DATA.Year <= dateTimePicker_ate.Value.Year
+						)
 					{
 						listView_produtos.Items[i].BackColor = Color.LightCoral;
 					}
+					//if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= validadeProdutos[i].DATA.Month)
+					//{
+						
+					//}
 					else
 					{
 						listView_produtos.Items[i].BackColor = Color.White;

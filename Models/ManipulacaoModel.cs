@@ -43,13 +43,9 @@ namespace EterPharma.Models
 
 				for (int i = 0; i < ends.Count; i++)
 				{
-					if (ends[i].LOGRADOURO.ToUpper() != endereco.LOGRADOURO.ToUpper() ||
-						ends[i].NUMERO.ToUpper() != endereco.NUMERO.ToUpper() ||
-						ends[i].BAIRRO.ToUpper() != endereco.BAIRRO.ToUpper())
-					{
-						return false;
-					}
-					else
+					if (ends[i].LOGRADOURO.ToUpper() == endereco.LOGRADOURO.ToUpper() ||
+						ends[i].NUMERO.ToUpper() == endereco.NUMERO.ToUpper() ||
+						ends[i].BAIRRO.ToUpper() == endereco.BAIRRO.ToUpper())
 					{
 						if (ends[i].OBS.ToUpper() != endereco.OBS.ToUpper())
 						{

@@ -55,6 +55,8 @@ namespace EterPharma.VIEWS
 				});
 				}));
 			}
+			pictureBox_busca.Invoke(new Action(() => { pictureBox_busca_Click(null, null); }));
+			
 		}		
 		public void CBListCategoria()
 		{
@@ -149,6 +151,7 @@ namespace EterPharma.VIEWS
 			groupBox_ne.Visible = state;
 			comboBox_user.Enabled = state;
 			dateTimePicker_dataD.Enabled = state;
+			dateTimePicker_dataD.Value = System.DateTime.Today;
 
 		}
 		private void NewDoc(bool state)
@@ -193,6 +196,7 @@ namespace EterPharma.VIEWS
 		{
 			Task.Run(new Action(() => GetFilesXML()));
 			comboBox_user.Invoke(new Action(() => comboBox_user.CBListUser()));			
+			
 
 			groupBox_ne.Size = new Size(566, 88);
 			pictureBox_novaV.Image = Properties.Resources.novo_arquivo;

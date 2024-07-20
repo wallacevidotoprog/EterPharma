@@ -41,6 +41,7 @@
 			this.toolStripButton_conf = new System.Windows.Forms.ToolStripButton();
 			this.progressBar_status = new System.Windows.Forms.ProgressBar();
 			this.panel_center = new System.Windows.Forms.Panel();
+			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -52,7 +53,8 @@
             this.toolStripButton_manipulacao,
             this.toolStripSeparator2,
             this.toolStripButton1,
-            this.toolStripButton_conf});
+            this.toolStripButton_conf,
+            this.toolStripButton2});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -174,6 +176,16 @@
 			this.panel_center.Size = new System.Drawing.Size(800, 347);
 			this.panel_center.TabIndex = 2;
 			// 
+			// toolStripButton2
+			// 
+			this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton2.Name = "toolStripButton2";
+			this.toolStripButton2.Size = new System.Drawing.Size(23, 90);
+			this.toolStripButton2.Text = "toolStripButton2";
+			this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +221,7 @@
 		private System.Windows.Forms.ToolStripDropDownButton toolStripButton_manipulacao;
 		private System.Windows.Forms.ToolStripMenuItem fORMUToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem rELATÓRIOToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripButton toolStripButton2;
 	}
 }
 

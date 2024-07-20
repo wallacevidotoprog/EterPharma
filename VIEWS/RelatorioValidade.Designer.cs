@@ -50,13 +50,15 @@
 			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.pictureBox_exV = new System.Windows.Forms.PictureBox();
 			this.pictureBox_import = new System.Windows.Forms.PictureBox();
 			this.pictureBox_exportExcel = new System.Windows.Forms.PictureBox();
 			this.pictureBox_sair = new System.Windows.Forms.PictureBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.pictureBox_exV = new System.Windows.Forms.PictureBox();
-			this.numericUpDown_mesV = new System.Windows.Forms.NumericUpDown();
-			this.label1 = new System.Windows.Forms.Label();
+			this.dateTimePicker_de = new System.Windows.Forms.DateTimePicker();
+			this.label2 = new System.Windows.Forms.Label();
+			this.dateTimePicker_ate = new System.Windows.Forms.DateTimePicker();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).BeginInit();
@@ -64,12 +66,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			this.groupBox5.SuspendLayout();
+			this.groupBox6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exV)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sair)).BeginInit();
-			this.groupBox6.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exV)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_mesV)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -229,7 +230,7 @@
 			this.groupBox3.Controls.Add(this.groupBox5);
 			this.groupBox3.Location = new System.Drawing.Point(440, 0);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(478, 444);
+			this.groupBox3.Size = new System.Drawing.Size(614, 444);
 			this.groupBox3.TabIndex = 13;
 			this.groupBox3.TabStop = false;
 			// 
@@ -251,7 +252,7 @@
 			this.listView_produtos.HoverSelection = true;
 			this.listView_produtos.Location = new System.Drawing.Point(3, 116);
 			this.listView_produtos.Name = "listView_produtos";
-			this.listView_produtos.Size = new System.Drawing.Size(472, 325);
+			this.listView_produtos.Size = new System.Drawing.Size(608, 325);
 			this.listView_produtos.TabIndex = 13;
 			this.listView_produtos.UseCompatibleStateImageBehavior = false;
 			this.listView_produtos.View = System.Windows.Forms.View.Details;
@@ -292,10 +293,50 @@
 			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox5.Location = new System.Drawing.Point(3, 16);
 			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(472, 100);
+			this.groupBox5.Size = new System.Drawing.Size(608, 100);
 			this.groupBox5.TabIndex = 0;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "IMPORTAÇÃO";
+			// 
+			// groupBox6
+			// 
+			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox6.Controls.Add(this.label2);
+			this.groupBox6.Controls.Add(this.dateTimePicker_ate);
+			this.groupBox6.Controls.Add(this.dateTimePicker_de);
+			this.groupBox6.Controls.Add(this.pictureBox_exV);
+			this.groupBox6.Controls.Add(this.label1);
+			this.groupBox6.Location = new System.Drawing.Point(125, 16);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(477, 68);
+			this.groupBox6.TabIndex = 14;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "Exportar Produtos Próximo da Validade";
+			// 
+			// label1
+			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(43, 34);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(60, 31);
+			this.label1.TabIndex = 16;
+			this.label1.Text = "DE:";
+			// 
+			// pictureBox_exV
+			// 
+			this.pictureBox_exV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox_exV.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBox_exV.Image = global::EterPharma.Properties.Resources.mandar;
+			this.pictureBox_exV.Location = new System.Drawing.Point(426, 17);
+			this.pictureBox_exV.Name = "pictureBox_exV";
+			this.pictureBox_exV.Size = new System.Drawing.Size(45, 45);
+			this.pictureBox_exV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox_exV.TabIndex = 14;
+			this.pictureBox_exV.TabStop = false;
+			this.pictureBox_exV.Click += new System.EventHandler(this.pictureBox_exV_Click);
 			// 
 			// pictureBox_import
 			// 
@@ -313,7 +354,7 @@
 			this.pictureBox_exportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox_exportExcel.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.pictureBox_exportExcel.Image = global::EterPharma.Properties.Resources.excel;
-			this.pictureBox_exportExcel.Location = new System.Drawing.Point(924, 373);
+			this.pictureBox_exportExcel.Location = new System.Drawing.Point(1060, 373);
 			this.pictureBox_exportExcel.Name = "pictureBox_exportExcel";
 			this.pictureBox_exportExcel.Size = new System.Drawing.Size(73, 65);
 			this.pictureBox_exportExcel.TabIndex = 14;
@@ -325,63 +366,56 @@
 			this.pictureBox_sair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox_sair.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.pictureBox_sair.Image = global::EterPharma.Properties.Resources.sair;
-			this.pictureBox_sair.Location = new System.Drawing.Point(926, 12);
+			this.pictureBox_sair.Location = new System.Drawing.Point(1062, 12);
 			this.pictureBox_sair.Name = "pictureBox_sair";
 			this.pictureBox_sair.Size = new System.Drawing.Size(65, 65);
 			this.pictureBox_sair.TabIndex = 12;
 			this.pictureBox_sair.TabStop = false;
 			this.pictureBox_sair.Click += new System.EventHandler(this.pictureBox_sair_Click);
 			// 
-			// groupBox6
+			// dateTimePicker_de
 			// 
-			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox6.Controls.Add(this.label1);
-			this.groupBox6.Controls.Add(this.numericUpDown_mesV);
-			this.groupBox6.Controls.Add(this.pictureBox_exV);
-			this.groupBox6.Location = new System.Drawing.Point(262, 16);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(204, 68);
-			this.groupBox6.TabIndex = 14;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Exportar Produtos Próximo da Validade";
+			this.dateTimePicker_de.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.dateTimePicker_de.CustomFormat = "MM/yyyy";
+			this.dateTimePicker_de.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.dateTimePicker_de.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker_de.Location = new System.Drawing.Point(109, 32);
+			this.dateTimePicker_de.Name = "dateTimePicker_de";
+			this.dateTimePicker_de.ShowUpDown = true;
+			this.dateTimePicker_de.Size = new System.Drawing.Size(110, 33);
+			this.dateTimePicker_de.TabIndex = 17;
+			this.dateTimePicker_de.ValueChanged += new System.EventHandler(this.mesV_ValueChanged);
 			// 
-			// pictureBox_exV
+			// label2
 			// 
-			this.pictureBox_exV.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBox_exV.Image = global::EterPharma.Properties.Resources.mandar;
-			this.pictureBox_exV.Location = new System.Drawing.Point(153, 19);
-			this.pictureBox_exV.Name = "pictureBox_exV";
-			this.pictureBox_exV.Size = new System.Drawing.Size(45, 45);
-			this.pictureBox_exV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox_exV.TabIndex = 14;
-			this.pictureBox_exV.TabStop = false;
-			this.pictureBox_exV.Click += new System.EventHandler(this.pictureBox_exV_Click);
+			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label2.AutoSize = true;
+			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(229, 31);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(75, 31);
+			this.label2.TabIndex = 18;
+			this.label2.Text = "ATE:";
 			// 
-			// numericUpDown_mesV
+			// dateTimePicker_ate
 			// 
-			this.numericUpDown_mesV.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.numericUpDown_mesV.Location = new System.Drawing.Point(92, 32);
-			this.numericUpDown_mesV.Name = "numericUpDown_mesV";
-			this.numericUpDown_mesV.Size = new System.Drawing.Size(55, 30);
-			this.numericUpDown_mesV.TabIndex = 15;
-			this.numericUpDown_mesV.ValueChanged += new System.EventHandler(this.numericUpDown_mesV_ValueChanged);
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(6, 33);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(80, 31);
-			this.label1.TabIndex = 16;
-			this.label1.Text = "MÊS:";
+			this.dateTimePicker_ate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.dateTimePicker_ate.CustomFormat = "MM/yyyy";
+			this.dateTimePicker_ate.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
+			this.dateTimePicker_ate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker_ate.Location = new System.Drawing.Point(310, 29);
+			this.dateTimePicker_ate.Name = "dateTimePicker_ate";
+			this.dateTimePicker_ate.ShowUpDown = true;
+			this.dateTimePicker_ate.Size = new System.Drawing.Size(110, 33);
+			this.dateTimePicker_ate.TabIndex = 17;
+			this.dateTimePicker_ate.ValueChanged += new System.EventHandler(this.mesV_ValueChanged);
 			// 
 			// RelatorioValidade
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1003, 450);
+			this.ClientSize = new System.Drawing.Size(1139, 450);
 			this.Controls.Add(this.pictureBox_exportExcel);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.pictureBox_sair);
@@ -397,13 +431,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_busca)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sair)).EndInit();
 			this.groupBox6.ResumeLayout(false);
 			this.groupBox6.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exV)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown_mesV)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_import)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_exportExcel)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_sair)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -437,7 +470,9 @@
 		private System.Windows.Forms.DataGridViewCheckBoxColumn Action;
 		private System.Windows.Forms.GroupBox groupBox6;
 		private System.Windows.Forms.PictureBox pictureBox_exV;
-		private System.Windows.Forms.NumericUpDown numericUpDown_mesV;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.DateTimePicker dateTimePicker_de;
+		private System.Windows.Forms.DateTimePicker dateTimePicker_ate;
 	}
 }

@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,65 +52,78 @@ namespace EterPharma.VIEWS
 			CleanAll(null, null);
 			comboBox_user.Invoke(new Action(() => comboBox_user.CBListUser()));
 
-
-
-
-
-
 		}
 
 		private void pictureBox3_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
+		[DllImport("BemaFI32.dll")]
+		public static extern int Bematech_FI_AbrePortaSerial();
+
+		[DllImport("BemaFI32.dll")]
+		public static extern int Bematech_FI_LeituraX();
+
+		[DllImport("BemaFI32.dll")]
+		public static extern int Bematech_FI_FechaPortaSerial();
+		[DllImport("BemaFI32.dll")]
+		public static extern int Bematech_FI_ImprimeLinha(string texto);
 
 		private void pictureBox_imprimir_Click(object sender, EventArgs e)
 		{
-			List<string> list = new List<string>();
-
-			for (int i = 0; i < dataGridView_medicamentos.Rows.Count; i++)
-			{
-				if (dataGridView_medicamentos.Rows[i].Cells[0].Value != null)
-				{
-
-					list.Add(dataGridView_medicamentos.Rows[i].Cells[0].Value.ToString());
-				}
-			}
-
 			
-			MainWindow.database.RegisterManipulacao(new ManipulacaoModel
+			try
 			{
-				ID = Guid.NewGuid().ToString().Replace("-", null).ToUpper(),
-				DADOSATENDIMENTO = new DadosAtemdimento
+				List<string> list = new List<string>();
+
+				for (int i = 0; i < dataGridView_medicamentos.Rows.Count; i++)
 				{
-					ATEN_LOJA = MainWindow.database.Users[Extensions.ReturnIndexUser(comboBox_user.SelectedValue.ToString())].ID,
-					DATA = dateTimePicker_data.Value,
-					ATEN_MANI = textBox_atn.Text
-				},
-				DADOSCLIENTE = new DadosCliente
-				{
-					CPF = textBox_cpf.Text,
-					RG = textBox_rg.Text,
-					NOME = textBox_nomeC.Text,
-					TELEFONE = textBox5_tel.Text,
-					ENDERECO = new Endereco
+					if (dataGridView_medicamentos.Rows[i].Cells[0].Value != null)
 					{
-						LOGRADOURO = textBox_log.Text,
-						NUMERO = textBox_num.Text,
-						BAIRRO = textBox_bairro.Text,
-						OBS = textBox_obsEnd.Text
+
+						list.Add(dataGridView_medicamentos.Rows[i].Cells[0].Value.ToString());
 					}
-				},
+				}
 
-				MEDICAMENTO = list,
-				OBSGERAL = textBox_obsGeral.Text,
-				SITUCAO = comboBox_situacao.SelectedIndex,
-				FORMAPAGAMENTO = comboBox_pag.SelectedIndex,
-				MODOENTREGA = comboBox_modo.SelectedIndex
-			});
 
+				MainWindow.database.RegisterManipulacao(new ManipulacaoModel
+				{
+					ID = Guid.NewGuid().ToString().Replace("-", null).ToUpper(),
+					DADOSATENDIMENTO = new DadosAtemdimento
+					{
+						ATEN_LOJA = MainWindow.database.Users[Extensions.ReturnIndexUser(comboBox_user.SelectedValue.ToString())].ID,
+						DATA = dateTimePicker_data.Value,
+						ATEN_MANI = textBox_atn.Text
+					},
+					DADOSCLIENTE = new DadosCliente
+					{
+						CPF = textBox_cpf.Text,
+						RG = textBox_rg.Text,
+						NOME = textBox_nomeC.Text,
+						TELEFONE = textBox5_tel.Text,
+						ENDERECO = new Endereco
+						{
+							LOGRADOURO = textBox_log.Text,
+							NUMERO = textBox_num.Text,
+							BAIRRO = textBox_bairro.Text,
+							OBS = textBox_obsEnd.Text
+						}
+					},
+
+					MEDICAMENTO = list,
+					OBSGERAL = textBox_obsGeral.Text,
+					SITUCAO = comboBox_situacao.SelectedIndex,
+					FORMAPAGAMENTO = comboBox_pag.SelectedIndex,
+					MODOENTREGA = comboBox_modo.SelectedIndex
+				});
+			}
+			catch (Exception ex)
+			{
+				return;
+				
+
+			}
 		}
-
 		private void button2_Click(object sender, EventArgs e)
 		{
 			textBox_atn.Text = "JANAIRA";

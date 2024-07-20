@@ -84,6 +84,10 @@ namespace EterPharma
 
 		private void fORMUToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new Manipulados());
 
+		private void toolStripButton2_Click(object sender, EventArgs e)
+		{
+			RawPrinterHelper.testc();
+		}
 	}
 
 
