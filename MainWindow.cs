@@ -86,8 +86,12 @@ namespace EterPharma
 
 		private void toolStripButton2_Click(object sender, EventArgs e)
 		{
-			RawPrinterHelper.testc();
+			
+			(new ViewPrint()).ShowDialog();
+
 		}
+
+		
 	}
 
 

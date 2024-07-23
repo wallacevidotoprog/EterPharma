@@ -155,6 +155,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Database.cs" />
+    <Compile Include="Services\IniFile.cs" />
     <Compile Include="Services\RawPrinterHelper.cs" />
     <Compile Include="Services\RWXLSX.cs" />
     <Compile Include="Services\RWXML.cs" />
@@ -183,6 +184,12 @@
     <Compile Include="VIEWS\RelatorioValidade.Designer.cs">
       <DependentUpon>RelatorioValidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEWS\ViewPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEWS\ViewPrint.Designer.cs">
+      <DependentUpon>ViewPrint.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEWS\RelatorioValidade.resx">
       <DependentUpon>RelatorioValidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEWS\ViewPrint.resx">
+      <DependentUpon>ViewPrint.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

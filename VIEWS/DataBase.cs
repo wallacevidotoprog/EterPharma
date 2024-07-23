@@ -14,6 +14,8 @@ namespace EterPharma.VIEWS
 {
 	public partial class DataBase : Form
 	{
+		IniFile ini;
+		Dictionary<string, string> portComImpressora;
 		public ProgressBar progressBar_status { get; set; }
 		List<Produtos> tempProdutos;
 		bool edit = false;
@@ -37,7 +39,7 @@ namespace EterPharma.VIEWS
 			{
 				listBox_bairro.Items.Add(MainWindow.database.EnderecoSJRPs[i].BAIRRO);
 			}
-
+			InitImp();
 		}
 
 		#region PROD
@@ -203,6 +205,7 @@ namespace EterPharma.VIEWS
 
 		#endregion
 
+		#region ENDS		
 
 		private void dataGridView_user_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
@@ -260,14 +263,14 @@ namespace EterPharma.VIEWS
 			listBox_buca.Items.Clear();
 			if (t.Count > 0)
 			{
-				
+
 				for (int i = 0; i < t.Count; i++)
 				{
 					listBox_buca.Items.Add($"BAIRRO: {t[i]}");
 				}
 			}
 
-			
+
 		}
 
 		private void listBox_buca_SelectedIndexChanged(object sender, EventArgs e)
@@ -292,6 +295,108 @@ namespace EterPharma.VIEWS
 
 
 			}
+		}
+		#endregion
+
+		#region IMP
+		void InitImp()
+		{
+			ini = new IniFile("config.ini");
+			portComImpressora = RawPrinterHelper.GetDeviceName();
+			checkBox_imD_CheckedChanged(null, null);
+
+
+			if (portComImpressora.Count > 0)
+			{
+				foreach (var item in portComImpressora)
+				{
+					comboBox_impF.Items.Add($"{item.Value} - {item.Key}");
+
+				}
+			}
+
+			checkBox_imD.Checked = ini.Read("IMPRESSORAS", "IS_DYNAMIC")=="True"?true:false;
+
+			textBox_impD.Text = ini.Read("IMPRESSORAS", "DYNAMIC");
+			textBox_portCom.Text = ini.Read("IMPRESSORAS", "PORT_COM");
+			textBox_impIP.Text = ini.Read("IMPRESSORAS", "IP_IMP");
+
+		}
+		private void checkBox_imD_CheckedChanged(object sender, EventArgs e)
+		{
+			SgroupBox_dinamico.Enabled = checkBox_imD.Checked;
+			groupBox_fixo.Enabled = !checkBox_imD.Checked;
+		}
+
+		private void button_fPort_Click(object sender, EventArgs e)
+		{
+			if (portComImpressora.Count > 0)
+			{
+				textBox_portCom.Text = portComImpressora.ElementAt(comboBox_impF.SelectedIndex).Value;
+			}
+		}
+
+		#endregion
+
+		private void pictureBox_saveIMP_Click(object sender, EventArgs e)
+		{
+			ini.Write("IMPRESSORAS", "IS_DYNAMIC", checkBox_imD.Checked.ToString());
+			ini.Write("IMPRESSORAS", "DYNAMIC",textBox_impD.Text);
+			ini.Write("IMPRESSORAS", "PORT_COM",textBox_portCom.Text);
+			ini.Write("IMPRESSORAS", "IP_IMP",textBox_impIP.Text);
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			RawPrinterHelper.PrinterHelper(DevoImprimirCupomNaoFiscal(), ini.Read("IMPRESSORAS", "DYNAMIC"));
+		}
+		public static string DevoImprimirCupomNaoFiscal()
+		{
+			var texto = new String(' ', 50);
+			texto += "------------------------------------------------";
+			texto += "--------------------------------------------------\n";
+			texto += "<ce><c>Empresa Teste\n";
+			texto += "CNPJ: xxxxxxxxxxxxxx Inscrição Estadual: yyyyyyyyyy\n";
+			texto += "Rua: aaaaaaaaaaaa, Número: 999   Bairro: bbbbbbb\n";
+			texto += "Cidade: zzzzzzzzzzzz nn\n";
+			texto += "--------------------------------------------------\n";
+			texto += "DANFE NFC-e - Documento Auxiliar\n";
+			texto += "da Nota Fiscal Eletrônica para Consumidor Final\n";
+			texto += "Não permite aproveitamento de crédito de ICMS\n";
+			texto += "--------------------------------------------------\n";
+			texto += "Código Descrição do Item  Vlr.Unit. Qtde Vlr.Total\n";
+			texto += "--------------------------------------------------\n";
+			texto += "</c>" +
+					 "<c>333333 ITEM 01        37,14 001Un     37,14</c>\n";
+			texto += "<c>444444 ITEM 02         13,61 001Un    13,61</c>\n";
+			texto += "--------------------------------------------------\n";
+			texto += "QTD. TOTAL DE ITENS                              2\n";
+			texto += "VALOR TOTAL R$                               50,75\n";
+			texto += "\n";
+			texto += "FORMA DE PAGAMENTO                      Valor Pago\n";
+			texto += "</c><c>DINHEIRO                              50,75\n";
+			texto += "</c><c>VALOR PAGO R$                         50,75\n";
+			texto += "TROCO R$                                      0,00\n";
+			texto += "</c><c>---------------------------------------</c>\n";
+			texto += "Val Aprox Tributos R$ 16.29 (32.10%) Fonte: IBPT  \n";
+			texto += "<c>-------------------------------------------</c>\n";
+			texto += "<c><ce><ce>NFC-e nº 000001 Série 001\n";
+			texto += "Emissão 03/12/2013 15:50:16</c></ce>\n";
+			texto += "<ce><b></c><c><b>Via Consumidor</c></b>\n";
+			texto += "</b></ce><c><Consulte pela Chave de Acesso em</c>\n";
+			texto += "<c>https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\n";
+			texto += "\n";
+			texto += "<c><b>CHAVE DE ACESSO</b></ce></c>\n";
+			texto += "<c><ce>8877 2222 4444 1101 7777 6666</ce></c>\n";
+			texto += "<c><ce>0000 8888 3333 6666 7788</ce></c>\n";
+			texto += "\n\n";
+
+			return texto;
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			RawPrinterHelper.PrinterHelperIP(DevoImprimirCupomNaoFiscal(), ini.Read("IMPRESSORAS", "IP_IMP"));
 		}
 	}
 }

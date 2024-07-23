@@ -193,7 +193,7 @@ namespace EterPharma.VIEWS
 
 
 
-				var temp = validadeProdutos.Where(x => x.DATA.Month <= (DateTime.Now.Month)).ToList();
+				var temp = validadeProdutos.Where(x => BetweenDate(x)).ToList();
 
 
 
@@ -229,18 +229,10 @@ namespace EterPharma.VIEWS
 
 				for (int i = 0; i < validadeProdutos.Count; i++)
 				{
-					if (validadeProdutos[i].DATA.Month >= dateTimePicker_de.Value.Month &&
-						validadeProdutos[i].DATA.Year >= dateTimePicker_de.Value.Year &&
-						validadeProdutos[i].DATA.Month <= dateTimePicker_ate.Value.Month &&
-						validadeProdutos[i].DATA.Year <= dateTimePicker_ate.Value.Year
-						)
+					if (BetweenDate(validadeProdutos[i]))
 					{
 						listView_produtos.Items[i].BackColor = Color.LightCoral;
 					}
-					//if ((DateTime.Now.Month + numericUpDown_mesV.Value) >= validadeProdutos[i].DATA.Month)
-					//{
-						
-					//}
 					else
 					{
 						listView_produtos.Items[i].BackColor = Color.White;
@@ -252,6 +244,19 @@ namespace EterPharma.VIEWS
 
 				MessageBox.Show(ex.Message);
 			}
+		}
+
+		bool BetweenDate(ValidadeProdutos validadeProdutos)
+		{
+			if (validadeProdutos.DATA.Month >= dateTimePicker_de.Value.Month &&
+						validadeProdutos.DATA.Year >= dateTimePicker_de.Value.Year &&
+						validadeProdutos.DATA.Month <= dateTimePicker_ate.Value.Month &&
+						validadeProdutos.DATA.Year <= dateTimePicker_ate.Value.Year
+						)
+			{
+				return true;
+			}
+			return false;
 		}
 	}
 }
