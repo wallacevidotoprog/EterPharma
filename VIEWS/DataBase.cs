@@ -14,19 +14,20 @@ namespace EterPharma.VIEWS
 {
 	public partial class DataBase : Form
 	{
-		IniFile ini;
-		Dictionary<string, string> portComImpressora;
+		private IniFile ini;
+		private RawPrinterHelper rawPrinter;
+		private Dictionary<string, string> portComImpressora;
 		public ProgressBar progressBar_status { get; set; }
-		List<Produtos> tempProdutos;
-		bool edit = false;
-		int editIDINDEX = -1;
+		private List<Produtos> tempProdutos;
+		private bool edit = false;
+		private int editIDINDEX = -1;
 		public DataBase()
 		{
 			InitializeComponent();
-			if (InputBox.Show("Qual a senha:", "SENHA =D", true) != "32195018")
-			{
-				this.Close();
-			}
+			//if (InputBox.Show("Qual a senha:", "SENHA =D", true) != "32195018")
+			//{
+			//	this.Close();
+			//}
 		}
 		private async void DataBase_Load(object sender, EventArgs e)
 		{
@@ -301,7 +302,9 @@ namespace EterPharma.VIEWS
 		#region IMP
 		void InitImp()
 		{
+			
 			ini = new IniFile("config.ini");
+			rawPrinter = new RawPrinterHelper(ini);
 			portComImpressora = RawPrinterHelper.GetDeviceName();
 			checkBox_imD_CheckedChanged(null, null);
 
@@ -319,7 +322,7 @@ namespace EterPharma.VIEWS
 
 			textBox_impD.Text = ini.Read("IMPRESSORAS", "DYNAMIC");
 			textBox_portCom.Text = ini.Read("IMPRESSORAS", "PORT_COM");
-			textBox_impIP.Text = ini.Read("IMPRESSORAS", "IP_IMP");
+			textBox_impIP.Text = $"{ini.Read("IMPRESSORAS", "IP_IMP")}:{ini.Read("IMPRESSORAS", "IP_PORT")}" ;
 
 		}
 		private void checkBox_imD_CheckedChanged(object sender, EventArgs e)
@@ -332,7 +335,12 @@ namespace EterPharma.VIEWS
 		{
 			if (portComImpressora.Count > 0)
 			{
-				textBox_portCom.Text = portComImpressora.ElementAt(comboBox_impF.SelectedIndex).Value;
+				string tempS = portComImpressora.ElementAt(comboBox_impF.SelectedIndex).Value;
+				if (tempS.Contains("COM"))
+				{
+					textBox_portCom.Text = tempS.Substring(tempS.IndexOf("COM"), 4);
+				}
+				textBox_portCom.Clear();
 			}
 		}
 
@@ -340,15 +348,26 @@ namespace EterPharma.VIEWS
 
 		private void pictureBox_saveIMP_Click(object sender, EventArgs e)
 		{
-			ini.Write("IMPRESSORAS", "IS_DYNAMIC", checkBox_imD.Checked.ToString());
-			ini.Write("IMPRESSORAS", "DYNAMIC",textBox_impD.Text);
-			ini.Write("IMPRESSORAS", "PORT_COM",textBox_portCom.Text);
-			ini.Write("IMPRESSORAS", "IP_IMP",textBox_impIP.Text);
+			if (textBox_impIP.Text.Trim().Split(':').Length == 2)
+			{
+				ini.Write("IMPRESSORAS", "IS_DYNAMIC", checkBox_imD.Checked.ToString());
+				ini.Write("IMPRESSORAS", "DYNAMIC", textBox_impD.Text);
+				ini.Write("IMPRESSORAS", "PORT_COM", textBox_portCom.Text);
+				ini.Write("IMPRESSORAS", "IP_IMP", textBox_impIP.Text.Trim().Split(':')[0]);
+				ini.Write("IMPRESSORAS", "IP_PORT", textBox_impIP.Text.Trim().Split(':')[1]);
+				rawPrinter = new RawPrinterHelper(ini);
+				MessageBox.Show("Dados Salvos.");
+			}
+			else
+			{
+				MessageBox.Show("Algo errado, verifique se digitou a porta da impressora");
+			}
+			
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			RawPrinterHelper.PrinterHelper(DevoImprimirCupomNaoFiscal(), ini.Read("IMPRESSORAS", "DYNAMIC"));
+			rawPrinter.PrinterHelper(DevoImprimirCupomNaoFiscal());
 		}
 		public static string DevoImprimirCupomNaoFiscal()
 		{
@@ -396,7 +415,15 @@ namespace EterPharma.VIEWS
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			RawPrinterHelper.PrinterHelperIP(DevoImprimirCupomNaoFiscal(), ini.Read("IMPRESSORAS", "IP_IMP"));
+			rawPrinter.PrinterHelperIP(DevoImprimirCupomNaoFiscal());
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			rawPrinter.AddLine("wallace vidoto de miranda");
+			rawPrinter.AddLine("wallace vidoto de miranda",FormatText.Bolt);
+			rawPrinter.AddLine("wallace vidoto de miranda",FormatText.Italic);
+			rawPrinter.PrintDocument();
 		}
 	}
 }

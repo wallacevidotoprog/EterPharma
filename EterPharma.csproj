@@ -54,6 +54,21 @@
     <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>packages\PDF\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Quality">
+      <HintPath>packages\PDF\PdfSharp.Quality.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Snippets">
+      <HintPath>packages\PDF\PdfSharp.Snippets.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.System">
+      <HintPath>packages\PDF\PdfSharp.System.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.WPFonts">
+      <HintPath>packages\PDF\PdfSharp.WPFonts.dll</HintPath>
+    </Reference>
     <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
       <HintPath>packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
     </Reference>
@@ -141,6 +156,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ex\Item.cs" />
+    <Compile Include="Ex\xEnums.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +340,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="farmacia.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

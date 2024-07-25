@@ -86,8 +86,17 @@ namespace EterPharma
 
 		private void toolStripButton2_Click(object sender, EventArgs e)
 		{
-			
-			(new ViewPrint()).ShowDialog();
+			// RawPrinterHelper.PortCOM_tt();
+			//MessageBox.Show(IMPRESSORAS.);
+			//(new ViewPrint()).ShowDialog();
+
+			string tt = "Bematech_COM7";
+			string tt2 = "Bematech (COM7)";
+
+
+			string xtt = tt.Substring(tt.IndexOf("COM"),4);
+			string xtt2 = tt2.Substring(tt2.IndexOf("COM"),4);
+
 
 		}
 

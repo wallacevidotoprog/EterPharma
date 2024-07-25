@@ -82,6 +82,8 @@
 			this.listBox_bairro = new System.Windows.Forms.ListBox();
 			this.pictureBox7 = new System.Windows.Forms.PictureBox();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox9 = new System.Windows.Forms.GroupBox();
 			this.groupBox10 = new System.Windows.Forms.GroupBox();
 			this.pictureBox_saveIMP = new System.Windows.Forms.PictureBox();
@@ -97,8 +99,8 @@
 			this.checkBox_imD = new System.Windows.Forms.CheckBox();
 			this.pictureBox8 = new System.Windows.Forms.PictureBox();
 			this.dataGridViewCheckBoxImageColumn1 = new EterPharma.Ex.DataGridViewCheckBoxImageColumn();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -785,6 +787,8 @@
 			// 
 			// tabPage4
 			// 
+			this.tabPage4.Controls.Add(this.button4);
+			this.tabPage4.Controls.Add(this.button3);
 			this.tabPage4.Controls.Add(this.button2);
 			this.tabPage4.Controls.Add(this.button1);
 			this.tabPage4.Controls.Add(this.groupBox9);
@@ -796,13 +800,35 @@
 			this.tabPage4.Text = "IMPRESSORAS";
 			this.tabPage4.UseVisualStyleBackColor = true;
 			// 
+			// button2
+			// 
+			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button2.Location = new System.Drawing.Point(833, 227);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(138, 23);
+			this.button2.TabIndex = 1;
+			this.button2.Text = "Teste IP";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// button1
+			// 
+			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button1.Location = new System.Drawing.Point(833, 198);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(138, 23);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "Teste Comum";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// groupBox9
 			// 
 			this.groupBox9.Controls.Add(this.groupBox10);
 			this.groupBox9.Dock = System.Windows.Forms.DockStyle.Left;
 			this.groupBox9.Location = new System.Drawing.Point(0, 0);
 			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new System.Drawing.Size(535, 424);
+			this.groupBox9.Size = new System.Drawing.Size(796, 424);
 			this.groupBox9.TabIndex = 13;
 			this.groupBox9.TabStop = false;
 			this.groupBox9.Text = "IMPRESSORA TERMICA";
@@ -817,7 +843,7 @@
 			this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox10.Location = new System.Drawing.Point(3, 16);
 			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new System.Drawing.Size(529, 358);
+			this.groupBox10.Size = new System.Drawing.Size(790, 358);
 			this.groupBox10.TabIndex = 0;
 			this.groupBox10.TabStop = false;
 			this.groupBox10.Text = "LOCAL";
@@ -827,7 +853,7 @@
 			this.pictureBox_saveIMP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox_saveIMP.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.pictureBox_saveIMP.Image = global::EterPharma.Properties.Resources.salve_;
-			this.pictureBox_saveIMP.Location = new System.Drawing.Point(455, 287);
+			this.pictureBox_saveIMP.Location = new System.Drawing.Point(716, 286);
 			this.pictureBox_saveIMP.Name = "pictureBox_saveIMP";
 			this.pictureBox_saveIMP.Size = new System.Drawing.Size(65, 65);
 			this.pictureBox_saveIMP.TabIndex = 25;
@@ -840,7 +866,7 @@
 			this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox11.Location = new System.Drawing.Point(3, 215);
 			this.groupBox11.Name = "groupBox11";
-			this.groupBox11.Size = new System.Drawing.Size(523, 65);
+			this.groupBox11.Size = new System.Drawing.Size(784, 65);
 			this.groupBox11.TabIndex = 1;
 			this.groupBox11.TabStop = false;
 			this.groupBox11.Text = "REDE";
@@ -852,7 +878,7 @@
 			this.textBox_impIP.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_impIP.Location = new System.Drawing.Point(3, 16);
 			this.textBox_impIP.Name = "textBox_impIP";
-			this.textBox_impIP.Size = new System.Drawing.Size(517, 33);
+			this.textBox_impIP.Size = new System.Drawing.Size(778, 33);
 			this.textBox_impIP.TabIndex = 13;
 			this.textBox_impIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -865,7 +891,7 @@
 			this.groupBox_fixo.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupBox_fixo.Location = new System.Drawing.Point(3, 115);
 			this.groupBox_fixo.Name = "groupBox_fixo";
-			this.groupBox_fixo.Size = new System.Drawing.Size(523, 100);
+			this.groupBox_fixo.Size = new System.Drawing.Size(784, 100);
 			this.groupBox_fixo.TabIndex = 11;
 			this.groupBox_fixo.TabStop = false;
 			this.groupBox_fixo.Text = "FIXO";
@@ -873,7 +899,7 @@
 			// button_fPort
 			// 
 			this.button_fPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_fPort.Location = new System.Drawing.Point(240, 44);
+			this.button_fPort.Location = new System.Drawing.Point(498, 44);
 			this.button_fPort.Name = "button_fPort";
 			this.button_fPort.Size = new System.Drawing.Size(94, 33);
 			this.button_fPort.TabIndex = 13;
@@ -886,7 +912,7 @@
 			this.textBox_portCom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox_portCom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.textBox_portCom.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_portCom.Location = new System.Drawing.Point(340, 44);
+			this.textBox_portCom.Location = new System.Drawing.Point(598, 44);
 			this.textBox_portCom.Name = "textBox_portCom";
 			this.textBox_portCom.ReadOnly = true;
 			this.textBox_portCom.Size = new System.Drawing.Size(180, 33);
@@ -904,7 +930,7 @@
 			this.comboBox_impF.FormattingEnabled = true;
 			this.comboBox_impF.Location = new System.Drawing.Point(11, 44);
 			this.comboBox_impF.Name = "comboBox_impF";
-			this.comboBox_impF.Size = new System.Drawing.Size(223, 33);
+			this.comboBox_impF.Size = new System.Drawing.Size(481, 33);
 			this.comboBox_impF.TabIndex = 8;
 			// 
 			// label5
@@ -923,7 +949,7 @@
 			this.SgroupBox_dinamico.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SgroupBox_dinamico.Location = new System.Drawing.Point(3, 45);
 			this.SgroupBox_dinamico.Name = "SgroupBox_dinamico";
-			this.SgroupBox_dinamico.Size = new System.Drawing.Size(523, 70);
+			this.SgroupBox_dinamico.Size = new System.Drawing.Size(784, 70);
 			this.SgroupBox_dinamico.TabIndex = 10;
 			this.SgroupBox_dinamico.TabStop = false;
 			this.SgroupBox_dinamico.Text = "DINÂMICO";
@@ -934,7 +960,7 @@
 			this.textBox_impD.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox_impD.Location = new System.Drawing.Point(11, 19);
 			this.textBox_impD.Name = "textBox_impD";
-			this.textBox_impD.Size = new System.Drawing.Size(506, 33);
+			this.textBox_impD.Size = new System.Drawing.Size(767, 33);
 			this.textBox_impD.TabIndex = 12;
 			// 
 			// checkBox_imD
@@ -944,7 +970,7 @@
 			this.checkBox_imD.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
 			this.checkBox_imD.Location = new System.Drawing.Point(3, 16);
 			this.checkBox_imD.Name = "checkBox_imD";
-			this.checkBox_imD.Size = new System.Drawing.Size(523, 29);
+			this.checkBox_imD.Size = new System.Drawing.Size(784, 29);
 			this.checkBox_imD.TabIndex = 9;
 			this.checkBox_imD.Text = "IMPRESSORA DINÂMICA";
 			this.checkBox_imD.UseVisualStyleBackColor = true;
@@ -970,27 +996,26 @@
 			this.dataGridViewCheckBoxImageColumn1.Name = "dataGridViewCheckBoxImageColumn1";
 			this.dataGridViewCheckBoxImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			// 
-			// button1
+			// button3
 			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.Location = new System.Drawing.Point(896, 198);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button3.Location = new System.Drawing.Point(833, 257);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(138, 23);
+			this.button3.TabIndex = 1;
+			this.button3.Text = "Teste PrintDocument ";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
-			// button2
+			// button4
 			// 
-			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button2.Location = new System.Drawing.Point(896, 231);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "button1";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button4.Location = new System.Drawing.Point(833, 286);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(138, 23);
+			this.button4.TabIndex = 1;
+			this.button4.Text = "Teste PrintDocument  IP";
+			this.button4.UseVisualStyleBackColor = true;
 			// 
 			// DataBase
 			// 
@@ -1121,5 +1146,7 @@
 		private System.Windows.Forms.PictureBox pictureBox_saveIMP;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button button4;
 	}
 }
